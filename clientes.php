@@ -9,7 +9,7 @@ include('protect.php');
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Clientes - Network Academy</title>
+    <title>Clientes - Network Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -51,7 +51,7 @@ include('protect.php');
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Network Academy</span>
+                <span class="d-none d-lg-block">Network Admin</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -308,7 +308,7 @@ include('protect.php');
             <h1>Clientes</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
                     <li class="breadcrumb-item">Cadastros</li>
                     <li class="breadcrumb-item active">Clientes</li>
                 </ol>

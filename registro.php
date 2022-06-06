@@ -10,7 +10,7 @@ require "conexoes/conexao.php";
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Usuários - Network Academy</title>
+    <title>Usuários - Network Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -50,7 +50,7 @@ require "conexoes/conexao.php";
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Network Academy</span>
+                <span class="d-none d-lg-block">Network Admin</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -384,7 +384,7 @@ require "conexoes/conexao.php";
                                                 <div class="modal-body">
                                                     <div class="card-body">
                                                         <!-- Vertical Form -->
-                                                        <form method="POST" action="/processa_add/registro.php" class="row g-3 needs-validation" novalidate>
+                                                        <form method="POST" action="processa_add/registro.php" class="row g-3 needs-validation" novalidate>
                                                             <div class="col-12">
                                                                 <label for="yourName" class="form-label">Nome completo</label>
                                                                 <input type="text" name="nome" class="form-control" id="yourName" required>

@@ -11,7 +11,7 @@ require "../conexoes/conexao.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cidades - Network Admin</title>
+    <title>Fabricantes - Network Admin</title>
     <link href="../alerts/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../alerts/js/bootstrap.min.js"></script>
@@ -20,13 +20,9 @@ require "../conexoes/conexao.php";
 <body>
     <div class="container theme-showcase" role="main">
         <?php
-        $id = $_POST['id'];
-        $cidade = $_POST['cidade'];
-        $estado = $_POST['estado'];
-        $pais = $_POST['pais'];
-
-        $result_cidades = "UPDATE cidades SET cidade='$cidade', estado='$estado', pais='$pais', modificado=NOW() WHERE id='$id'";
-        $resultado_cidades = mysqli_query($mysqli, $result_cidades);
+        $fabricante = $_POST['fabricante'];
+        $result_fabricante = "INSERT INTO fabricante (fabricante, deleted, criado) VALUES ('$fabricante', '0', NOW())";
+        $resultado_fabricante = mysqli_query($mysqli, $result_fabricante);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
             <!-- Modal -->
@@ -34,13 +30,13 @@ require "../conexoes/conexao.php";
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Cidade editada com Sucesso!</h4>
+                            <h4 class="modal-title" id="myModalLabel">Novo fabricante cadastrado com Sucesso!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $cidade; ?>
+                            <?php echo $fabricante; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../cidades.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="../fabricantes.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -57,13 +53,13 @@ require "../conexoes/conexao.php";
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Erro ao editar a cidade!</h4>
+                            <h4 class="modal-title" id="myModalLabel">Erro ao cadastrar fabricante!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $cidade; ?>
+                            <?php echo $tipo; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../cidades.php'"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="../fabricantes.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

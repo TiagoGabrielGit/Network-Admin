@@ -9,7 +9,7 @@ include('protect.php');
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - Network Academy</title>
+  <title>Dashboard - Network Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -49,7 +49,7 @@ include('protect.php');
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">Network Academy</span>
+        <span class="d-none d-lg-block">Network Admin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -322,15 +322,52 @@ include('protect.php');
         </ul>
       </li><!-- End Cadastro Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#Inventario-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Inventário</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="Inventario-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>#</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#serviceDesk-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Service Desk</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="serviceDesk-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>#</span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
       <li class="nav-heading">Administração</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="registro.php">
-          <i class="bi bi-card-list"></i>
-          <span>Usuários</span>
+        <a class="nav-link collapsed" data-bs-target="#gerenciamento-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Gerenciamento</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      </li><!-- End Register Page Nav -->
+        <ul id="gerenciamento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Perfil</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="registro.php">
+              <i class="bi bi-circle"></i><span>Usuários</span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
     </ul>
 
