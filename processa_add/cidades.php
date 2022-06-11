@@ -11,10 +11,10 @@ require "../conexoes/conexao.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cidades - Network Admin</title>
-    <link href="../alerts/css/bootstrap.min.css" rel="stylesheet">
+    <title>Network Admin</title>
+    <link href="/alerts/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../alerts/js/bootstrap.min.js"></script>
+    <script src="/alerts/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -32,13 +32,13 @@ require "../conexoes/conexao.php";
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Cidade cadastrada com Sucesso!</h4>
+                            <h4 class="modal-title" id="myModalLabel">Cadastro realizado com Sucesso!</h4>
                         </div>
                         <div class="modal-body">
                             <?php echo $cidade; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../cidades.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cidades.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ require "../conexoes/conexao.php";
                             <?php echo $cidade; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../cidades.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cidades.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 <?php
+require "../protect.php";
 require "../conexoes/conexao.php";
 ?>
 
@@ -10,20 +11,18 @@ require "../conexoes/conexao.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Usuários - Network Admin</title>
-    <link href="../alerts/css/bootstrap.min.css" rel="stylesheet">
+    <title>Network Admin</title>
+    <link href="/alerts/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../alerts/js/bootstrap.min.js"></script>
+    <script src="/alerts/js/bootstrap.min.js"></script>
 </head>
 
 <body>
     <div class="container theme-showcase" role="main">
         <?php
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        $result_usuario = "INSERT INTO usuarios (nome, perfil, email, senha, criado) VALUES ('$nome', 'Administrador', '$email', '$senha', NOW())";
-        $resultado_usuario = mysqli_query($mysqli, $result_usuario);
+        $pais = $_POST['pais'];
+        $result = "INSERT INTO pais (pais, deleted, criado) VALUES ('$pais', '0', NOW())";
+        $resultado = mysqli_query($mysqli, $result);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
             <!-- Modal -->
@@ -31,13 +30,13 @@ require "../conexoes/conexao.php";
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Usuário cadastrado com Sucesso!</h4>
+                            <h4 class="modal-title" id="myModalLabel">Cadastro realizado com Sucesso!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $nome; ?>
+                            <?php echo $pais; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../registro.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/pais.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -54,13 +53,13 @@ require "../conexoes/conexao.php";
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Erro ao cadastrar novo usuário!</h4>
+                            <h4 class="modal-title" id="myModalLabel">Erro ao realizar cadastro!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $usuario; ?>
+                            <?php echo $pais; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../registro.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/pais.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

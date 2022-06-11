@@ -5,12 +5,12 @@ require "conexoes/conexao.php";
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Fabricantes</h1>
+        <h1>País</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
                 <li class="breadcrumb-item">Cadastros</li>
-                <li class="breadcrumb-item active">Fabricantes</li>
+                <li class="breadcrumb-item active">País</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -27,14 +27,14 @@ require "conexoes/conexao.php";
                         <div class="container">
                             <div class="row">
                                 <div class="col-8">
-                                    <h5 class="card-title">Cadastro fabricantes</h5>
+                                    <h5 class="card-title">Cadastro de País</h5>
                                 </div>
 
                                 <div class="col-4">
                                     <div class="card">
                                         <!-- Basic Modal -->
                                         <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
-                                            Novo fabricante
+                                            Novo País
                                         </button>
                                     </div>
                                 </div>
@@ -42,18 +42,17 @@ require "conexoes/conexao.php";
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Novo fabricante</h5>
+                                                <h5 class="modal-title">Novo País</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="card-body">
                                                     <!-- Vertical Form -->
-                                                    <form method="POST" action="/processa_add/fabricante.php" class="row g-3">
+                                                    <form method="POST" action="/processa_add/pais.php" class="row g-3">
                                                         <div class="col-12">
-                                                            <label for="inputFabricante" class="form-label">Fabricante</label>
-                                                            <input name="fabricante" type="text" class="form-control" id="inputFabricante">
+                                                            <label for="inputPais" class="form-label">País</label>
+                                                            <input name="pais" type="text" class="form-control" id="inputPais">
                                                         </div>
-
 
                                                         <div class="text-center">
                                                             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -70,21 +69,21 @@ require "conexoes/conexao.php";
 
                         </div>
 
-                        <p>Listagem fabricantes</p>
+                        <p>Listagem de país</p>
 
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Fabricante</th>
+                                    <th scope="col">País</th>
                                     <th scope="col">Opções</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Preenchendo a tabela com os dados do banco: -->
                                 <?php
-                                $sql = "SELECT * FROM fabricante WHERE deleted = 0 ORDER BY fabricante ASC";
+                                $sql = "SELECT * FROM pais WHERE deleted = 0 ORDER BY pais ASC";
                                 $resultado = mysqli_query($mysqli, $sql) or die("Erro ao retornar dados");
 
                                 // Obtendo os dados por meio de um loop while
@@ -94,10 +93,10 @@ require "conexoes/conexao.php";
                                 ?>
                                     </td>
                                     <td><?php echo $campos['id']; ?></td>
-                                    <td><?php echo $campos['fabricante']; ?></td>
+                                    <td><?php echo $campos['pais']; ?></td>
                                     <td>
-                                        <?php echo "<a href='view/fabricante.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
-                                        <?php echo "<a href='processa_delete/fabricante.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                        <?php echo "<a href='view/pais.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
+                                        <?php echo "<a href='processa_delete/pais.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
                                     </td>
                                     </tr>
                                 <?php } ?>
