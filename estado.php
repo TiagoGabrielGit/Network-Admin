@@ -42,18 +42,16 @@ require "sql.php";
                                 <div class="modal fade" id="basicModal" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
+                                            
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Novo estado</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
+
                                             <div class="modal-body">
                                                 <div class="card-body">
                                                     <!-- Vertical Form -->
                                                     <form method="POST" action="/processa_add/estado.php" class="row g-3">
-                                                        <div class="col-12">
-                                                            <label for="inputEstado" class="form-label">Estado</label>
-                                                            <input name="estado" type="text" class="form-control" id="inputEstado">
-                                                        </div>
 
                                                         <div class="col-12">
                                                             <label for="inputPais" class="form-label">País</label>
@@ -66,6 +64,7 @@ require "sql.php";
                                                                 <?php endwhile; ?>
                                                             </select>
                                                         </div>
+                                                        
 
                                                         <div class="text-center">
                                                             <button type="submit" class="btn btn-primary">Salvar</button>

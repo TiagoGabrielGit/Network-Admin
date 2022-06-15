@@ -92,3 +92,26 @@ FROM pais as pais
 WHERE pais.deleted = 0
 ORDER BY pais.pais
 "; 
+
+$sql_logradouros = 
+"SELECT
+    logr.*
+FROM 
+    logradouros as logr
+WHERE
+    logr.deleted = 0
+ORDER BY 
+    logr.pais ASC,
+    logr.estado ASC,
+    logr.cidade ASC,
+    logr.logradouro ASC
+";
+
+$sql_pesquisa_estados =
+"SELECT
+    * 
+FROM
+    estado
+ORDER BY
+    estado
+";

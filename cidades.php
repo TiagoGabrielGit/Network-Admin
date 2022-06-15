@@ -50,15 +50,13 @@ require "sql.php";
                                                 <div class="card-body">
                                                     <!-- Vertical Form -->
                                                     <form method="POST" action="/processa_add/cidades.php" class="row g-3">
-                                                        <div class="col-12">
-                                                            <label for="inputCidade" class="form-label">Cidade</label>
-                                                            <input name="cidade" type="text" class="form-control" id="inputCidade">
-                                                        </div>
+
 
                                                         <div class="col-12">
                                                             <label for="inputPais" class="form-label">Pais</label>
-                                                            <select name="pais" class="form-select" aria-label="Default select example">
-                                                                <option selected disabled>Selecione o pais</option>
+                                                            <select onchange="  estadoData = disparaAPI('estado',document.querySelector('#pais').value)" name="pais" id="pais" class="form-select" aria-label="Default select example">
+                                                               
+                                                                <option  selected disabled>Selecione o pais</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $sql_pais) or die("Erro ao retornar dados");
                                                                 while ($c = $resultado->fetch_assoc()) : ?>
@@ -69,14 +67,19 @@ require "sql.php";
 
                                                         <div class="col-12">
                                                             <label for="inputEstado" class="form-label">Estado</label>
-                                                            <select name="estado" class="form-select" aria-label="Default select example">
+                                                            <select onclick="validaEstado()" name="estado" class="form-select" aria-label="Default select example">
                                                                 <option selected disabled>Selecione o estado</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $sql_estados) or die("Erro ao retornar dados");
                                                                 while ($c = $resultado->fetch_assoc()) : ?>
-                                                                    <option value="<?= $c['id']; ?>"><?= $c['estado']; ?></option>
+                                                                    <option  hidden value="<?= $c['id']; ?>"><?= $c['estado']; ?></option>
                                                                 <?php endwhile; ?>
                                                             </select>
+                                                        </div>
+
+                                                        <div class="col-12">
+                                                            <label for="inputCidade" class="form-label">Cidade</label>
+                                                            <input name="cidade" type="text" class="form-control" id="inputCidade">
                                                         </div>
 
                                                         <div class="text-center">
@@ -140,6 +143,34 @@ require "sql.php";
     </section>
 
 </main><!-- End #main -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function disparaAPI(type,id) {
+
+
+        console.log('teste'); 
+        var settings = {
+            "url": `http://networkacademy.com/api/cidades/index.php?type=${type}&id=${id}`,
+            "method": "GET",
+            "timeout": 0,
+        };
+
+      return  $.ajax(settings).done(function(response) {
+            console.log(response);
+        });
+    }
+
+
+    function validaEstado(){
+        console.log(estadoData.id)
+
+    }
+
+
+
+</script>
+
 <?php
 require "includes/footer.php";
 ?>
