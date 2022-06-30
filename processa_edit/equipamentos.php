@@ -23,9 +23,8 @@ require "../conexoes/conexao.php";
         $id = $_POST['id'];
         $equipamento = $_POST['equipamento'];
         $fabricante = $_POST['fabricante'];
-        $tipo = $_POST['tipo'];
 
-        $result = "UPDATE equipamentos SET equipamento='$equipamento', fabricante='$fabricante', tipo='$tipo', modificado=NOW() WHERE id='$id'";
+        $result = "UPDATE equipamentos SET equipamento='$equipamento', fabricante='$fabricante', modificado=NOW() WHERE id='$id'";
         $resultado = mysqli_query($mysqli, $result);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
@@ -40,7 +39,7 @@ require "../conexoes/conexao.php";
                             <?php echo $equipamento; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../equipamentos.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cadastros/produtos/equipamentos.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +62,7 @@ require "../conexoes/conexao.php";
                             <?php echo $equipamento; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../equipamentos.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cadastros/produtos/equipamentos.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

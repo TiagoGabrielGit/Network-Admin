@@ -21,7 +21,7 @@ require "../conexoes/conexao.php";
     <div class="container theme-showcase" role="main">
         <?php
         $fabricante = $_POST['fabricante'];
-        $result_fabricante = "INSERT INTO fabricante (fabricante, deleted, criado) VALUES ('$fabricante', '0', NOW())";
+        $result_fabricante = "INSERT INTO fabricante (fabricante, deleted, cadastroDefault, criado) VALUES ('$fabricante', '1', '2', NOW())";
         $resultado_fabricante = mysqli_query($mysqli, $result_fabricante);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
@@ -36,7 +36,7 @@ require "../conexoes/conexao.php";
                             <?php echo $fabricante; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../fabricantes.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cadastros/produtos/fabricantes.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -56,10 +56,10 @@ require "../conexoes/conexao.php";
                             <h4 class="modal-title" id="myModalLabel">Erro ao cadastrar fabricante!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $tipo; ?>
+                            <?php echo $fabricante; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../fabricantes.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cadastros/produtos/fabricantes.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

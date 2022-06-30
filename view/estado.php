@@ -1,15 +1,36 @@
 <?php
-require "../includes/cadastros_navbar.php";
+require "../includes/menu.php";
 require "../conexoes/conexao.php";
 require "../sql.php";
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-$resultado = mysqli_query($mysqli, $sql_estados);
+$sql_estado =
+"SELECT
+    estado.id as id,
+    estado.estado as estado,
+    estado.criado as criado,
+    estado.modificado as modificado,
+    pais.pais as pais,
+    pais.id as idpais
+FROM
+    estado as estado
+LEFT JOIN 
+    pais as pais
+    ON
+    pais.id = estado.pais
+WHERE 
+    estado.deleted = 0
+    and
+    estado.id = '$id'
+ORDER BY 
+    pais.pais ASC,
+    estado.estado ASC
+";
 
+$resultado = mysqli_query($mysqli, $sql_estado);
 $row = mysqli_fetch_assoc($resultado);
 ?>
-
 
 <main id="main" class="main">
 

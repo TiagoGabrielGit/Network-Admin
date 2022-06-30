@@ -1,9 +1,29 @@
 <?php
-require "../includes/cadastros_navbar.php";
+require "../includes/menu.php";
 require "../conexoes/conexao.php";
 require "../sql.php";
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+$sql_bairros =
+"SELECT
+bairro.id as id,
+bairro.bairro as bairro,
+bairro.criado as criado,
+bairro.modificado as modificado,
+cidade.cidade as cidade,
+cidade.id as idcidade
+FROM bairros as bairro
+LEFT JOIN cidades as cidade
+ON cidade.id = bairro.cidade
+WHERE 
+    bairro.deleted = 0
+    and
+    bairro.id = $id
+ORDER BY 
+cidade.cidade ASC,
+bairro.bairro ASC
+";
 
 $resultado = mysqli_query($mysqli, $sql_bairros);
 $row = mysqli_fetch_assoc($resultado);

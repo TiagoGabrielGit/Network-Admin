@@ -1,5 +1,5 @@
 <?php
-require "../includes/cadastros_navbar.php";
+require "../includes/menu.php";
 require "../conexoes/conexao.php";
 require "../sql.php";
 
@@ -11,14 +11,11 @@ fab.id as idfabricante,
 tipo.id as idtipo,
 eqp.equipamento as equipamento,
 fab.fabricante as fabricante,
-tipo.tipo as tipo,
 eqp.criado as criado,
 eqp.modificado as modificado
 FROM equipamentos AS eqp
 left join fabricante as fab
 on fab.id = eqp.fabricante
-left join tipoequipamento as tipo
-on tipo.id = eqp.tipo
 WHERE eqp.id = '$id'";
 $resultado = mysqli_query($mysqli, $result);
 $row = mysqli_fetch_assoc($resultado);

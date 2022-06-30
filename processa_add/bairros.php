@@ -22,7 +22,7 @@ require "../conexoes/conexao.php";
         <?php
         $bairro = $_POST['bairro'];
         $cidade = $_POST['cidade'];
-        $result = "INSERT INTO bairros (bairro, cidade, deleted, criado) VALUES ('$bairro','$cidade', '0', NOW())";
+        $result = "INSERT INTO bairros (bairro, cidade, deleted, criado) VALUES ('$bairro','$cidade', '1', NOW())";
         $resultado = mysqli_query($mysqli, $result);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>

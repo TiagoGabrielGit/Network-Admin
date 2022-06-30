@@ -11,7 +11,7 @@
       Desenvolvido por <a href="https://gigafull.com.br/">Gigafull Soluções Tecnológicas</a>
     </div>
     <div class="credits">
-      <a href="/changelog.php">Versão 1.0</a>
+      <a href="/changelog.php">Versão 1.1</a>
     </div>
   </footer><!-- End Footer -->
 
@@ -29,6 +29,8 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/multiselect-dropdown.js" ></script>
+
 
 </body>
 

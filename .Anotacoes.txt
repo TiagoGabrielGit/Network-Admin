@@ -1,0 +1,39 @@
+===================================================================================================================
+===================================================================================================================
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+--->Máscara de formatação para CPF
+<input type="text" class="form-control" onkeypress="$(this).mask('000.000.000-00');">
+
+--->Máscara de formatação para CNPJ
+<input type="text" class="form-control" onkeypress="$(this).mask('00.000.000/0000-00')">
+
+--->Máscara de formatação para CEP
+<input type="text" class="form-control" onkeypress="$(this).mask('00.000-000')">
+
+--->Máscara de formatação para Altura ou Peso
+Utilize o {reverse: true};) caso queira permitir que o usuário digite a vírgula.
+<input type="text" maxlength="5" class="form-control" onkeypress="$(this).mask('90,00', {reverse: true});)">
+
+--->Máscara de formatação para Moeda / Dinheiro
+<input type="text" class="form-control" onkeypress="$(this).mask('R$ 999.990,00')">
+ou utilize o {reverse: true};) caso queira permitir que o usuário digite a vírgula.
+<input type="text" class="form-control" onkeypress="$(this).mask('R$ #.##0,00', {reverse: true});">
+
+--->Máscara de formatação para Telefone com 8 e 9 dígitos
+Obs: A máscara aceita tanto 8 ou 9 dígitos.
+<input type="text" class="form-control" onkeypress="$(this).mask('(00) 0000-00009')">
+
+--->Máscara de formatação para Data
+<input type="text" class="form-control" onkeypress="$(this).mask('00/00/0000')">
+OBS: Você também pode formatar a data usando JS puro conforme explica este artigo – Como Formatar Data em JavaScript do Jeito Fácil
+
+--->Máscara de formatação para Hora
+<input type="text" class="form-control" onkeypress="$(this).mask('00:00')">
+ou se preferir, também pode ser assim;
+<input type="text" class="form-control" onkeypress="$(this).mask('00h 00m')">
+
+===================================================================================================================
+===================================================================================================================

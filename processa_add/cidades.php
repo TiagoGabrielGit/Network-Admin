@@ -23,7 +23,7 @@ require "../conexoes/conexao.php";
         $cidade = $_POST['cidade'];
         $estado = $_POST['estado'];
         $pais = $_POST['pais'];
-        $result_cidades = "INSERT INTO cidades (cidade, estado, pais, deleted, criado) VALUES ('$cidade', '$estado', '$pais', '0', NOW())";
+        $result_cidades = "INSERT INTO cidades (cidade, estado, pais, deleted, criado) VALUES ('$cidade', '$estado', '$pais', '1', NOW())";
         $resultado_cidades = mysqli_query($mysqli, $result_cidades);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>

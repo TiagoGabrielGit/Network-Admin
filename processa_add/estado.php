@@ -22,7 +22,7 @@ require "../conexoes/conexao.php";
         <?php
         $estado = $_POST['estado'];
         $pais = $_POST['pais'];
-        $result = "INSERT INTO estado (estado, pais, deleted, criado) VALUES ('$estado','$pais', '0', NOW())";
+        $result = "INSERT INTO estado (estado, pais, deleted, criado) VALUES ('$estado','$pais', '1', NOW())";
         $resultado = mysqli_query($mysqli, $result);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>

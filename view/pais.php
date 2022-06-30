@@ -1,5 +1,5 @@
 <?php
-require "../includes/cadastros_navbar.php";
+require "../includes/menu.php";
 require "../conexoes/conexao.php";
 require "../sql.php";
 

@@ -21,7 +21,7 @@ require "../conexoes/conexao.php";
     <div class="container theme-showcase" role="main">
         <?php
         $tipo = $_POST['tipo'];
-        $result_tipos = "INSERT INTO tipoequipamento (tipo, deleted, criado) VALUES ('$tipo', '0', NOW())";
+        $result_tipos = "INSERT INTO tipoequipamento (tipo, deleted, cadastroDefault, criado) VALUES ('$tipo', '1', '2', NOW())";
         $resultado_tipos = mysqli_query($mysqli, $result_tipos);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
@@ -36,7 +36,7 @@ require "../conexoes/conexao.php";
                             <?php echo $tipo; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../tiposEquipamentos.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cadastros/produtos/tiposEquipamentos.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ require "../conexoes/conexao.php";
                             <?php echo $tipo; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../tiposEquipamentos.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cadastros/produtos/tiposEquipamentos.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

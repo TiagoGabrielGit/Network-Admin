@@ -10,9 +10,34 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
   } else {
 
     $email = $mysqli->real_escape_string($_POST['email']);
-    $senha = $mysqli->real_escape_string($_POST['senha']);
+    $senha = $mysqli->real_escape_string(md5($_POST['senha']));
 
-    $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+    $sql_code =
+      "SELECT 
+      user.id as id,
+      user.nome as nome,
+      user.email as email,
+      user.senha as senha,
+      userPerfil.permissao_id as perfil,
+      perfil.perfil as nome_perfil
+      FROM 
+      usuarios as user
+      LEFT JOIN
+      usuarios_perfil as userPerfil
+      ON
+      userPerfil.usuario_id = user.id
+      LEFT JOIN
+      perfil_permissoes as perfil
+      ON
+      perfil.id = userPerfil.permissao_id
+      WHERE 
+      user.email = '$email' 
+      AND 
+      user.senha = '$senha'
+      AND
+      user.deleted = '1'
+    ";
+
     $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 
     $quantidade = $sql_query->num_rows;
@@ -28,6 +53,8 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
       $_SESSION['id'] = $usuario['id'];
       $_SESSION['nome'] = $usuario['nome'];
       $_SESSION['perfil'] = $usuario['perfil'];
+      $_SESSION['nome_perfil'] = $usuario['nome_perfil'];
+      $_SESSION['ip_address'] = $_SERVER['REMOTE_ADDR'];
 
       header("Location: index.php");
     } else {
@@ -118,12 +145,6 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                       <div class="invalid-feedback">Digite sua senha.</div>
                     </div>
 
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Lembrar</label>
-                      </div>
-                    </div>
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>

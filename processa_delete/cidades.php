@@ -5,7 +5,7 @@ include_once("../conexoes/conexao.php");
 
 $delete_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-$delete_data = "UPDATE `cidades` SET `deleted`= '1' WHERE id = '$delete_id' ";
+$delete_data = "UPDATE `cidades` SET `deleted`= '2' WHERE id = '$delete_id' ";
 
 $res_delete = mysqli_query($mysqli, $delete_data);
 

@@ -21,7 +21,7 @@ require "../conexoes/conexao.php";
     <div class="container theme-showcase" role="main">
         <?php
         $pais = $_POST['pais'];
-        $result = "INSERT INTO pais (pais, deleted, criado) VALUES ('$pais', '0', NOW())";
+        $result = "INSERT INTO pais (pais, deleted, criado) VALUES ('$pais', '1', NOW())";
         $resultado = mysqli_query($mysqli, $result);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>

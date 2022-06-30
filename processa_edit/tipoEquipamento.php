@@ -38,7 +38,7 @@ require "../conexoes/conexao.php";
                             <?php echo $tipo; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../tiposEquipamentos.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cadastros/produtos/tiposEquipamentos.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ require "../conexoes/conexao.php";
                             <?php echo $tipo; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../tiposEquipamentos.php'"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cadastros/produtos/tiposEquipamentos.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

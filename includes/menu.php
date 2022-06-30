@@ -1,15 +1,18 @@
 <?php
 
-if (!isset($_SESSION)) {
-  session_start();
-}
-
-if (!isset($_SESSION['id'])) {
-  die("Você não pode acessar esta página porque não está logado.<p><a href=\"login.php\">Entrar</a></p>");
+session_start();
+// Verifica se existe os dados da sessão de login
+if (!isset($_SESSION["id"])) {
+  // Usuário não logado! Redireciona para a página de login
+  header("Location: login.php");
+  exit;
 }
 
 $nome = $_SESSION['nome'];
-$perfil = $_SESSION['perfil'];
+$id = $_SESSION['id'];
+$perfil = $_SESSION['nome_perfil'];
+$perfil_id = $_SESSION['perfil'];
+$user_ip = $_SESSION['ip_address']
 
 ?>
 
@@ -232,7 +235,8 @@ $perfil = $_SESSION['perfil'];
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6><?php echo $nome; ?></h6>
-              <span><?php echo $perfil; ?></span>
+              <span><?php echo $perfil; ?></span> <br>
+              <span><?php echo $user_ip; ?></span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -275,8 +279,16 @@ $perfil = $_SESSION['perfil'];
 
   <?php
 
-  if ($perfil == "Administrador") {
+  //  if (($perfil == "1") || ($perfil == "2")) {
+  //    include_once "admin_navbar.php";
+  //  } else {
+  //    include_once "user_navbar.php";
+  //  }
+
+  if ($perfil_id == "1") {
+    include_once "superadmin_navbar.php";
+  } else if ($perfil_id == "2") {
     include_once "admin_navbar.php";
-  } else {
+  } else if ($perfil_id == "3") {
     include_once "user_navbar.php";
   }
