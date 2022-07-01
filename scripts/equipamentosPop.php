@@ -3,9 +3,14 @@
 
 
 <script>
-    $("#ipaddress").keypress(function() {
-        $(this).mask('00.00.00.00');
-        $(this).mask('000.000.0.000');
+    //NOME
+    let inputIP = document.querySelector("#ipaddress");
+    inputIP.addEventListener("keydown", function(e) {
+        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace") {
+
+        } else {
+            e.preventDefault();
+        }
     });
 </script>
 

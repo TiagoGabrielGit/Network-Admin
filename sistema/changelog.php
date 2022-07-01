@@ -17,6 +17,30 @@ require "../includes/menu.php";
 
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
+
+              <!-- Versão 1.2 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                    Versão 1.2 - 30/06/2022
+                  </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Ajustes de identidade visual da marca;<br>
+                    2. Ajuste mascara de IP no cadastro de equipamento por pop;<br>
+                    3. Novas funções na tela de cadastro de equipamento por pop;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. Ajuste abertura página changelog;<br>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Versão 1.1 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading1.1">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -45,6 +69,8 @@ require "../includes/menu.php";
                   </div>
                 </div>
               </div>
+
+              <!-- Versão 1.0 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading1.0">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">

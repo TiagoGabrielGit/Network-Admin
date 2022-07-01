@@ -46,7 +46,7 @@ require "sql.php";
                                                     <form method="POST" action="processa/add.php" class="row g-3">
 
                                                         <div class="col-6">
-                                                            <label for="cadastroEmpresa" class="form-label">Empresa</label>
+                                                            <label for="cadastroEmpresa" class="form-label">Empresa*</label>
                                                             <select id="cadastroEmpresa" name="cadastroEmpresa" class="form-select" require>
                                                                 <option selected disabled>Selecione a empresa</option>
                                                                 <?php
@@ -59,7 +59,7 @@ require "sql.php";
                                                         </div>
 
                                                         <div class="col-4">
-                                                            <label for="cadastroPop" class="form-label">POP</label>
+                                                            <label for="cadastroPop" class="form-label">POP*</label>
                                                             <select id="cadastroPop" name="cadastroPop" class="form-select" require>
                                                                 <option selected disabled>Selecione o pop</option>
                                                             </select>
@@ -68,7 +68,7 @@ require "sql.php";
                                                         <hr class="sidebar-divider">
 
                                                         <div class="col-4">
-                                                            <label for="cadastroFabricante" class="form-label">Fabricante</label>
+                                                            <label for="cadastroFabricante" class="form-label">Fabricante*</label>
                                                             <select id="cadastroFabricante" name="cadastroFabricante" class="form-select" require>
                                                                 <option selected disabled>Selecione o fabricante</option>
                                                                 <?php
@@ -81,14 +81,14 @@ require "sql.php";
                                                         </div>
 
                                                         <div class="col-4">
-                                                            <label for="cadastroEquipamento" class="form-label">Equipamento</label>
+                                                            <label for="cadastroEquipamento" class="form-label">Equipamento*</label>
                                                             <select id="cadastroEquipamento" name="cadastroEquipamento" class="form-select" require>
                                                                 <option selected disabled>Selecione o equipamento</option>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-4">
-                                                            <label for="cadastroTipoEquipamento" class="form-label select-label">Tipo de equipamento</label>
+                                                            <label for="cadastroTipoEquipamento" class="form-label select-label">Tipo de equipamento*</label>
                                                             <select id="cadastroTipoEquipamento" name="cadastroTipoEquipamento" class="form-select" require>
                                                                 <option selected disabled>Selecione o tipo</option>
                                                                 <?php
@@ -103,17 +103,17 @@ require "sql.php";
                                                         <hr class="sidebar-divider">
 
                                                         <div class="col-4">
-                                                            <label for="hostname" class="form-label">Hostname</label>
+                                                            <label for="hostname" class="form-label">Hostname*</label>
                                                             <input name="hostname" type="text" class="form-control" id="hostname" placeholder="Ex: sw01.POPABC" require>
                                                         </div>
 
                                                         <div class="col-4">
-                                                            <label for="ipaddress" class="form-label">Endereço IP</label>
-                                                            <input name="ipaddress" type="text" class="form-control" id="ipaddress" placeholder="Ex:192.168.001.010" require>
+                                                            <label for="ipaddress" class="form-label">Endereço IP*</label>
+                                                            <input id="ipaddress" name="ipaddress" type="text" class="form-control" placeholder="Ex: 192.168.1.1" maxlength="15" require>
                                                         </div>
 
                                                         <div class="col-4">
-                                                            <label for="statusEquipamento" class="form-label">Status</label>
+                                                            <label for="statusEquipamento" class="form-label">Status*</label>
                                                             <select id="statusEquipamento" name="statusEquipamento" class="form-select" require>
                                                                 <option selected disabled>Selecione o status</option>>
                                                                 <option value="Ativado">Ativado</option>
@@ -122,10 +122,41 @@ require "sql.php";
                                                             </select>
                                                         </div>
 
-                                                        <div class="col-6">
-                                                            <label for="anotacaoEquipamento" class="form-label">Anotações</label>
-                                                            <textarea id="anotacaoEquipamento" name="anotacaoEquipamento" class="form-control" rows="5"></textarea>
+                                                        <div class="col-4">
+                                                            <label for="comunidadeSNMPRead" class="form-label">Comunidade SNMP Leitura</label>
+                                                            <input name="comunidadeSNMPRead" type="text" class="form-control" id="comunidadeSNMPRead">
                                                         </div>
+
+                                                        <div class="col-4">
+                                                            <label for="comunidadeSNMPWrite" class="form-label">Comunidade SNMP Escrita</label>
+                                                            <input name="comunidadeSNMPWrite" type="text" class="form-control" id="comunidadeSNMPWrite">
+                                                        </div>
+
+                                                        <div class="col-4"></div>
+
+                                                        <div class="col-4">
+                                                            <label for="usuarioIntegracao" class="form-label">Usuário integração</label>
+                                                            <input name="usuarioIntegracao" type="text" class="form-control" id="usuarioIntegracao">
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <label for="senhaIntegracao" class="form-label">Senha integração</label>
+                                                            <input name="senhaIntegracao" type="password" class="form-control" id="senhaIntegracao">
+                                                        </div>
+
+                                                        <hr class="sidebar-divider">
+
+                                                        <div class="col-6">
+                                                            <label for="anotacaoPublicaEquipamento" class="form-label">Anotações públicas</label>
+                                                            <textarea id="anotacaoPublicaEquipamento" name="anotacaoPublicaEquipamento" class="form-control" rows="5"></textarea>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="anotacaoPrivadaEquipamento" class="form-label">Anotações privadas</label>
+                                                            <textarea id="anotacaoPrivadaEquipamento" name="anotacaoPrivadaEquipamento" class="form-control" rows="5"></textarea>
+                                                        </div>
+
+
 
                                                         <div class="text-center">
                                                             <button type="submit" class="btn btn-primary">Salvar</button>
