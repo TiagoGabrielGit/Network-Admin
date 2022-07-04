@@ -45,7 +45,7 @@ $sql_lista_cidades =
 FROM
     cidades as city
 WHERE
-    city.deleted = 0            
+    city.deleted = 1            
 ORDER BY
     city.cidade asc
 ";
@@ -56,11 +56,11 @@ emp.*
 FROM
 empresas as emp
 WHERE
-emp. deleted = 0
+emp. deleted = 1
 and
 emp.atributoCliente = 1
 or
-emp. deleted = 0
+emp. deleted = 1
 and
 emp.atributoEmpresaPropria = 1
 ORDER BY
@@ -71,7 +71,7 @@ $sql_pais =
 "SELECT
 pais.*
 FROM pais as pais
-WHERE pais.deleted = 0
+WHERE pais.deleted = 1
 ORDER BY pais.pais
 "; 
 
@@ -90,6 +90,6 @@ LEFT JOIN estado as estado
 ON cidade.estado = estado.id
 LEFT JOIN pais as pais
 ON cidade.pais = pais.id
-WHERE cidade.deleted = 0
+WHERE cidade.deleted = 1
 ORDER BY cidade.cidade
 ";

@@ -1,7 +1,7 @@
 <?php
-require "includes/cadastros_navbar.php";
-require "conexoes/conexao.php";
-require "sql.php";
+require "../../includes/menu.php";
+require "../../conexoes/conexao.php";
+require "../../conexoes/sql.php";
 ?>
 <main id="main" class="main">
 
@@ -42,7 +42,7 @@ require "sql.php";
                                 <div class="modal fade" id="basicModal" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            
+
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Novo estado</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -64,7 +64,7 @@ require "sql.php";
                                                                 <?php endwhile; ?>
                                                             </select>
                                                         </div>
-                                                        
+
                                                         <div class="col-12">
                                                             <label for="inputEstado" class="form-label">Estado</label>
                                                             <input name="estado" type="text" class="form-control" id="inputEstado">
@@ -91,10 +91,10 @@ require "sql.php";
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">País</th>
                                     <th scope="col">Estado</th>
-                                    <th scope="col">Opções</th>
+                                    <th style="text-align: center;" scope="col">Visualizar</th>
+                                    <th style="text-align: center;" scope="col">Excluir</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -109,12 +109,14 @@ require "sql.php";
                                     echo "<tr>";
                                 ?>
                                     </td>
-                                    <td><?php echo $campos['id']; ?></td>
                                     <td><?php echo $campos['pais']; ?></td>
                                     <td><?php echo $campos['estado']; ?></td>
-                                    <td>
-                                        <?php echo "<a href='view/estado.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
-                                        <?php echo "<a href='processa_delete/estado.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/view/estado.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
+
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/processa_delete/estado.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
                                     </td>
                                     </tr>
                                 <?php } ?>
@@ -131,5 +133,5 @@ require "sql.php";
 
 </main><!-- End #main -->
 <?php
-require "includes/footer.php";
+require "../../includes/footer.php";
 ?>

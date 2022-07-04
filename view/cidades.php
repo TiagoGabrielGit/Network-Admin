@@ -1,7 +1,7 @@
 <?php
 require "../includes/menu.php";
 require "../conexoes/conexao.php";
-require "../sql.php";
+require "../conexoes/sql.php";
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
@@ -21,7 +21,7 @@ ON cidade.estado = estado.id
 LEFT JOIN pais as pais
 ON cidade.pais = pais.id
 WHERE
-    cidade.deleted = 0
+    cidade.deleted = 1
     and
     cidade.id = '$id'
 ORDER BY cidade.cidade
@@ -98,7 +98,7 @@ $row = mysqli_fetch_assoc($resultado);
 
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-                                <button type="reset" class="btn btn-secondary">Limpar</button>
+                                <input type="button" value="Voltar" onClick="history.go(-1)" class="btn btn-secondary">
                             </div>
                         </form><!-- End Multi Columns Form -->
 

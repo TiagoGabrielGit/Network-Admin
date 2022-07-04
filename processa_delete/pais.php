@@ -10,7 +10,7 @@ $delete_data = "UPDATE `pais` SET `deleted`= '2' WHERE id = '$delete_id' ";
 $res_delete = mysqli_query($mysqli, $delete_data);
 
 if (mysqli_affected_rows($mysqli)) {
-	header("Location: ../pais.php");
+	header("Location: /cadastros/localidades/pais.php");
 	$_SESSION['msg'] =
 	'<div class="alert alert-success alert-dismissible fade show" role="alert">
 		<strong>Registro excluído com sucesso!</strong>
@@ -24,7 +24,7 @@ if (mysqli_affected_rows($mysqli)) {
 	</div>';
 }
 else{
-	header("Location: ../pais.php");
+	header("Location: /cadastros/localidades/pais.php");
 	$_SESSION['msg'] = 
 	'<div class="alert alert-danger alert-dismissible fade show" role="alert">
 		<strong>Erro ao excluir</strong>

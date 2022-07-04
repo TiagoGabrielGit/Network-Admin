@@ -47,8 +47,8 @@ require "sql.php";
                                                     <form method="POST" action="processa/add.php" class="row g-3">
 
                                                         <div class="col-12">
-                                                            <label for="inputEmpresa" class="form-label">Empresa</label>
-                                                            <select id="empresa" name="empresa" class="form-select" aria-label="Default select example">
+                                                            <label for="inputEmpresa" class="form-label">Empresa*</label>
+                                                            <select id="empresa" name="empresa" class="form-select" require>
                                                                 <option selected disabled>Selecione a empresa</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $sql_lista_empresas);
@@ -60,8 +60,8 @@ require "sql.php";
                                                         </div>
 
                                                         <div class="col-4">
-                                                            <label for="inputPOP" class="form-label">POP</label>
-                                                            <input name="pop" type="text" class="form-control" id="inputPOP">
+                                                            <label for="inputPOP" class="form-label">POP*</label>
+                                                            <input name="pop" type="text" class="form-control" id="inputPOP" require>
                                                         </div>
 
                                                         <div class="col-8">
@@ -70,8 +70,8 @@ require "sql.php";
                                                         </div>
 
                                                         <div class="col-6">
-                                                            <label for="cidade" class="form-label">Cidade</label>
-                                                            <select id="cidade" name="cidade" class="form-select" aria-label="Default select example">
+                                                            <label for="cidade" class="form-label">Cidade*</label>
+                                                            <select id="cidade" name="cidade" class="form-select" require>
                                                                 <option selected disabled>Selecione a cidade</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $sql_lista_cidades);
@@ -83,15 +83,15 @@ require "sql.php";
                                                         </div>
 
                                                         <div class="col-6">
-                                                            <label for="inputBairro" class="form-label">Bairro</label>
-                                                            <select id="bairro" name="bairro" class="form-select" aria-label="Default select example">
+                                                            <label for="inputBairro" class="form-label">Bairro*</label>
+                                                            <select id="bairro" name="bairro" class="form-select" require>
                                                                 <option selected disabled>Selecione a cidade</option>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-8">
-                                                            <label for="inputLogradouro" class="form-label">Logradouro</label>
-                                                            <select id="logradouro" name="logradouro" class="form-select" aria-label="Default select example">
+                                                            <label for="inputLogradouro" class="form-label">Logradouro*</label>
+                                                            <select id="logradouro" name="logradouro" class="form-select" require>
                                                                 <option selected disabled>Selecione o bairro</option>
                                                             </select>
                                                         </div>
@@ -102,7 +102,7 @@ require "sql.php";
                                                         </div>
 
                                                         <div class="col-2">
-                                                            <label for="numero" class="form-label">Número</label>
+                                                            <label for="numero" class="form-label">Número*</label>
                                                             <input name="numero" type="number" class="form-control" id="numero" required>
                                                         </div>
 
@@ -138,7 +138,8 @@ require "sql.php";
                                     <th scope="col">POP</th>
                                     <th scope="col">Descrição</th>
                                     <th scope="col">Cidade</th>
-                                    <th scope="col">Opções</th>
+                                    <th style="text-align: center;" scope="col">Visualizar</th>
+                                    <th style="text-align: center;" scope="col">Excluir</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -156,9 +157,11 @@ require "sql.php";
                                     <td><?php echo $campos['pop']; ?></td>
                                     <td><?php echo $campos['apelidoPop']; ?></td>
                                     <td><?php echo $campos['cidade']; ?></td>
-                                    <td>
-                                        <?php echo "<a href='view.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
-                                        <?php echo "<a href='processa/delete.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='view.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>   
+                                    </td>
+                                    <td style="text-align: center;">
+                                    <?php echo "<a href='processa/delete.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
                                     </td>
                                     </tr>
                                 <?php } ?>

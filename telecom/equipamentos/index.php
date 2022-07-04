@@ -4,6 +4,93 @@ require "../../conexoes/conexao.php";
 require "sql.php";
 ?>
 
+<?php
+if (empty($_POST['empresaPesquisa'])) {
+    $_POST['empresaPesquisa'] = "%";
+}
+
+if (empty($_POST['popPesquisa'])) {
+    $_POST['popPesquisa'] = "%";
+}
+
+if (empty($_POST['ipaddressPesquisa'])) {
+    $_POST['ipaddressPesquisa'] = "%";
+}
+
+if (empty($_POST['hostnamePesquisa'])) {
+    $_POST['hostnamePesquisa'] = "%";
+}
+
+if (empty($_POST['fabricantePesquisa'])) {
+    $_POST['fabricantePesquisa'] = "%";
+}
+
+if (empty($_POST['equipamentoPesquisa'])) {
+    $_POST['equipamentoPesquisa'] = "%";
+}
+
+if (empty($_POST['statusEquipamentoPesquisa'])) {
+    $_POST['statusEquipamentoPesquisa'] = "Ativado";
+}
+
+if (empty($_POST['limiteBusca'])) {
+    $_POST['limiteBusca'] = "5";
+}
+
+$empresa_id = $_POST['empresaPesquisa'];
+$pop_id = $_POST['popPesquisa'];
+$ipaddress = $_POST['ipaddressPesquisa'];
+$hostname = $_POST['hostnamePesquisa'];
+$fabricante_id = $_POST['fabricantePesquisa'];
+$equipamento_id = $_POST['equipamentoPesquisa'];
+$statusEquipamentoPesquisa = $_POST['statusEquipamentoPesquisa'];
+$limiteBusca = $_POST['limiteBusca'];
+
+$sql_pesquisa_EquipamentosPop =
+    "SELECT
+equipop.id as id_equipop,
+equipop.hostname as hostname,
+equipop.ipaddress as ipaddress,
+equipop.deleted as deleted,
+equipop.criado as criado,
+equipop.modificado as modificado,
+equipop.statusEquipamento as statuseqp,
+emp.fantasia as empresa,
+eqp.equipamento as equipamento,
+pop.pop as pop
+FROM
+equipamentospop as equipop
+LEFT JOIN
+empresas as emp
+ON
+equipop.empresa_id = emp.id
+LEFT JOIN
+equipamentos as eqp
+ON
+eqp.id = equipop.equipamento_id
+LEFT JOIN       
+pop as pop
+ON
+pop.id = equipop.pop_id
+WHERE
+equipop.empresa_id LIKE '$empresa_id'
+and
+equipop.pop_id LIKE '$pop_id'
+and
+equipop.ipaddress LIKE '$ipaddress'
+and
+equipop.hostname LIKE '$hostname'
+and
+equipop.equipamento_id LIKE '$equipamento_id'
+and
+eqp.fabricante LIKE '$fabricante_id'
+and
+equipop.statusEquipamento LIKE '$statusEquipamentoPesquisa'
+and
+equipop.deleted = 1
+LIMIT $limiteBusca
+"; ?>
+
 
 <main id="main" class="main">
 
@@ -22,7 +109,7 @@ require "sql.php";
                         <div class="container">
                             <div class="row">
                                 <div class="col-10">
-                                    <h5 class="card-title">Filtros de pesquisa</h5>
+                                    <h5 class="card-title">Pesquisar</h5>
                                 </div>
 
                                 <div class="col-2">
@@ -43,7 +130,7 @@ require "sql.php";
                                             <div class="modal-body">
                                                 <div class="card-body">
                                                     <!-- Vertical Form -->
-                                                    <form method="POST" action="processa/add.php" class="row g-3">
+                                                    <form method="POST" action="/telecom/equipamentos/processa/add.php" class="row g-3">
 
                                                         <div class="col-6">
                                                             <label for="cadastroEmpresa" class="form-label">Empresa*</label>
@@ -146,18 +233,6 @@ require "sql.php";
 
                                                         <hr class="sidebar-divider">
 
-                                                        <div class="col-6">
-                                                            <label for="anotacaoPublicaEquipamento" class="form-label">Anotações públicas</label>
-                                                            <textarea id="anotacaoPublicaEquipamento" name="anotacaoPublicaEquipamento" class="form-control" rows="5"></textarea>
-                                                        </div>
-
-                                                        <div class="col-6">
-                                                            <label for="anotacaoPrivadaEquipamento" class="form-label">Anotações privadas</label>
-                                                            <textarea id="anotacaoPrivadaEquipamento" name="anotacaoPrivadaEquipamento" class="form-control" rows="5"></textarea>
-                                                        </div>
-
-
-
                                                         <div class="text-center">
                                                             <button type="submit" class="btn btn-primary">Salvar</button>
                                                             <button type="reset" class="btn btn-secondary">Limpar</button>
@@ -171,11 +246,11 @@ require "sql.php";
                             </div>
                         </div>
 
-                        <form method="POST" action="processa/add.php" class="row g-3">
+                        <form method="POST" action="#" class="row g-3">
 
                             <div class="col-4">
-                                <label for="selecionaEmpresa" class="form-label">Empresa*</label>
-                                <select id="selecionaEmpresa" name="selecionaEmpresa" class="form-select">
+                                <label for="empresaPesquisa" class="form-label">Empresa</label>
+                                <select id="empresaPesquisa" name="empresaPesquisa" class="form-select">
                                     <option selected disabled>Selecione a empresa</option>
                                     <?php
                                     $resultado = mysqli_query($mysqli, $sql_lista_empresas);
@@ -187,37 +262,35 @@ require "sql.php";
                             </div>
 
                             <div class="col-3">
-                                <label for="listaPop" class="form-label">POP</label>
-                                <select id="listaPop" name="listaPop" class="form-select">
+                                <label for="popPesquisa" class="form-label">POP</label>
+                                <select id="popPesquisa" name="popPesquisa" class="form-select">
                                     <option selected disabled>Selecione o pop</option>
                                 </select>
                             </div>
 
-                            <div class="col-2">
-                                <label for="ipaddress" class="form-label">Endereço IP</label>
-                                <input name="ipaddress" type="text" class="form-control" id="ipaddress" placeholder="Ex:192.168.001.010">
-                            </div>
-
                             <div class="col-3">
-                                <label for="hostname" class="form-label">Hostname</label>
-                                <input name="hostname" type="text" class="form-control" id="hostname">
+                                <label for="ipaddressPesquisa" class="form-label">Endereço IP</label>
+                                <input id="ipaddressPesquisa" name="ipaddressPesquisa" type="text" class="form-control" placeholder="Ex: 192.168.1.1" maxlength="15">
                             </div>
 
-                            <div class="col-4">
-                                <label for="tipoEquipamento" class="form-label select-label">Tipo de equipamento</label>
-                                <select id="tipoEquipamento" name="tipoEquipamento" class="form-select" multiple>
-                                    <?php
-                                    $resultado = mysqli_query($mysqli, $sql_lista_tipos);
-                                    while ($tipos = mysqli_fetch_object($resultado)) :
-                                        echo "<option value='$tipos->id_tipo'> $tipos->tipo</option>";
-                                    endwhile;
-                                    ?>
+                            <div class="col-2">
+                                <label for="limiteBusca" class="form-label">Limite de busca*</label>
+                                <select id="limiteBusca" name="limiteBusca" class="form-select" require>
+                                    <option disabled selected>5 Resultados</option>
+                                    <option value="50">50 Resultados</option>
+                                    <option value="100">100 Resultados</option>
+                                    <option value="500">500 Resultados</option>
                                 </select>
                             </div>
 
-                            <div class="col-4">
-                                <label for="fabricante" class="form-label">Fabricante</label>
-                                <select id="fabricante" name="fabricante" class="form-select">
+                            <div class="col-3">
+                                <label for="hostnamePesquisa" class="form-label">Hostname</label>
+                                <input name="hostnamePesquisa" type="text" class="form-control" id="hostnamePesquisa">
+                            </div>
+
+                            <div class="col-3">
+                                <label for="fabricantePesquisa" class="form-label">Fabricante</label>
+                                <select id="fabricantePesquisa" name="fabricantePesquisa" class="form-select">
                                     <option selected disabled>Selecione o fabricante</option>
                                     <?php
                                     $resultado = mysqli_query($mysqli, $sql_lista_fabricantes);
@@ -228,24 +301,31 @@ require "sql.php";
                                 </select>
                             </div>
 
-                            <div class="col-4">
-                                <label for="equipamento" class="form-label">Equipamento</label>
-                                <select id="equipamento" name="equipamento" class="form-select">
+                            <div class="col-3">
+                                <label for="equipamentoPesquisa" class="form-label">Equipamento</label>
+                                <select id="equipamentoPesquisa" name="equipamentoPesquisa" class="form-select">
                                     <option selected disabled>Selecione o equipamento</option>
                                 </select>
                             </div>
 
+                            <div class="col-3">
+                                <label for="statusEquipamentoPesquisa" class="form-label">Status</label>
+                                <select id="statusEquipamentoPesquisa" name="statusEquipamentoPesquisa" class="form-select" require>
+                                    <option selected disabled>Ativado</option>>
+                                    <option value="Ativado">Ativado</option>
+                                    <option value="Em Implementação">Em Implementação</option>
+                                    <option value="Inativado">Inativado</option>
+                                </select>
+                            </div>
+
                             <div class="col-6">
-                                <button style="margin-top: 15px; " type="button" class="btn btn-primary">Buscar</button>
+                                <button style="margin-top: 15px; " type="submit" class="btn btn-primary">Buscar</button>
                             </div>
 
                         </form>
 
                         <hr class="sidebar-divider">
 
-
-
-                        <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
                                 <tr>
@@ -256,13 +336,12 @@ require "sql.php";
                                     <th style="text-align: center;" scope="col">Equipamento</th>
                                     <th style="text-align: center;" scope="col">Status</th>
                                     <th style="text-align: center;" scope="col">Visualizar</th>
-                                    <th style="text-align: center;" scope="col">Credenciais</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Preenchendo a tabela com os dados do banco: -->
                                 <?php
-                                $resultado = mysqli_query($mysqli, $sql_lista_EquipamentosPop) or die("Erro ao retornar dados");
+                                $resultado = mysqli_query($mysqli, $sql_pesquisa_EquipamentosPop) or die("Erro ao retornar dados");
 
                                 // Obtendo os dados por meio de um loop while
                                 while ($campos = $resultado->fetch_array()) {
@@ -279,15 +358,11 @@ require "sql.php";
                                     <td style="text-align: center;">
                                         <?php echo "<a href='view.php?id=" . $campos['id_equipop'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
                                     </td>
-                                    <td style="text-align: center;">
-                                        <?php echo "<a href='view.php?id=" . $campos['id_equipop'] . "'" . "class='bi bi-key-fill'</a>"; ?>
-                                    </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->
-
                     </div>
                 </div>
 

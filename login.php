@@ -15,7 +15,6 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     $sql_code =
       "SELECT 
       user.id as id,
-      user.nome as nome,
       user.email as email,
       user.senha as senha,
       userPerfil.permissao_id as perfil,

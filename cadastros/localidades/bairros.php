@@ -1,5 +1,5 @@
 <?php
-require "../../includes/cadastros_navbar.php";
+require "../../includes/menu.php";
 require "../../conexoes/conexao.php";
 require "../../conexoes/sql.php";
 ?>
@@ -104,10 +104,10 @@ require "../../conexoes/sql.php";
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">Cidade</th>
                                     <th scope="col">Bairro</th>
-                                    <th scope="col">Opções</th>
+                                    <th style="text-align: center;" scope="col">Visualizar</th>
+                                    <th style="text-align: center;" scope="col">Excluir</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -121,12 +121,14 @@ require "../../conexoes/sql.php";
                                     echo "<tr>";
                                 ?>
                                     </td>
-                                    <td><?php echo $campos['id']; ?></td>
                                     <td><?php echo $campos['cidade']; ?></td>
                                     <td><?php echo $campos['bairro']; ?></td>
-                                    <td>
-                                        <?php echo "<a href='view/bairros.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
-                                        <?php echo "<a href='processa_delete/bairros.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/view/bairros.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
+
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/processa_delete/bairros.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
                                     </td>
                                     </tr>
                                 <?php } ?>

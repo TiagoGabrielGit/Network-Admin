@@ -155,17 +155,16 @@
         <li class="nav-heading">Administração</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/cadastros/cadastros.php">
-                <i class="bi bi-file-diff"></i>
-                <span>Cadastros</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#gerenciamento-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-gear"></i><span>Gerenciamento</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="gerenciamento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li>
+                    <a href="/desenvolvimento.php">
+                        <i class="bi bi-circle"></i><span>Equipes</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="/desenvolvimento.php">

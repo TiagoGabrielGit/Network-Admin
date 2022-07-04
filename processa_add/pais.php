@@ -36,7 +36,7 @@ require "../conexoes/conexao.php";
                             <?php echo $pais; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="/pais.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cadastros/localidades/pais.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ require "../conexoes/conexao.php";
                             <?php echo $pais; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="/pais.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cadastros/localidades/pais.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <?php
 require "../includes/menu.php";
 require "../conexoes/conexao.php";
-require "../sql.php";
+require "../conexoes/sql.php";
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
@@ -17,7 +17,7 @@ FROM bairros as bairro
 LEFT JOIN cidades as cidade
 ON cidade.id = bairro.cidade
 WHERE 
-    bairro.deleted = 0
+    bairro.deleted = 1
     and
     bairro.id = $id
 ORDER BY 
@@ -87,7 +87,7 @@ $row = mysqli_fetch_assoc($resultado);
 
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-                                <button type="reset" class="btn btn-secondary">Limpar</button>
+                                <input type="button" value="Voltar" onClick="history.go(-1)" class="btn btn-secondary">
                             </div>
                         </form><!-- End Multi Columns Form -->
 

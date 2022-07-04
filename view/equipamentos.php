@@ -1,14 +1,13 @@
 <?php
 require "../includes/menu.php";
 require "../conexoes/conexao.php";
-require "../sql.php";
+require "../conexoes/sql.php";
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 $result = "SELECT
 eqp.id as id,
 fab.id as idfabricante,
-tipo.id as idtipo,
 eqp.equipamento as equipamento,
 fab.fabricante as fabricante,
 eqp.criado as criado,
@@ -17,6 +16,7 @@ FROM equipamentos AS eqp
 left join fabricante as fab
 on fab.id = eqp.fabricante
 WHERE eqp.id = '$id'";
+
 $resultado = mysqli_query($mysqli, $result);
 $row = mysqli_fetch_assoc($resultado);
 ?>
@@ -63,21 +63,6 @@ $row = mysqli_fetch_assoc($resultado);
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="inputTipo" class="form-label">Tipo</label>
-                                <div class="col-sm-6">
-                                    <select name="tipo" class="form-select" aria-label="Default select example">
-                                        <option value="<?= $row['idtipo']; ?>"><?= $row['tipo']; ?></option>
-                                        <?php
-                                        $resultado = mysqli_query($mysqli, $sql_tipo) or die("Erro ao retornar dados");
-                                        while ($c = $resultado->fetch_assoc()) : ?>
-                                            <option value="<?= $c['id']; ?>"><?= $c['tipo']; ?></option>
-                                        <?php endwhile; ?>
-                                    </select>
-                                </div>
-                            </div>
-
-
                             <div class="col-md-4">
                                 <label for="dateCreated" class="form-label">Data criação</label>
                                 <div class="col-sm-6">
@@ -94,7 +79,7 @@ $row = mysqli_fetch_assoc($resultado);
 
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-                                <button type="reset" class="btn btn-secondary">Limpar</button>
+                                <input type="button" value="Voltar" onClick="history.go(-1)" class="btn btn-secondary">
                             </div>
                         </form><!-- End Multi Columns Form -->
 

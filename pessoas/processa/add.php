@@ -1,7 +1,7 @@
 <?php
 require "../../protect.php";
 require "../../conexoes/conexao.php";
-require "../../sql.php";
+require "../../conexoes/sql.php";
 ?>
 
 <!DOCTYPE html>

@@ -1,8 +1,8 @@
 <?php
-require "includes/cadastros_navbar.php";
-require "conexoes/conexao.php";
-require "sql.php";
-require 'includes/remove_setas_number.php';
+require "../../includes/menu.php";
+require "../../conexoes/conexao.php";
+require "../../conexoes/sql.php";
+require '../../includes/remove_setas_number.php';
 ?>
 
 <main id="main" class="main">
@@ -64,7 +64,7 @@ require 'includes/remove_setas_number.php';
                                                                 endwhile;
                                                                 ?>
                                                             </select>
-                                                        </div> 
+                                                        </div>
 
                                                         <div class="col-12">
                                                             <label for="inputEstado" class="form-label">Estado</label>
@@ -121,7 +121,8 @@ require 'includes/remove_setas_number.php';
                                     <th scope="col">Cidade</th>
                                     <th scope="col">Bairro</th>
                                     <th scope="col">Logradouro</th>
-                                    <th scope="col">Opções</th>
+                                    <th style="text-align: center;" scope="col">Visualizar</th>
+                                    <th style="text-align: center;" scope="col">Excluir</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -138,9 +139,11 @@ require 'includes/remove_setas_number.php';
                                     <td><?php echo $campos['cidade']; ?></td>
                                     <td><?php echo $campos['bairro']; ?></td>
                                     <td><?php echo $campos['logradouro']; ?></td>
-                                    <td>
-                                        <?php echo "<a href='view/logradouros.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
-                                        <?php echo "<a href='processa_delete/logradouros.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/view/logradouros.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/processa_delete/logradouros.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
                                     </td>
                                     </tr>
                                 <?php } ?>
@@ -158,6 +161,6 @@ require 'includes/remove_setas_number.php';
 </main><!-- End #main -->
 
 <?php
-require 'scripts/localidades.php';
-require "includes/footer.php";
+require '../../scripts/localidades.php';
+require "../../includes/footer.php";
 ?>

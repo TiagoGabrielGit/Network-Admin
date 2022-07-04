@@ -57,7 +57,7 @@ $row_tipo = mysqli_fetch_assoc($resultado_tipo);
 
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-                                <button type="reset" class="btn btn-secondary">Limpar</button>
+                                <input type="button" value="Voltar" onClick="history.go(-1)" class="btn btn-secondary">
                             </div>
                         </form><!-- End Multi Columns Form -->
 

@@ -1,6 +1,6 @@
 <?php
-require "includes/cadastros_navbar.php";
-require "conexoes/conexao.php";
+require "../../includes/menu.php";
+require "../../conexoes/conexao.php";
 ?>
 <main id="main" class="main">
 
@@ -75,15 +75,15 @@ require "conexoes/conexao.php";
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">País</th>
-                                    <th scope="col">Opções</th>
+                                    <th style="text-align: center;" scope="col">Visualizar</th>
+                                    <th style="text-align: center;" scope="col">Excluir</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Preenchendo a tabela com os dados do banco: -->
                                 <?php
-                                $sql = "SELECT * FROM pais WHERE deleted = 0 ORDER BY pais ASC";
+                                $sql = "SELECT * FROM pais WHERE deleted = 1 ORDER BY pais ASC";
                                 $resultado = mysqli_query($mysqli, $sql) or die("Erro ao retornar dados");
 
                                 // Obtendo os dados por meio de um loop while
@@ -92,11 +92,13 @@ require "conexoes/conexao.php";
                                     echo "<tr>";
                                 ?>
                                     </td>
-                                    <td><?php echo $campos['id']; ?></td>
                                     <td><?php echo $campos['pais']; ?></td>
-                                    <td>
-                                        <?php echo "<a href='view/pais.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
-                                        <?php echo "<a href='processa_delete/pais.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/view/pais.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
+
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/processa_delete/pais.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
                                     </td>
                                     </tr>
                                 <?php } ?>
@@ -113,5 +115,5 @@ require "conexoes/conexao.php";
 
 </main><!-- End #main -->
 <?php
-require "includes/footer.php";
+require "../../includes/footer.php";
 ?>

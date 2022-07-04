@@ -26,22 +26,110 @@
             </a>
         </li>
 
-
-
-        <li class="nav-heading">Administração</li>
+        <li class="nav-heading">Cadastros</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/cadastros/cadastros.php">
-                <i class="bi bi-file-diff"></i>
-                <span>Cadastros</span>
+            <a class="nav-link collapsed" data-bs-target="#Localidade-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Localidades</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="Localidade-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="/cadastros/localidades/bairros.php">
+                        <i class="bi bi-circle"></i><span>Bairros</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cadastros/localidades/cidades.php">
+                        <i class="bi bi-circle"></i><span>Cidades</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cadastros/localidades/estado.php">
+                        <i class="bi bi-circle"></i><span>Estados</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cadastros/localidades/logradouros.php">
+                        <i class="bi bi-circle"></i><span>Logradouros</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cadastros/localidades/pais.php">
+                        <i class="bi bi-circle"></i><span>País</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#Produtos-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Produtos</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="Produtos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li>
+                    <a href="/cadastros/produtos/fabricantes.php">
+                        <i class="bi bi-circle"></i><span>Fabricantes</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cadastros/produtos/produtos.php">
+                        <i class="bi bi-circle"></i><span>Produtos e Serviços</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/cadastros/produtos/tiposEquipamentos.php">
+                        <i class="bi bi-circle"></i><span>Tipos de Equipamentos</span>
+                    </a>
+                </li>
+            </ul>
+
+        <li class="nav-heading">Telecom</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/telecom/sitepop/index.php">
+                <i class="bi bi-globe"></i>
+                <span>POP/Site</span>
             </a>
         </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/telecom/equipamentos/index.php">
+                <i class="bi bi-hdd-rack"></i>
+                <span>Equipamentos</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/telecom/vms/index.php">
+                <i class="bi bi-pc-display-horizontal"></i>
+                <span>VMs</span>
+            </a>
+        </li>
+
+        <li class="nav-heading">Administração</li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#gerenciamento-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-gear"></i><span>Gerenciamento</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="gerenciamento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li>
+                    <a href="/desenvolvimento.php">
+                        <i class="bi bi-circle"></i><span>Perfil</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="/gerenciamento/usuarios/usuarios.php">
@@ -78,6 +166,7 @@
 
             </ul>
         </li>
+
     </ul>
 
 </aside><!-- End Sidebar-->

@@ -29,16 +29,14 @@ require "../../../conexoes/conexao.php";
         $hostname = $_POST['hostname'];
         $ipaddress = $_POST['ipaddress'];
         $statusEquipamento = $_POST['statusEquipamento'];
-        $anotacaoPublicaEquipamento = nl2br($_POST['anotacaoPublicaEquipamento']);
-        $anotacaoPrivadaEquipamento = nl2br($_POST['anotacaoPrivadaEquipamento']);
-        $comunidadeSNMPRead = nl2br($_POST['comunidadeSNMPRead']);
-        $comunidadeSNMPWrite = nl2br($_POST['comunidadeSNMPWrite']);
-        $usuarioIntegracao = nl2br($_POST['usuarioIntegracao']);
-        $senhaIntegracao = nl2br($_POST['senhaIntegracao']);
+        $comunidadeSNMPRead = $_POST['comunidadeSNMPRead'];
+        $comunidadeSNMPWrite = $_POST['comunidadeSNMPWrite'];
+        $usuarioIntegracao = $_POST['usuarioIntegracao'];
+        $senhaIntegracao = $_POST['senhaIntegracao'];
 
         //Realiza o cadastro
-        $result = "INSERT INTO equipamentospop (empresa_id, pop_id, equipamento_id, tipoEquipamento_id, hostname, ipaddress, statusEquipamento, anotacaoPublicaEquipamento, anotacaoPrivadaEquipamento, comunidadeSNMPRead, comunidadeSNMPWrite, usuarioIntegracao, senhaIntegracao, deleted, criado)
-        VALUES ('$cadastroEmpresa', '$cadastroPop', '$cadastroEquipamento', '$cadastroTipoEquipamento', '$hostname', '$ipaddress', '$statusEquipamento', '$anotacaoPublicaEquipamento', '$anotacaoPrivadaEquipamento', '$comunidadeSNMPRead', '$comunidadeSNMPWrite', '$usuarioIntegracao', '$senhaIntegracao', '1', NOW())";
+        $result = "INSERT INTO equipamentospop (empresa_id, pop_id, equipamento_id, tipoEquipamento_id, hostname, ipaddress, statusEquipamento, comunidadeSNMPRead, comunidadeSNMPWrite, usuarioIntegracao, senhaIntegracao, deleted, criado)
+        VALUES ('$cadastroEmpresa', '$cadastroPop', '$cadastroEquipamento', '$cadastroTipoEquipamento', '$hostname', '$ipaddress', '$statusEquipamento', '$comunidadeSNMPRead', '$comunidadeSNMPWrite', '$usuarioIntegracao', '$senhaIntegracao', '1', NOW())";
         $resultado = mysqli_query($mysqli, $result);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>

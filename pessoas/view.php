@@ -2,6 +2,7 @@
 require "../includes/menu.php";
 require "../conexoes/conexao.php";
 require "../conexoes/sql.php";
+require '../includes/remove_setas_number.php';
 ?>
 
 

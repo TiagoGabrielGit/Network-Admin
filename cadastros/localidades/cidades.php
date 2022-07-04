@@ -1,8 +1,7 @@
 <?php
-require "includes/cadastros_navbar.php";
-require "includes/variaveis.php";
-require "conexoes/conexao.php";
-require "sql.php";
+require "../../includes/menu.php";
+require "../../conexoes/conexao.php";
+require "../../conexoes/sql.php";
 ?>
 
 <main id="main" class="main">
@@ -108,7 +107,8 @@ require "sql.php";
                                     <th scope="col">Cidade</th>
                                     <th scope="col">Estado</th>
                                     <th scope="col">País</th>
-                                    <th scope="col">Opções</th>
+                                    <th style="text-align: center;" scope="col">Visualizar</th>
+                                    <th style="text-align: center;"scope="col">Excluir</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -125,10 +125,14 @@ require "sql.php";
                                     <td><?php echo $campos['cidade']; ?></td>
                                     <td><?php echo $campos['estado']; ?></td>
                                     <td><?php echo $campos['pais']; ?></td>
-                                    <td>
-                                        <?php echo "<a href='view/cidades.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
-                                        <?php echo "<a href='processa_delete/cidades.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/view/cidades.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
+
                                     </td>
+                                    <td style="text-align: center;">
+                                        <?php echo "<a href='/processa_delete/cidades.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                    </td>
+
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -153,7 +157,7 @@ require "sql.php";
          *  Atnção com o URL, quando mudar para produção
          */
         var settings = {
-            "url": `<?php echo $URL_SISTEMA ?>api/localidades.php?type=${type}&id=${id}`,
+            "url": `<?php echo $URL_SISTEMA ?>/api/localidades.php?type=${type}&id=${id}`,
             /** ATENÇÂO */
             "method": "GET",
             "dataType": 'json',
@@ -186,5 +190,5 @@ require "sql.php";
 </script>
 
 <?php
-require "includes/footer.php";
+require "../../includes/footer.php";
 ?>

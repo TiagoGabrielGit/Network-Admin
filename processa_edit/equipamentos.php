@@ -39,7 +39,7 @@ require "../conexoes/conexao.php";
                             <?php echo $equipamento; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="/cadastros/produtos/equipamentos.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cadastros/produtos/produtos.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ require "../conexoes/conexao.php";
                             <?php echo $equipamento; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="/cadastros/produtos/equipamentos.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cadastros/produtos/produtos.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

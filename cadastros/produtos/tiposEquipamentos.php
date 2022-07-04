@@ -78,7 +78,8 @@ require "../../conexoes/conexao.php";
                             <thead>
                                 <tr>
                                     <th scope="col">Tipo</th>
-                                    <th scope="col">Opções</th>
+                                    <th style="text-align: center;" scope="col">Visualizar</th>
+                                    <th style="text-align: center;" scope="col">Excluir</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,9 +95,17 @@ require "../../conexoes/conexao.php";
                                 ?>
                                     </td>
                                     <td><?php echo $campos['tipo']; ?></td>
-                                    <td>
+                                    <td style="text-align: center;">
                                         <?php echo "<a href='/view/tipoEquipamento.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
-                                        <?php echo "<a href='/processa_delete/tipoEquipamento.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <?php
+                                        if ($campos['cadastroDefault'] == 1) {
+                                            echo "<a href='#' title='Não é possivel excluir um cadastro default' class='bi bi-file-excel-fill' ></a>";
+                                        } else {
+                                            echo "<a href='/processa_delete/tipoEquipamento.php?id=" . $campos['id'] . "' " . " class='bi bi-trash-fill' </a>"; 
+                                        }
+                                        ?>
                                     </td>
                                     </tr>
                                 <?php } ?>

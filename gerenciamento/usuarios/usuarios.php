@@ -2,7 +2,8 @@
 require '../../includes/menu.php';
 require "../../conexoes/conexao.php";
 require "../../conexoes/sql.php";
-require '../../includes/remove_setas_number.php';
+require "../../includes/remove_setas_number.php";
+require "sql.php";
 ?>
 
 <main id="main" class="main">
@@ -45,11 +46,25 @@ require '../../includes/remove_setas_number.php';
                                             <div class="modal-body">
                                                 <div class="card-body">
                                                     <!-- Vertical Form -->
-                                                    <form method="POST" action="usuarios/processa/add.php" class="row g-3 needs-validation" novalidate>
+                                                    <form method="POST" action="processa/add.php" class="row g-3 needs-validation" novalidate>
+
                                                         <div class="col-12">
-                                                            <label for="yourName" class="form-label">Nome completo</label>
-                                                            <input type="text" name="nome" class="form-control" id="yourName" required>
-                                                            <div class="invalid-feedback">Digite seu nome!</div>
+                                                            <label for="inputNome" class="form-label">Nome*</label>
+                                                            <select id="inputNome" name="inputNome" class="form-select" require>
+                                                                <option selected disabled>Selecione a pessoa</option>
+                                                                <?php
+                                                                $resultado = mysqli_query($mysqli, $lista_pessoas);
+                                                                while ($pessoa = mysqli_fetch_object($resultado)) :
+                                                                    echo "<option value='$pessoa->pessoa_id'> $pessoa->pessoa_nome</option>";
+                                                                endwhile;
+                                                                ?>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-12">
+                                                            <label for="inputEmail" class="form-label">E-mail/Usuário</label>
+                                                            <select id="inputEmail" name="inputEmail" class="form-select" disabled></select>
+                                                            <select id="inputEmailHidden" name="inputEmailHidden" class="form-select" hidden></select>
                                                         </div>
 
                                                         <div class="col-12">
@@ -63,12 +78,6 @@ require '../../includes/remove_setas_number.php';
                                                                     <option value="<?= $p['id']; ?>"><?= $p['perfil']; ?></option>
                                                                 <?php endwhile; ?>
                                                             </select>
-                                                        </div>
-
-                                                        <div class="col-12">
-                                                            <label for="yourEmail" class="form-label">E-mail</label>
-                                                            <input type="email" name="email" class="form-control" id="yourEmail" required>
-                                                            <div class="invalid-feedback">Digite seu e-mail.</div>
                                                         </div>
 
                                                         <div class="col-12">
@@ -113,7 +122,7 @@ require '../../includes/remove_setas_number.php';
                                 $sql =
                                     "SELECT 
                                         user.id as id,
-                                        user.nome as nome,
+                                        pess.nome as nome,
                                         user.email as email,
                                         user.senha as senha,
                                         user.deleted as deleted,
@@ -133,8 +142,12 @@ require '../../includes/remove_setas_number.php';
                                         perfil_permissoes as perfil
                                         ON
                                         perfil.id = userPerfil.permissao_id
+                                        LEFT JOIN                            
+                                        pessoas as pess
+                                        ON
+                                        pess.id = user.pessoa_id
                                         ORDER BY
-                                        user.nome ASC
+                                        pess.nome ASC
                                         ";
 
                                 $resultado = mysqli_query($mysqli, $sql) or die("Erro ao retornar dados");
@@ -162,7 +175,7 @@ require '../../includes/remove_setas_number.php';
                                     <td style="text-align: center;">
 
                                         <!--  <a href="#" style="margin-top: 15px" class="bi bi-key-fill" data-bs-toggle="modal" data-bs-target="#basicModalSenha"></a> -->
-                                        <a onclick="capturaDadosLogin(<?php echo $campos['id']  ?>,'<?php echo $campos['nome'] ?>')" class="bi bi-key-fill" role="button" data-bs-toggle="modal" data-bs-target="#basicModalSenha"></a>
+                                        <a onclick="capturaDadosLogin(<?php echo $campos['id'] ?>,'<?php echo $campos['email'] ?>','<?php echo $campos['nome'] ?>')" class="bi bi-key-fill" role="button" data-bs-toggle="modal" data-bs-target="#basicModalSenha"></a>
 
                                     </td>
                                     </tr>
@@ -182,16 +195,17 @@ require '../../includes/remove_setas_number.php';
 
 
 <script>
-    function capturaDadosLogin(id, nome) {
+    function capturaDadosLogin(id, usuario, nome) {
         document.querySelector("#id").value = id;
         document.querySelector("#id_disable").value = id;
-        document.querySelector("#usuario").value = nome;
-        document.querySelector("#usuario_disable").value = nome;
+        document.querySelector("#usuario").value = usuario;
+        document.querySelector("#usuario_disable").value = usuario;
+        document.querySelector("#nomeUsuario").value = nome;
     }
 </script>
 
 <div class=" modal fade" id="basicModalSenha" tabindex="-1">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Alterar senha</h5>
@@ -201,6 +215,12 @@ require '../../includes/remove_setas_number.php';
                 <div class="card-body">
                     <!-- Vertical Form -->
                     <form method="POST" action="/gerenciamento/usuarios/processa/alterarSenha.php" class="row g-3 needs-validation" novalidate>
+
+                        <div class="col-12">
+                            <label for="nomeUsuario" class="form-label">Nome </label>
+                            <input type="Text" name="nomeUsuario" class="form-control" id="nomeUsuario" disabled>
+
+                        </div>
 
                         <div class="col-3">
                             <label for="id" class="form-label">ID</label>
@@ -238,5 +258,6 @@ require '../../includes/remove_setas_number.php';
 </div><!-- End Basic Modal-->
 
 <?php
+require "../../scripts/usuarios.php";
 require "../../includes/footer.php";
 ?>
