@@ -42,7 +42,7 @@ require '../includes/remove_setas_number.php';
                                             <div class="modal-body">
                                                 <div class="card-body">
                                                     <!-- Vertical Form -->
-                                                    <form method="POST" action="/processa_add/empresas.php" class="row g-3">
+                                                    <form method="POST" action="/empresas/processa/add.php" class="row g-3">
 
                                                         <li class="nav-heading" style="list-style: none;">Dados</li>
 

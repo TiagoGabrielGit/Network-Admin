@@ -20,15 +20,24 @@ require "../../../conexoes/conexao.php";
 <body>
     <div class="container theme-showcase" role="main">
         <?php
-        $pop = $_POST['pop'];
-        $apelidoPop = $_POST['apelidoPop'];
-        $empresa = $_POST['empresa'];
-        $logradouro = $_POST['logradouro'];
-        $numero = $_POST['numero'];
-        $complemento = $_POST['complemento'];
 
-        $result = "INSERT INTO pop (pop, apelidoPop, empresa_id, logradouro_id, numero, complemento, deleted, criado)
-        VALUES ('$pop','$apelidoPop', '$empresa', '$logradouro', '$numero', '$complemento', '1', NOW())";
+        //Obtem os dados
+        $cadastroEmpresa = $_POST['cadastroEmpresa'];
+        $cadastroPop = $_POST['cadastroPop'];
+        $cadastroServidor = $_POST['cadastroServidor'];
+        $cadastroHostname = $_POST['cadastroHostname'];
+        $cadastroSO = $_POST['cadastroSO'];
+        $cadastroIPAddress = $_POST['cadastroIPAddress'];
+        $cadastroDomino = $_POST['cadastroDomino'];
+        $cadastroVLAN = $_POST['cadastroVLAN'];
+        $cadastroStatusVM = $_POST['cadastroStatusVM'];
+        $cadastroMemoria = $_POST['cadastroMemoria'];
+        $cadastroVCPU = $_POST['cadastroVCPU'];
+        $cadastroDisco1 = $_POST['cadastroDisco1'];
+        $cadastroDisco2 = $_POST['cadastroDisco2'];
+
+        //Realiza o cadastro
+        $result = "INSERT INTO vms (empresa_id, pop_id, servidor_id, hostname, ipaddress, dominio, vlan, sistemaOperacional, recursoMemoria, recursoCPU, recursoDisco1, recursoDisco2, statusvm, criado) VALUES ('$cadastroEmpresa', '$cadastroPop', '$cadastroServidor', '$cadastroHostname', '$cadastroIPAddress', '$cadastroDomino', '$cadastroVLAN', '$cadastroSO', '$cadastroMemoria', '$cadastroVCPU', '$cadastroDisco1', '$cadastroDisco2', '$cadastroStatusVM', NOW())";
         $resultado = mysqli_query($mysqli, $result);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
@@ -40,10 +49,9 @@ require "../../../conexoes/conexao.php";
                             <h4 class="modal-title" id="myModalLabel">Cadastro realizado com Sucesso!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $pop; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../index.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/telecom/vms/index.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -63,10 +71,9 @@ require "../../../conexoes/conexao.php";
                             <h4 class="modal-title" id="myModalLabel">Erro ao realizar cadastro!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $pop; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../index.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/telecom/vms/index.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -77,7 +84,6 @@ require "../../../conexoes/conexao.php";
                 });
             </script>
         <?php } ?>
-
 
     </div>
 </body>

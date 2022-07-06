@@ -8,10 +8,10 @@
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Desenvolvido por <a href="https://gigafull.com.br/">Gigafull Soluções Tecnológicas</a>
+      Desenvolvido por <a href="https://www.gigafull.com.br/">Gigafull Soluções Tecnológicas</a>
     </div>
     <div class="credits">
-      <a href="/sistema/changelog.php">Versão 1.2</a>
+      <a href="/sistema/changelog.php">Versão 1.3</a>
     </div>
   </footer><!-- End Footer -->
 

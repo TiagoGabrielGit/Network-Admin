@@ -1,6 +1,5 @@
 <?php
-require "../../../protect.php";
-require "../../../conexoes/conexao.php";
+require "../../../../conexoes/conexao.php";
 ?>
 
 
@@ -20,15 +19,10 @@ require "../../../conexoes/conexao.php";
 <body>
     <div class="container theme-showcase" role="main">
         <?php
-        $pop = $_POST['pop'];
-        $apelidoPop = $_POST['apelidoPop'];
-        $empresa = $_POST['empresa'];
-        $logradouro = $_POST['logradouro'];
-        $numero = $_POST['numero'];
-        $complemento = $_POST['complemento'];
+        $cadastroSO = $_POST['cadastroSO'];
 
-        $result = "INSERT INTO pop (pop, apelidoPop, empresa_id, logradouro_id, numero, complemento, deleted, criado)
-        VALUES ('$pop','$apelidoPop', '$empresa', '$logradouro', '$numero', '$complemento', '1', NOW())";
+        $result = "INSERT INTO sistemaoperacional (sistemaoperacional, cadastroDefault, deleted, criado)
+        VALUES ('$cadastroSO', '2', '1', NOW())";
         $resultado = mysqli_query($mysqli, $result);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
@@ -40,10 +34,10 @@ require "../../../conexoes/conexao.php";
                             <h4 class="modal-title" id="myModalLabel">Cadastro realizado com Sucesso!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $pop; ?>
+                            <?php echo $cadastroSO; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../index.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cadastros/produtos/sistemaoperacional/index.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -63,10 +57,10 @@ require "../../../conexoes/conexao.php";
                             <h4 class="modal-title" id="myModalLabel">Erro ao realizar cadastro!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $pop; ?>
+                            <?php echo $cadastroSO; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../index.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cadastros/produtos/sistemaoperacional/index.php"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

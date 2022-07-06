@@ -51,7 +51,7 @@ require "sql.php";
                                                         <div class="col-12">
                                                             <label for="inputNome" class="form-label">Nome*</label>
                                                             <select id="inputNome" name="inputNome" class="form-select" require>
-                                                                <option selected disabled>Selecione a pessoa</option>
+                                                                <option require selected disabled>Selecione a pessoa</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $lista_pessoas);
                                                                 while ($pessoa = mysqli_fetch_object($resultado)) :
@@ -63,13 +63,13 @@ require "sql.php";
 
                                                         <div class="col-12">
                                                             <label for="inputEmail" class="form-label">E-mail/Usuário</label>
-                                                            <select id="inputEmail" name="inputEmail" class="form-select" disabled></select>
+                                                            <select id="inputEmail" name="inputEmail" class="form-select" disabled require></select>
                                                             <select id="inputEmailHidden" name="inputEmailHidden" class="form-select" hidden></select>
                                                         </div>
 
                                                         <div class="col-12">
                                                             <label for="inputPerfil" class="form-label">Perfil</label>
-                                                            <select name="perfil" id="perfil" class="form-select" aria-label="Default select example">
+                                                            <select name="perfil" id="perfil" class="form-select" require>
 
                                                                 <option selected disabled>Selecione o perfil</option>
                                                                 <?php
@@ -146,6 +146,8 @@ require "sql.php";
                                         pessoas as pess
                                         ON
                                         pess.id = user.pessoa_id
+                                        WHERE
+                                        userPerfil.permissao_id != 1
                                         ORDER BY
                                         pess.nome ASC
                                         ";

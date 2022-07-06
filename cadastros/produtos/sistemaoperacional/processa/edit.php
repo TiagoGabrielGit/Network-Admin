@@ -1,6 +1,5 @@
 <?php
-require "../../../protect.php";
-require "../../../conexoes/conexao.php";
+require "../../../../conexoes/conexao.php";
 ?>
 
 
@@ -20,16 +19,11 @@ require "../../../conexoes/conexao.php";
 <body>
     <div class="container theme-showcase" role="main">
         <?php
-        $pop = $_POST['pop'];
-        $apelidoPop = $_POST['apelidoPop'];
-        $empresa = $_POST['empresa'];
-        $logradouro = $_POST['logradouro'];
-        $numero = $_POST['numero'];
-        $complemento = $_POST['complemento'];
+        $id = $_POST['id'];
+        $sistemaoperacional = $_POST['editSO'];
 
-        $result = "INSERT INTO pop (pop, apelidoPop, empresa_id, logradouro_id, numero, complemento, deleted, criado)
-        VALUES ('$pop','$apelidoPop', '$empresa', '$logradouro', '$numero', '$complemento', '1', NOW())";
-        $resultado = mysqli_query($mysqli, $result);
+        $SQL = "UPDATE sistemaoperacional SET sistemaOperacional='$sistemaoperacional', modificado=NOW() WHERE id='$id'";
+        $resultado = mysqli_query($mysqli, $SQL);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
             <!-- Modal -->
@@ -37,13 +31,13 @@ require "../../../conexoes/conexao.php";
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Cadastro realizado com Sucesso!</h4>
+                            <h4 class="modal-title" id="myModalLabel">Editado com Sucesso!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $pop; ?>
+                            <?php echo $sistemaoperacional; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../index.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cadastros/produtos/sistemaoperacional/index.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -60,13 +54,13 @@ require "../../../conexoes/conexao.php";
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Erro ao realizar cadastro!</h4>
+                            <h4 class="modal-title" id="myModalLabel">Erro ao editar!</h4>
                         </div>
                         <div class="modal-body">
-                            <?php echo $pop; ?>
+                            <?php echo $sistemaoperacional; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="../index.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cadastros/produtos/sistemaoperacional/index.php'"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

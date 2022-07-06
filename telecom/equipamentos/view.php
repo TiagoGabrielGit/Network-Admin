@@ -205,12 +205,12 @@ $EmDesenvolvimento = "Em desenvolvimento";
 
                             <div class="col-4">
                                 <label for="anotacaoEquipeEquipamento" class="form-label">Anotações equipe</label>
-                                <textarea id="anotacaoEquipeEquipamento" name="anotacaoEquipeEquipamento" class="form-control" rows="5"><?php echo $EmDesenvolvimento?></textarea>
+                                <textarea id="anotacaoEquipeEquipamento" name="anotacaoEquipeEquipamento" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento?></textarea>
                             </div>
 
                             <div class="col-4">
                                 <label for="anotacaoPrivadaEquipamento" class="form-label">Anotações privadas</label>
-                                <textarea id="anotacaoPrivadaEquipamento" name="anotacaoPrivadaEquipamento" class="form-control" rows="5"><?php echo $EmDesenvolvimento?></textarea>
+                                <textarea id="anotacaoPrivadaEquipamento" name="anotacaoPrivadaEquipamento" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento?></textarea>
                             </div>
 
 

@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="index.php">
+            <a class="nav-link " href="/index.php">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
@@ -87,6 +87,12 @@
                 </li>
 
                 <li>
+                    <a href="/cadastros/produtos/sistemaoperacional/index.php">
+                        <i class="bi bi-circle"></i><span>Sistema Operacional</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="/cadastros/produtos/tiposEquipamentos.php">
                         <i class="bi bi-circle"></i><span>Tipos de Equipamentos</span>
                     </a>
@@ -113,7 +119,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="/telecom/vms/index.php">
                 <i class="bi bi-pc-display-horizontal"></i>
-                <span>VMs</span>
+                <span>Máquina Virtual - VM</span>
             </a>
         </li>
 
@@ -149,18 +155,6 @@
                 <li>
                     <a href="/sistema/changelog.php">
                         <i class="bi bi-circle"></i><span>Changelog</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/sistema/relataBug/relateBug.php">
-                        <i class="bi bi-circle"></i><span>Relatar um problema</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/sistema/sugestaoMelhoria/sugereMelhoria.php">
-                        <i class="bi bi-circle"></i><span>Sugerir uma melhoria</span>
                     </a>
                 </li>
 

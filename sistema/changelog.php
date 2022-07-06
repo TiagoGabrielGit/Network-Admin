@@ -18,6 +18,37 @@ require "../includes/menu.php";
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
 
+              <!-- Versão 1.3 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading4">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                    Versão 1.3 - 06/07/2022
+                  </button>
+                </h2>
+                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. Cadastro Sistema Operacional;<br>
+                    2. Cadastro VMs;<br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Ajuste para não listar usuário super admin no cadastro de usuários;<br>
+                    2. Retirado temporariamente de produção para ajustes os menus de relatar BUG e relatar problema;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. Ajuste no cadastro de empresa;<br>
+                    2. Ajuste na exclusão de empresa;<br>
+                    3. Ajuste caminho botão dashboard;<br>
+                    4. Ajuste href no editar empresa;<br>
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Criado a tabela vms;<br>
+                    2. Criado a tabela sistemaoperacional;<br>
+                  </div>
+                </div>
+              </div>
+
+
               <!-- Versão 1.2 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading3">

@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-include_once("../../conexoes/conexao.php");
+include_once("../../../../conexoes/conexao.php");
 
 $delete_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-$delete_data = "UPDATE `empresas` SET `deleted`= '2' WHERE id = '$delete_id' ";
+$delete_data = "UPDATE `sistemaoperacional` SET `deleted`= '2' WHERE id = '$delete_id' ";
 
 $res_delete = mysqli_query($mysqli, $delete_data);
 
 if (mysqli_affected_rows($mysqli)) {
-	header("Location: /empresas/empresas.php");
+	header("Location: /cadastros/produtos/sistemaoperacional/index.php");
 	$_SESSION['msg'] =
 	'<div class="alert alert-success alert-dismissible fade show" role="alert">
 		<strong>Registro excluído com sucesso!</strong>
@@ -24,7 +24,7 @@ if (mysqli_affected_rows($mysqli)) {
 	</div>';
 }
 else{
-	header("Location: /empresas/empresas.php");
+	header("Location: /cadastros/produtos/sistemaoperacional/index.php");
 	$_SESSION['msg'] = 
 	'<div class="alert alert-danger alert-dismissible fade show" role="alert">
 		<strong>Erro ao excluir</strong>
