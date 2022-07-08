@@ -7,13 +7,33 @@
 <script>
     let inputIP = document.querySelector("#ipaddress");
     inputIP.addEventListener("keydown", function(e) {
-        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace") {
-
+        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace" || e.key == "CTRL" || e.key == "v" || e.key == "Delete"|| e.key == "V" || e.key == "A"|| e.key == "a"|| e.key == "C"|| e.key == "c") {
         } else {
             e.preventDefault();
         }
     });
 </script>
+
+<script>
+    //Procura os tipos de equipamentos atraves do equipamento selecionado
+    $("#cadastroEquipamento").change(function() {
+        var equipamentoSelecionado = $(this).children("option:selected").val();
+
+        $.ajax({
+            url: "/api/pesquisa_tipos.php",
+            method: "GET",
+            dataType: "HTML",
+            data: {
+                id: equipamentoSelecionado
+            }
+        }).done(function(resposta) {
+            $("#cadastroTipoEquipamento").html(resposta);
+        }).fail(function(resposta) {
+            alert(resposta)
+        });
+    });
+</script>
+
 
 <script>
     //Pesquisa os equipamentos atraves do fabricante
@@ -98,7 +118,7 @@
 <script>
     let inputIPPesquisa = document.querySelector("#ipaddressPesquisa");
     inputIPPesquisa.addEventListener("keydown", function(e) {
-        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace") {
+        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace" || e.key == "CTRL" || e.key == "v" || e.key == "Delete"|| e.key == "V" || e.key == "A"|| e.key == "a"|| e.key == "C"|| e.key == "c") {
 
         } else {
             e.preventDefault();
@@ -169,7 +189,7 @@
 <script>
     let inputIPView = document.querySelector("#inputIpAddress");
     inputIPView.addEventListener("keydown", function(e) {
-        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace") {
+        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace" || e.key == "CTRL" || e.key == "v" || e.key == "Delete"|| e.key == "V" || e.key == "A"|| e.key == "a"|| e.key == "C"|| e.key == "c") {
 
         } else {
             e.preventDefault();

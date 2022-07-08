@@ -18,6 +18,37 @@ require "../includes/menu.php";
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
 
+              <!-- Versão 1.4 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading5">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                    Versão 1.4 - 06/07/2022
+                  </button>
+                </h2>
+                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. Colocado checkbox dinâmico de tipo de equipametno no cadastro de equipamento;<br>
+                    2. Adicionado campo de tamanho no cadastro de equipamento;<br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Ajuste design visualização de produtos;<br>
+                    2. Adequado cadastro de produtos para o formato de diretórios;<br>
+                    3. Ajustado filtro no cadastro de equipamentos por POP para aparecer somente os tipos corretos para o modelo de equipamento selecionado;<br>
+                    4. Alterado limite de busca default para o valor 100 nA tela de equipamentos pop POP;<br>
+                    5. Permitido copiar, colar, deletear, selecionar tudo nos campos IP onde tinha máscara permitindo apenas números;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. ;<br>
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Criado tabela equipamentos_atributos;<br>
+                    2. Adicionado columa tamanho na tabela equipamentos;<br>
+                  </div>
+                </div>
+              </div>
+
+
               <!-- Versão 1.3 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading4">

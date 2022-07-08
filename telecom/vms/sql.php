@@ -15,7 +15,7 @@ $sql_lista_so =
 so.id as id,
 so.sistemaOperacional as so
 From
-sistemaOperacional as so
+sistemaoperacional as so
 Where
 so.deleted = 1
 ORDER BY

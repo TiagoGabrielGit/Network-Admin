@@ -1,6 +1,6 @@
 <?php
-require "../protect.php";
-require "../conexoes/conexao.php";
+require "../../../../protect.php";
+require "../../../../conexoes/conexao.php";
 ?>
 
 
@@ -11,18 +11,21 @@ require "../conexoes/conexao.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Equipamentos - Network Admin</title>
-    <link href="../alerts/css/bootstrap.min.css" rel="stylesheet">
+    <title>Gigafull Admin</title>
+    <link href="/alerts/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../alerts/js/bootstrap.min.js"></script>
+    <script src="/alerts/js/bootstrap.min.js"></script>
 </head>
 
 <body>
     <div class="container theme-showcase" role="main">
         <?php
+        $id = $_POST['id'];
         $equipamento = $_POST['equipamento'];
         $fabricante = $_POST['fabricante'];
-        $result = "INSERT INTO equipamentos (equipamento, fabricante, deleted, criado) VALUES ('$equipamento','$fabricante', '1', NOW())";
+        $tamanho = $_POST['inputTamanho'];
+        
+        $result = "UPDATE equipamentos SET equipamento='$equipamento', fabricante='$fabricante', tamanho='$tamanho', modificado=NOW() WHERE id='$id'";
         $resultado = mysqli_query($mysqli, $result);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
@@ -31,13 +34,13 @@ require "../conexoes/conexao.php";
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Cadastro realizado com Sucesso!</h4>
+                            <h4 class="modal-title" id="myModalLabel">Editado com Sucesso!</h4>
                         </div>
                         <div class="modal-body">
                             <?php echo $equipamento; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="/cadastros/produtos/produtos.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/cadastros/produtos/produtos/index.php"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>
@@ -54,13 +57,13 @@ require "../conexoes/conexao.php";
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Erro ao realizar cadastro!</h4>
+                            <h4 class="modal-title" id="myModalLabel">Erro ao editar!</h4>
                         </div>
                         <div class="modal-body">
                             <?php echo $equipamento; ?>
                         </div>
                         <div class="modal-footer">
-                            <a href="/cadastros/produtos/produtos.php"><button type="button" class="btn btn-danger">Ok</button></a>
+                            <a href="/cadastros/produtos/produtos/"><button type="button" class="btn btn-danger">Ok</button></a>
                         </div>
                     </div>
                 </div>

@@ -1,19 +1,12 @@
 <?php
-require "../../includes/menu.php";
-require "../../conexoes/conexao.php";
-require "../../conexoes/sql.php";
+require "../../../includes/menu.php";
+require "../../../conexoes/conexao.php";
+require "sql.php";
 ?>
 <main id="main" class="main">
 
     <div class="pagetitle">
         <h1>Equipamentos</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-                <li class="breadcrumb-item">Cadastros</li>
-                <li class="breadcrumb-item active">Equipamentos</li>
-            </ol>
-        </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -23,7 +16,6 @@ require "../../conexoes/sql.php";
                 <div class="card">
 
                     <div class="card-body">
-
 
                         <div class="container">
                             <div class="row">
@@ -49,27 +41,45 @@ require "../../conexoes/sql.php";
                                             <div class="modal-body">
                                                 <div class="card-body">
                                                     <!-- Vertical Form -->
-                                                    <form method="POST" action="/processa_add/equipamentos.php" class="row g-3">
+                                                    <form method="POST" action="processa/add.php" class="row g-3">
                                                         <div class="col-12">
                                                             <label for="inputEquipamento" class="form-label">Equipamento</label>
-                                                            <input name="equipamento" type="text" class="form-control" id="inputEquipamento">
+                                                            <input name="equipamento" type="text" class="form-control" id="inputEquipamento" require>
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div class="col-6">
                                                             <label for="inputFabricante" class="form-label">Fabricante</label>
-                                                            <select name="fabricante" class="form-select" aria-label="Default select example">
-                                                                <option selected disabled>Selecione o fabricante</option>
+                                                            <select name="fabricante" class="form-select" required>
+                                                                <option selected disabled>Selecione</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $sql_fabricante) or die("Erro ao retornar dados");
                                                                 while ($c = $resultado->fetch_assoc()) : ?>
                                                                     <option value="<?= $c['id']; ?>"><?= $c['fabricante']; ?></option>
                                                                 <?php endwhile; ?>
                                                             </select>
-                                                        </div>
+                                                        </div>                                                    
+                                                        
+                                                        <div class="col-6">
+                                                            <label for="inputTamanho" class="form-label">Tamanho</label>
+                                                            <select name="inputTamanho" class="form-select" required>
+                                                                <option selected disabled>Selecione</option>
+                                                                <option value="1">1U</option>
+                                                                <option value="2">2U's</option>
+                                                                <option value="3">3U's</option>
+                                                                <option value="4">4U's</option>
+                                                                <option value="5">5U's</option>
+                                                                <option value="6">6U's</option>
+                                                                <option value="7">7U's</option>
+                                                                <option value="8">8U's</option>
+                                                                <option value="9">9U's</option>
+                                                                <option value="10">10u's</option>
+                                                            </select>
+                                                        </div> 
+
                                                         <div class="text-center">
                                                             <button type="submit" class="btn btn-primary">Salvar</button>
                                                             <button type="reset" class="btn btn-secondary">Limpar</button>
                                                         </div>
-                                                    </form><!-- Vertical Form -->
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -87,6 +97,7 @@ require "../../conexoes/sql.php";
                             <thead>
                                 <tr>
                                     <th scope="col">Equipamento</th>
+                                    <th scope="col">Tamanho (U)</th>
                                     <th scope="col">Fabricante</th>
                                     <th scope="col">Opções</th>
                                 </tr>
@@ -104,10 +115,11 @@ require "../../conexoes/sql.php";
                                 ?>
                                     </td>
                                     <td><?php echo $campos['equipamento']; ?></td>
+                                    <td><?php echo $campos['tamanho']; ?></td>
                                     <td><?php echo $campos['fabricante']; ?></td>
                                     <td>
-                                        <?php echo "<a href='/view/equipamentos.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
-                                        <?php echo "<a href='/processa_delete/equipamentos.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                        <?php echo "<a href='view.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
+                                        <?php echo "<a href='processa/delete.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
                                     </td>
                                     </tr>
                                 <?php } ?>
@@ -124,5 +136,5 @@ require "../../conexoes/sql.php";
 
 </main><!-- End #main -->
 <?php
-require "../../includes/footer.php";
+require "../../../includes/footer.php";
 ?>

@@ -46,6 +46,7 @@ $equipamento_id = $_POST['equipamentoPesquisa'];
 $statusEquipamentoPesquisa = $_POST['statusEquipamentoPesquisa'];
 $limiteBusca = $_POST['limiteBusca'];
 
+
 $sql_pesquisa_EquipamentosPop =
     "SELECT
 equipop.id as id_equipop,
@@ -178,12 +179,6 @@ LIMIT $limiteBusca
                                                             <label for="cadastroTipoEquipamento" class="form-label select-label">Tipo de equipamento*</label>
                                                             <select id="cadastroTipoEquipamento" name="cadastroTipoEquipamento" class="form-select" require>
                                                                 <option selected disabled>Selecione o tipo</option>
-                                                                <?php
-                                                                $resultado = mysqli_query($mysqli, $sql_lista_tipos);
-                                                                while ($tipos = mysqli_fetch_object($resultado)) :
-                                                                    echo "<option value='$tipos->id'> $tipos->tipo</option>";
-                                                                endwhile;
-                                                                ?>
                                                             </select>
                                                         </div>
 
@@ -276,10 +271,11 @@ LIMIT $limiteBusca
                             <div class="col-2">
                                 <label for="limiteBusca" class="form-label">Limite de busca*</label>
                                 <select id="limiteBusca" name="limiteBusca" class="form-select" require>
-                                    <option disabled selected>5 Resultados</option>
+                                    <option disabled selected>100 Resultados</option>
+                                    <option value="10">10 Resultados</option>
                                     <option value="50">50 Resultados</option>
-                                    <option value="100">100 Resultados</option>
                                     <option value="500">500 Resultados</option>
+                                    <option value="1000">1000 Resultados</option>
                                 </select>
                             </div>
 

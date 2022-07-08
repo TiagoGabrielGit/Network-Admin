@@ -93,7 +93,7 @@
                 </li>
 
                 <li>
-                    <a href="/cadastros/produtos/produtos.php">
+                    <a href="/cadastros/produtos/produtos/index.php">
                         <i class="bi bi-circle"></i><span>Produtos e Serviços</span>
                     </a>
                 </li>

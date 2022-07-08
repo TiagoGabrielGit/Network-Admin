@@ -49,18 +49,6 @@ WHERE
 fab.deleted = 1
 ";
 
-$sql_lista_tipos =
-"SELECT
-tipo.id as id,
-tipo.tipo as tipo
-FROM
-tipoequipamento as tipo
-WHERE
-tipo.deleted = 1
-ORDER BY
-tipo.tipo asc
-";
-
 $sql_lista_pop =
 "SELECT
 pop.id as id_pop,
