@@ -34,7 +34,7 @@ if (empty($_POST['statusEquipamentoPesquisa'])) {
 }
 
 if (empty($_POST['limiteBusca'])) {
-    $_POST['limiteBusca'] = "5";
+    $_POST['limiteBusca'] = "100";
 }
 
 $empresa_id = $_POST['empresaPesquisa'];

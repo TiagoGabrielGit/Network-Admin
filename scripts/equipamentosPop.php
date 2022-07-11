@@ -14,6 +14,7 @@
     });
 </script>
 
+
 <script>
     //Procura os tipos de equipamentos atraves do equipamento selecionado
     $("#cadastroEquipamento").change(function() {
@@ -197,3 +198,22 @@
     });
 </script>
 
+<script>
+    //Procura os tipos de equipamentos atraves do equipamento selecionado
+    $("#inputEquipamento").change(function() {
+        var equipamentoSelecionado = $(this).children("option:selected").val();
+
+        $.ajax({
+            url: "/api/pesquisa_tipos.php",
+            method: "GET",
+            dataType: "HTML",
+            data: {
+                id: equipamentoSelecionado
+            }
+        }).done(function(resposta) {
+            $("#inputTipoEquipamento").html(resposta);
+        }).fail(function(resposta) {
+            alert(resposta)
+        });
+    });
+</script>

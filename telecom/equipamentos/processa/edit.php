@@ -36,8 +36,6 @@ require "../../../conexoes/conexao.php";
                 $usuarioIntegracao = $_POST['usuarioIntegracao'];
                 $senhaIntegracao = $_POST['senhaIntegracao'];
                 $anotacaoPublicaEquipamento = $_POST['anotacaoPublicaEquipamento'];
-                $anotacaoEquipeEquipamento = $_POST['anotacaoEquipeEquipamento'];
-                $anotacaoPrivadaEquipamento = $_POST['anotacaoPrivadaEquipamento'];
                 $usuario_id = $_SESSION['id'];
              
                 $result_insert_apube = "INSERT INTO anotacaopublicaequipamento (usuario_id, equipamento_id, anotacao, criado) VALUES ('$usuario_id', '$id', '$anotacaoPublicaEquipamento', NOW())";

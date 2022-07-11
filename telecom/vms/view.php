@@ -57,9 +57,9 @@ $sql_anotacao_publica =
     "SELECT
 apube.anotacao as anotacaoPublica
 FROM
-anotacaopublicaequipamento as apube
+anotacaopublica_vm as apube
 WHERE
-equipamento_id = '$id'
+vm_id = '$id'
 ORDER BY
 apube.id DESC
 LIMIT 1
@@ -170,7 +170,7 @@ $EmDesenvolvimento = "Em desenvolvimento";
 
                             <div class="col-2">
                                 <label for="editVCPU" class="form-label">vCPU*</label>
-                                <input name="editVCPU" type="number" class="form-control" id="editVCPU" value="<?php echo $row['recursoCPU'];?>" require>
+                                <input name="editVCPU" type="number" class="form-control" id="editVCPU" value="<?php echo $row['recursoCPU']; ?>" require>
                             </div>
 
                             <div class="col-3">
@@ -180,22 +180,22 @@ $EmDesenvolvimento = "Em desenvolvimento";
 
                             <div class="col-3">
                                 <label for="editDisco2" class="form-label">Disco partição 2 (Gb)</label>
-                                <input name="editDisco2" type="number" class="form-control" id="editDisco2"value="<?php echo $row['recursoDisco2']; ?>">
+                                <input name="editDisco2" type="number" class="form-control" id="editDisco2" value="<?php echo $row['recursoDisco2']; ?>">
                             </div>
 
                             <div class="col-4">
-                                <label for="anotacaoPublicaEquipamento" class="form-label">Anotações públicas</label>
-                                <textarea id="anotacaoPublicaEquipamento" name="anotacaoPublicaEquipamento" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento?></textarea>
+                                <label for="anotacaoPublicaVM" class="form-label">Anotações públicas</label>
+                                <textarea id="anotacaoPublicaVM" name="anotacaoPublicaVM" class="form-control" rows="5"><?php echo $row_apube['anotacaoPublica'] ?></textarea>
                             </div>
 
                             <div class="col-4">
-                                <label for="anotacaoEquipeEquipamento" class="form-label">Anotações equipe</label>
-                                <textarea id="anotacaoEquipeEquipamento" name="anotacaoEquipeEquipamento" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento ?></textarea>
+                                <label for="anotacaoEquipeVM" class="form-label">Anotações equipe</label>
+                                <textarea id="anotacaoEquipeVM" name="anotacaoEquipeVM" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento ?></textarea>
                             </div>
 
                             <div class="col-4">
-                                <label for="anotacaoPrivadaEquipamento" class="form-label">Anotações privadas</label>
-                                <textarea id="anotacaoPrivadaEquipamento" name="anotacaoPrivadaEquipamento" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento ?></textarea>
+                                <label for="anotacaoPrivadaVM" class="form-label">Anotações privadas</label>
+                                <textarea id="anotacaoPrivadaVM" name="anotacaoPrivadaVM" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento ?></textarea>
                             </div>
 
 

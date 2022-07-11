@@ -17,12 +17,37 @@ require "../includes/menu.php";
 
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
+              <!-- Versão 1.5 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading6">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                    Versão 1.5 - 11/07/2022
+                  </button>
+                </h2>
+                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. Criado a função de anotação pública no cadastro de VMs;<br>
+                    2. Criado a função de editar VMs;<br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Ajustado campo de fabricante no cadastro de equipamento para ordenar por nome;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. ;<br>
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Criado tabela anotacaopublica_vm;<br>
+                  </div>
+                </div>
+              </div>
+
 
               <!-- Versão 1.4 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading5">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                    Versão 1.4 - 06/07/2022
+                    Versão 1.4 - 08/07/2022
                   </button>
                 </h2>
                 <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#accordionExample">

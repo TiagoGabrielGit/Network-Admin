@@ -160,7 +160,7 @@ $EmDesenvolvimento = "Em desenvolvimento";
                                 <label for="inputIpAddress" class="form-label">Endereço IP*</label>
                                 <input name="inputIpAddress" type="text" class="form-control" id="inputIpAddress" value="<?php echo $row['ipaddress']; ?>" maxlength="15" require>
                             </div>
-
+ 
 
                             <div class="col-4">
                                 <label for="inputStatus" class="form-label select-label">Status*</label>

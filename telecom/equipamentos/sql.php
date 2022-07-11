@@ -47,6 +47,8 @@ FROM
 fabricante as fab
 WHERE
 fab.deleted = 1
+ORDER BY
+fab.fabricante ASC
 ";
 
 $sql_lista_pop =
