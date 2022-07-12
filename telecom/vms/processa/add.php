@@ -40,6 +40,8 @@ require "../../../conexoes/conexao.php";
         $result = "INSERT INTO vms (empresa_id, pop_id, servidor_id, hostname, ipaddress, dominio, vlan, sistemaOperacional, recursoMemoria, recursoCPU, recursoDisco1, recursoDisco2, statusvm, criado) VALUES ('$cadastroEmpresa', '$cadastroPop', '$cadastroServidor', '$cadastroHostname', '$cadastroIPAddress', '$cadastroDomino', '$cadastroVLAN', '$cadastroSO', '$cadastroMemoria', '$cadastroVCPU', '$cadastroDisco1', '$cadastroDisco2', '$cadastroStatusVM', NOW())";
         $resultado = mysqli_query($mysqli, $result);
 
+        $id_vm = mysqli_insert_id($mysqli);
+
         if (mysqli_affected_rows($mysqli) > 0) { ?>
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -51,7 +53,7 @@ require "../../../conexoes/conexao.php";
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <a href="/telecom/vms/index.php"><button type="button" class="btn btn-success">Ok</button></a>
+                        <a href="/telecom/vms/view.php?id=<?= $id_vm?>"><button type="button" class="btn btn-success">Ok</button></a>
                         </div>
                     </div>
                 </div>

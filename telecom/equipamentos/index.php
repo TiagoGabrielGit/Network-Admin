@@ -21,6 +21,10 @@ if (empty($_POST['hostnamePesquisa'])) {
     $_POST['hostnamePesquisa'] = "%";
 }
 
+if (empty($_POST['tipoEquipamentoPesquisa'])) {
+    $_POST['tipoEquipamentoPesquisa'] = "%";
+}
+
 if (empty($_POST['fabricantePesquisa'])) {
     $_POST['fabricantePesquisa'] = "%";
 }
@@ -41,6 +45,7 @@ $empresa_id = $_POST['empresaPesquisa'];
 $pop_id = $_POST['popPesquisa'];
 $ipaddress = $_POST['ipaddressPesquisa'];
 $hostname = $_POST['hostnamePesquisa'];
+$tipoEquipamentoPesquisa = $_POST['tipoEquipamentoPesquisa'];
 $fabricante_id = $_POST['fabricantePesquisa'];
 $equipamento_id = $_POST['equipamentoPesquisa'];
 $statusEquipamentoPesquisa = $_POST['statusEquipamentoPesquisa'];
@@ -51,6 +56,7 @@ $sql_pesquisa_EquipamentosPop =
     "SELECT
 equipop.id as id_equipop,
 equipop.hostname as hostname,
+equipop.tipoEquipamento_id as tipoid,
 equipop.ipaddress as ipaddress,
 equipop.deleted as deleted,
 equipop.criado as criado,
@@ -80,7 +86,9 @@ equipop.pop_id LIKE '$pop_id'
 and
 equipop.ipaddress LIKE '$ipaddress'
 and
-equipop.hostname LIKE '$hostname'
+equipop.hostname LIKE '%$hostname%'
+and
+equipop.tipoEquipamento_id LIKE '$tipoEquipamentoPesquisa'
 and
 equipop.equipamento_id LIKE '$equipamento_id'
 and
@@ -89,6 +97,10 @@ and
 equipop.statusEquipamento LIKE '$statusEquipamentoPesquisa'
 and
 equipop.deleted = 1
+ORDER BY
+equipop.hostname ASC
+
+
 LIMIT $limiteBusca
 "; ?>
 
@@ -268,20 +280,25 @@ LIMIT $limiteBusca
                                 <input id="ipaddressPesquisa" name="ipaddressPesquisa" type="text" class="form-control" placeholder="Ex: 192.168.1.1" maxlength="15">
                             </div>
 
-                            <div class="col-2">
-                                <label for="limiteBusca" class="form-label">Limite de busca*</label>
-                                <select id="limiteBusca" name="limiteBusca" class="form-select" require>
-                                    <option disabled selected>100 Resultados</option>
-                                    <option value="10">10 Resultados</option>
-                                    <option value="50">50 Resultados</option>
-                                    <option value="500">500 Resultados</option>
-                                    <option value="1000">1000 Resultados</option>
-                                </select>
-                            </div>
+                            <div class="col-2"></div>
+
 
                             <div class="col-3">
                                 <label for="hostnamePesquisa" class="form-label">Hostname</label>
                                 <input name="hostnamePesquisa" type="text" class="form-control" id="hostnamePesquisa">
+                            </div>
+
+                            <div class="col-3">
+                                <label for="tipoEquipamentoPesquisa" class="form-label">Tipo de Equipamento</label>
+                                <select id="tipoEquipamentoPesquisa" name="tipoEquipamentoPesquisa" class="form-select">
+                                    <option selected disabled>Selecione o tipo</option>
+                                    <?php
+                                    $resultado = mysqli_query($mysqli, $sql_lista_tipos);
+                                    while ($tipos = mysqli_fetch_object($resultado)) :
+                                        echo "<option value='$tipos->id'> $tipos->tipo</option>";
+                                    endwhile;
+                                    ?>
+                                </select>
                             </div>
 
                             <div class="col-3">
@@ -314,8 +331,20 @@ LIMIT $limiteBusca
                                 </select>
                             </div>
 
+
+                            <div class="col-2">
+                                <label for="limiteBusca" class="form-label">Limite de busca*</label>
+                                <select id="limiteBusca" name="limiteBusca" class="form-select" require>
+                                    <option disabled selected>100 Resultados</option>
+                                    <option value="10">10 Resultados</option>
+                                    <option value="50">50 Resultados</option>
+                                    <option value="500">500 Resultados</option>
+                                    <option value="1000">1000 Resultados</option>
+                                </select>
+                            </div>
+
                             <div class="col-6">
-                                <button style="margin-top: 15px; " type="submit" class="btn btn-primary">Buscar</button>
+                                <button style="margin-top: 30px; " type="submit" class="btn btn-primary">Buscar</button>
                             </div>
 
                         </form>
@@ -325,9 +354,8 @@ LIMIT $limiteBusca
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th style="text-align: center;" scope="col">Empresa</th>
-                                    <th style="text-align: center;" scope="col">POP</th>
                                     <th style="text-align: center;" scope="col">Hostname</th>
+                                    <th style="text-align: center;" scope="col">Empresa / POP</th>
                                     <th style="text-align: center;" scope="col">Endereço IP</th>
                                     <th style="text-align: center;" scope="col">Equipamento</th>
                                     <th style="text-align: center;" scope="col">Status</th>
@@ -345,9 +373,8 @@ LIMIT $limiteBusca
                                     echo "<tr>";
                                 ?>
                                     </td>
-                                    <td style="text-align: center;"><?php echo $campos['empresa']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['pop']; ?></td>
                                     <td style="text-align: center;"><?php echo $campos['hostname']; ?></td>
+                                    <td style="text-align: center;"><?php echo $campos['empresa'];?> / <?php echo $campos['pop']; ?></td>
                                     <td style="text-align: center;"><?php echo $campos['ipaddress']; ?></td>
                                     <td style="text-align: center;"><?php echo $campos['equipamento']; ?></td>
                                     <td style="text-align: center;" style="text-align: center;"><?php echo $campos['statuseqp']; ?></td>

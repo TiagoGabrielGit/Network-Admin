@@ -150,7 +150,7 @@ $EmDesenvolvimento = "Em desenvolvimento";
 
                             <div class="col-2">
                                 <label for="editVLAN" class="form-label">VLAN</label>
-                                <input id="editVLAN" name="editVLAN" type="text" class="form-control" value="<?php echo $row['vlan']; ?>">
+                                <input id="editVLAN" name="editVLAN" type="number" maxlength="4" class="form-control" value="<?php echo $row['vlan']; ?>">
                             </div>
 
                             <div class="col-3">
@@ -185,23 +185,23 @@ $EmDesenvolvimento = "Em desenvolvimento";
 
                             <div class="col-4">
                                 <label for="anotacaoPublicaVM" class="form-label">Anotações públicas</label>
-                                <textarea id="anotacaoPublicaVM" name="anotacaoPublicaVM" class="form-control" rows="5"><?php echo $row_apube['anotacaoPublica'] ?></textarea>
+                                <textarea id="anotacaoPublicaVM" name="anotacaoPublicaVM" maxlength="10000" class="form-control" rows="20"><?php echo $row_apube['anotacaoPublica'] ?></textarea>
                             </div>
 
                             <div class="col-4">
                                 <label for="anotacaoEquipeVM" class="form-label">Anotações equipe</label>
-                                <textarea id="anotacaoEquipeVM" name="anotacaoEquipeVM" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento ?></textarea>
+                                <textarea id="anotacaoEquipeVM" name="anotacaoEquipeVM" maxlength="10000" disabled class="form-control" rows="20"><?php echo $EmDesenvolvimento ?></textarea>
                             </div>
 
                             <div class="col-4">
                                 <label for="anotacaoPrivadaVM" class="form-label">Anotações privadas</label>
-                                <textarea id="anotacaoPrivadaVM" name="anotacaoPrivadaVM" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento ?></textarea>
+                                <textarea id="anotacaoPrivadaVM" name="anotacaoPrivadaVM" maxlength="10000" disabled class="form-control" rows="20"><?php echo $EmDesenvolvimento ?></textarea>
                             </div>
 
 
                             <div class="text-center">
                                 <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>
-                                <input type="button" value="Voltar" onClick="history.go(-1)" class="btn btn-secondary">
+                                <a href="/telecom/vms/index.php"><input type="button" value="Voltar" class="btn btn-secondary"></a>
                             </div>
                         </form><!-- Vertical Form -->
 

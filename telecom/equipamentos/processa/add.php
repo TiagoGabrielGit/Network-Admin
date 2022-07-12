@@ -34,10 +34,12 @@ require "../../../conexoes/conexao.php";
         $usuarioIntegracao = $_POST['usuarioIntegracao'];
         $senhaIntegracao = $_POST['senhaIntegracao'];
 
-        //Realiza o cadastro
+        //Realiza o cadastro 
         $result = "INSERT INTO equipamentospop (empresa_id, pop_id, equipamento_id, tipoEquipamento_id, hostname, ipaddress, statusEquipamento, comunidadeSNMPRead, comunidadeSNMPWrite, usuarioIntegracao, senhaIntegracao, deleted, criado)
         VALUES ('$cadastroEmpresa', '$cadastroPop', '$cadastroEquipamento', '$cadastroTipoEquipamento', '$hostname', '$ipaddress', '$statusEquipamento', '$comunidadeSNMPRead', '$comunidadeSNMPWrite', '$usuarioIntegracao', '$senhaIntegracao', '1', NOW())";
         $resultado = mysqli_query($mysqli, $result);
+
+        $id_equipamento = mysqli_insert_id($mysqli);
 
         if (mysqli_affected_rows($mysqli) > 0) { ?>
             <!-- Modal -->
@@ -50,7 +52,8 @@ require "../../../conexoes/conexao.php";
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <a href="/telecom/equipamentos/index.php"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/telecom/equipamentos/view.php?id=<?= $id_equipamento?>"><button type="button" class="btn btn-success">Ok</button></a>
+
                         </div>
                     </div>
                 </div>

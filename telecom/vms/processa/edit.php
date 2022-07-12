@@ -86,8 +86,7 @@ require "../../../conexoes/conexao.php";
                             echo $result_insert_apube;
 
                             echo $result_update_vm;
-                            
-                            
+                                                       
                             ?>
                         </div>
                         <div class="modal-footer">

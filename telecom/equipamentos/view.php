@@ -147,12 +147,7 @@ $EmDesenvolvimento = "Em desenvolvimento";
                                 <label for="inputTipoEquipamento" class="form-label select-label">Tipo de equipamento*</label>
                                 <select id="inputTipoEquipamento" name="inputTipoEquipamento" class="form-select" require>
                                     <option value="<?= $row['id_tipoEquipamento']; ?>"><?= $row['nome_tipoEquipamento']; ?></option>
-                                    <?php
-                                    $resultado = mysqli_query($mysqli, $sql_lista_tipos);
-                                    while ($tipos = mysqli_fetch_object($resultado)) :
-                                        echo "<option value='$tipos->id'> $tipos->tipo</option>";
-                                    endwhile;
-                                    ?>
+
                                 </select>
                             </div>
 
@@ -200,23 +195,23 @@ $EmDesenvolvimento = "Em desenvolvimento";
 
                             <div class="col-4">
                                 <label for="anotacaoPublicaEquipamento" class="form-label">Anotações públicas</label>
-                                <textarea id="anotacaoPublicaEquipamento" name="anotacaoPublicaEquipamento" class="form-control" rows="5"><?php echo $row_apube['anotacaoPublica'] ?></textarea>
+                                <textarea id="anotacaoPublicaEquipamento" name="anotacaoPublicaEquipamento" class="form-control" maxlength="10000" rows="20"><?php echo $row_apube['anotacaoPublica'] ?></textarea>
                             </div>
 
                             <div class="col-4">
                                 <label for="anotacaoEquipeEquipamento" class="form-label">Anotações equipe</label>
-                                <textarea id="anotacaoEquipeEquipamento" name="anotacaoEquipeEquipamento" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento?></textarea>
+                                <textarea id="anotacaoEquipeEquipamento" name="anotacaoEquipeEquipamento" maxlength="10000" disabled class="form-control" rows="20"><?php echo $EmDesenvolvimento?></textarea>
                             </div>
 
                             <div class="col-4">
                                 <label for="anotacaoPrivadaEquipamento" class="form-label">Anotações privadas</label>
-                                <textarea id="anotacaoPrivadaEquipamento" name="anotacaoPrivadaEquipamento" disabled class="form-control" rows="5"><?php echo $EmDesenvolvimento?></textarea>
+                                <textarea id="anotacaoPrivadaEquipamento" name="anotacaoPrivadaEquipamento" disabled maxlength="10000" class="form-control" rows="20"><?php echo $EmDesenvolvimento?></textarea>
                             </div>
 
 
                             <div class="text-center">
                                 <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>
-                                <input type="button" value="Voltar" onClick="history.go(-1)" class="btn btn-secondary">
+                                <a href="/telecom/equipamentos/index.php"><input type="button" value="Voltar" class="btn btn-secondary"></a>
                             </div>
                         </form><!-- Vertical Form -->
 

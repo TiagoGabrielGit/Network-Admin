@@ -10,6 +10,8 @@ FROM
 sistemaoperacional as so
 WHERE
 so.deleted = 1    
+ORDER BY
+so.sistemaoperacional ASC
 ";
 
 ?>

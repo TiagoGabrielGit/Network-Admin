@@ -17,7 +17,7 @@ if (empty($_POST['ipaddressPesquisa'])) {
 }
 
 if (empty($_POST['limiteBusca'])) {
-    $_POST['limiteBusca'] = "5";
+    $_POST['limiteBusca'] = "100";
 }
 
 if (empty($_POST['hostnamePesquisa'])) {
@@ -81,13 +81,16 @@ vm.pop_id LIKE '$pop_id'
 and
 vm.ipaddress LIKE '$ipaddress'
 and
-vm.hostname LIKE '$hostname'
+vm.hostname LIKE '%$hostname%'
 and
 vm.servidor_id LIKE '$servidor'
 and
 vm.sistemaOperacional LIKE '$SO'
 and
 vm.statusvm LIKE '$statusvm'
+ORDER BY
+vm.hostname ASC
+
 LIMIT $limiteBusca
 ";
 
@@ -196,7 +199,7 @@ LIMIT $limiteBusca
 
                                                         <div class="col-2">
                                                             <label for="cadastroVLAN" class="form-label">VLAN</label>
-                                                            <input id="cadastroVLAN" name="cadastroVLAN" type="text" class="form-control" placeholder="Ex: 3577">
+                                                            <input id="cadastroVLAN" name="cadastroVLAN" type="number" class="form-control" maxlength="4" placeholder="Ex: 3577">
                                                         </div>
 
 
@@ -273,10 +276,11 @@ LIMIT $limiteBusca
                             <div class="col-2">
                                 <label for="limiteBusca" class="form-label">Limite de busca*</label>
                                 <select id="limiteBusca" name="limiteBusca" class="form-select" require>
-                                    <option disabled selected>5 Resultados</option>
+                                    <option disabled selected>100 Resultados</option>
+                                    <option value="10">10 Resultados</option>
                                     <option value="50">50 Resultados</option>
-                                    <option value="100">100 Resultados</option>
                                     <option value="500">500 Resultados</option>
+                                    <option value="1000">1000 Resultados</option>
                                 </select>
                             </div>
 
@@ -326,11 +330,11 @@ LIMIT $limiteBusca
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th style="text-align: center;" scope="col">Empresa</th>
-                                    <th style="text-align: center;" scope="col">Servidor</th>
+
                                     <th style="text-align: center;" scope="col">Hostname</th>
+                                    <th style="text-align: center;" scope="col">Empresa / POP</th>
+                                    <th style="text-align: center;" scope="col">Servidor</th>
                                     <th style="text-align: center;" scope="col">Endereço IP</th>
-                                    <th style="text-align: center;" scope="col">POP</th>
                                     <th style="text-align: center;" scope="col">Sistema Operacional</th>
                                     <th style="text-align: center;" scope="col">Status</th>
                                     <th style="text-align: center;" scope="col">Visualizar</th>
@@ -347,11 +351,10 @@ LIMIT $limiteBusca
                                     echo "<tr>";
                                 ?>
                                     </td>
-                                    <td style="text-align: center;"><?php echo $campos['empresa']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['servidor']; ?></td>
                                     <td style="text-align: center;"><?php echo $campos['hostname']; ?></td>
+                                    <td style="text-align: center;"><?php echo $campos['empresa']; ?> / <?php echo $campos['pop']; ?></td>
+                                    <td style="text-align: center;"><?php echo $campos['servidor']; ?></td>
                                     <td style="text-align: center;"><?php echo $campos['ipaddress']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['pop']; ?></td>
                                     <td style="text-align: center;"><?php echo $campos['sistemaOperacional']; ?></td>
                                     <td style="text-align: center;" style="text-align: center;">
                                         <?php echo $campos['statusvm']; ?>

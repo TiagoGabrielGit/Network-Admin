@@ -12,7 +12,9 @@ FROM
 WHERE
     eqpop.pop_id = $id
     and
-    eqpop.tipoEquipamento_id = 10
+    eqpop.tipoEquipamento_id = 4
+    and
+    statusEquipamento = 'Ativado'
 ORDER BY
     eqpop.hostname ASC    
 ";

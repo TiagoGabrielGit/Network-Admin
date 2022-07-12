@@ -17,6 +17,40 @@ require "../includes/menu.php";
 
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
+              <!-- Versão 1.6 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading7">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                    Versão 1.6 - 12/07/2022
+                  </button>
+                </h2>
+                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    Sem novas funcionalidades nesta versão;<br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Adicionado campo de pesquisa Tipo de Equipamento no cadastro de equipamento pop POP;<br>
+                    2. Alterado type para number no campo de VLAN no cadastro de VM;<br>
+                    3. Adicionado href no botão voltar na página de view de VMs e Equipamentos;<br>
+                    4. Ao cadastrar Equipamentos e VMs, vai direto para o view do cadastro;<br>
+                    5. Ordenado a listagem de sistema operacional por ordem alfabética;<br>
+                    6. Aumentado limite de busca para 100 na listagem de VMs;<br>
+                    7. Alterado a busca por "contém" quando buscado digitando hostname na busca por VMs e Equipamentos;<br>
+                    8. Ajustado para listar apenas os servidores com status Ativado no cadastro de novas VMs;<br>
+                    9. Ajustado ordem de colunas na listagem de Equipamentos e VMs;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    Sem correções de BUGs nesta versão;<br>
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    Sem alterações no banco de dados nesta versão;<br>
+                  </div>
+                </div>
+              </div>
+
+
+
               <!-- Versão 1.5 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading6">

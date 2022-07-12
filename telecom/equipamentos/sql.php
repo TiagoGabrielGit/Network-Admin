@@ -63,4 +63,16 @@ ORDER BY
 pop.pop ASC
 ";
 
+$sql_lista_tipos = 
+"SELECT
+tipo.id as id,
+tipo.tipo as tipo
+FROM
+tipoequipamento as tipo
+WHERE
+tipo.deleted = 1
+ORDER BY
+tipo.tipo ASC
+";
+
 ?>
