@@ -137,12 +137,18 @@
         <li class="nav-heading">Telecom</li>
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="/telecom/credenciais/index.php">
+                <i class="bi bi-key"></i>
+                <span>Credenciais</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="/telecom/sitepop/index.php">
                 <i class="bi bi-globe"></i>
                 <span>POP/Site</span>
             </a>
         </li>
-
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="/telecom/equipamentos/index.php">

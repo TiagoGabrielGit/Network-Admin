@@ -17,6 +17,47 @@ require "../includes/menu.php";
 
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
+
+
+              <!-- Versão 1.7 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading8">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                    Versão 1.7 - 18/07/2022
+                  </button>
+                </h2>
+                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. Criado tela de credenciais, pendente implementação de politicas de privacidade;<br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Ordenado empresas por ordem alfabética no campo de pesquisa em VMs e Equipamentos;<br>
+                    2. Removido os campos de comunidade SNMP e usuario integração no cadastro de equipamento por POP; <br>
+                    3. Removido limite de caracteres do campo dominio em /telecom/vms/view.php; <br>
+                    4. Corrigido o caminho para retornar a página de login quando o usuário tenta acessar alguma página sem estar logado; <br>
+                    5. Configurado no modal de pesquisa em Equipamentos e VMs para ficar nos campos de pesquisa as opções selecionadas; <br>
+                    6. Ajustado a obrigatóriedade de preenchimendo de alguns campos; <br>
+                    7. Deixado apenas o campo Anotaçãoes em cadastro de equipamento no pop;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    Sem correções de BUGs nesta versão;<br>
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Removido as colunas de comunidade SNMP e usuario de integragração na tabela equipamentospop;<br>
+                    2. Criado tabela credenciais_email;<br>
+                    3. Criado tabela credenciais_portal;<br>
+                    4. Adicionado coluna anotacaoEquipamento na tabela equipamentospop;<br>
+                    5. Excluido a tabela anotacaopublicaequipamento, migrar o que tem dela para a coluna criada no item 4;<br>
+                    6. Criado a coluna anotacaoVM na tabela vms;<br>
+                    7. Excluido a tabela anotacaopublica_vm, migrar o que tem dela para a coluna criada no item 6;<br>
+                    8. Criado tabela credenciais_equipamento;<br>
+                    9. Criado tabela credenciais_vms;<br>
+                    
+                  </div>
+                </div>
+              </div>
+
               <!-- Versão 1.6 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading7">
@@ -44,7 +85,7 @@ require "../includes/menu.php";
                     Sem correções de BUGs nesta versão;<br>
 
                     <br><strong>Alterações banco de dados</strong><br>
-                    Sem alterações no banco de dados nesta versão;<br>
+                    Sem novas alterações;<br>
                   </div>
                 </div>
               </div>

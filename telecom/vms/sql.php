@@ -8,6 +8,8 @@ FROM
 empresas as emp
 WHERE
 emp.deleted = 1
+ORDER BY
+emp.fantasia ASC
 ";
 
 $sql_lista_so = 

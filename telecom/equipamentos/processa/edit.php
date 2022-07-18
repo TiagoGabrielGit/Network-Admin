@@ -1,5 +1,4 @@
 <?php
-require "../../../protect.php";
 require "../../../conexoes/conexao.php";
 ?>
 
@@ -31,19 +30,11 @@ require "../../../conexoes/conexao.php";
                 $inputTipoEquipamento = $_POST['inputTipoEquipamento'];
                 $inputIpAddress = $_POST['inputIpAddress'];
                 $inputStatus = $_POST['inputStatus'];
-                $comunidadeSNMPRead = $_POST['comunidadeSNMPRead'];
-                $comunidadeSNMPWrite = $_POST['comunidadeSNMPWrite'];
-                $usuarioIntegracao = $_POST['usuarioIntegracao'];
-                $senhaIntegracao = $_POST['senhaIntegracao'];
-                $anotacaoPublicaEquipamento = $_POST['anotacaoPublicaEquipamento'];
+                $anotacaoEquipamento = $_POST['anotacaoEquipamento'];
                 $usuario_id = $_SESSION['id'];
-             
-                $result_insert_apube = "INSERT INTO anotacaopublicaequipamento (usuario_id, equipamento_id, anotacao, criado) VALUES ('$usuario_id', '$id', '$anotacaoPublicaEquipamento', NOW())";
-                $resultado_apube = mysqli_query($mysqli, $result_insert_apube);
 
 
-                $result_update_eqpop = "UPDATE equipamentospop SET empresa_id='$inputEmpresa', pop_id='$inputPop', ipaddress='$inputIpAddress', hostname='$inputHostname', tipoEquipamento_id='$inputTipoEquipamento', equipamento_id='$inputEquipamento', statusEquipamento='$inputStatus', 
-                comunidadeSNMPRead='$comunidadeSNMPRead', comunidadeSNMPWrite='$comunidadeSNMPWrite', usuarioIntegracao='$usuarioIntegracao', senhaIntegracao='$senhaIntegracao', modificado=NOW() WHERE id='$id'";               
+                $result_update_eqpop = "UPDATE equipamentospop SET anotacaoEquipamento='$anotacaoEquipamento', empresa_id='$inputEmpresa', pop_id='$inputPop', ipaddress='$inputIpAddress', hostname='$inputHostname', tipoEquipamento_id='$inputTipoEquipamento', equipamento_id='$inputEquipamento', statusEquipamento='$inputStatus', modificado=NOW() WHERE id='$id'";
                 $resultado_eqpop = mysqli_query($mysqli, $result_update_eqpop);
 
 

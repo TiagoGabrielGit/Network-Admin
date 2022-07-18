@@ -147,7 +147,7 @@ LIMIT $limiteBusca
 
                                                         <div class="col-6">
                                                             <label for="cadastroEmpresa" class="form-label">Empresa*</label>
-                                                            <select id="cadastroEmpresa" name="cadastroEmpresa" class="form-select" require>
+                                                            <select id="cadastroEmpresa" name="cadastroEmpresa" class="form-select" required>
                                                                 <option selected disabled>Selecione a empresa</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $sql_lista_empresas);
@@ -160,7 +160,7 @@ LIMIT $limiteBusca
 
                                                         <div class="col-4">
                                                             <label for="cadastroPop" class="form-label">POP*</label>
-                                                            <select id="cadastroPop" name="cadastroPop" class="form-select" require>
+                                                            <select id="cadastroPop" name="cadastroPop" class="form-select" required>
                                                                 <option selected disabled>Selecione o pop</option>
                                                             </select>
                                                         </div>
@@ -169,7 +169,7 @@ LIMIT $limiteBusca
 
                                                         <div class="col-4">
                                                             <label for="cadastroFabricante" class="form-label">Fabricante*</label>
-                                                            <select id="cadastroFabricante" name="cadastroFabricante" class="form-select" require>
+                                                            <select id="cadastroFabricante" name="cadastroFabricante" class="form-select" required>
                                                                 <option selected disabled>Selecione o fabricante</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $sql_lista_fabricantes);
@@ -182,14 +182,14 @@ LIMIT $limiteBusca
 
                                                         <div class="col-4">
                                                             <label for="cadastroEquipamento" class="form-label">Equipamento*</label>
-                                                            <select id="cadastroEquipamento" name="cadastroEquipamento" class="form-select" require>
+                                                            <select id="cadastroEquipamento" name="cadastroEquipamento" class="form-select" required>
                                                                 <option selected disabled>Selecione o equipamento</option>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-4">
                                                             <label for="cadastroTipoEquipamento" class="form-label select-label">Tipo de equipamento*</label>
-                                                            <select id="cadastroTipoEquipamento" name="cadastroTipoEquipamento" class="form-select" require>
+                                                            <select id="cadastroTipoEquipamento" name="cadastroTipoEquipamento" class="form-select" required>
                                                                 <option selected disabled>Selecione o tipo</option>
                                                             </select>
                                                         </div>
@@ -198,44 +198,22 @@ LIMIT $limiteBusca
 
                                                         <div class="col-4">
                                                             <label for="hostname" class="form-label">Hostname*</label>
-                                                            <input name="hostname" type="text" class="form-control" id="hostname" placeholder="Ex: sw01.POPABC" require>
+                                                            <input name="hostname" type="text" class="form-control" id="hostname" placeholder="Ex: sw01.POPABC" required>
                                                         </div>
 
                                                         <div class="col-4">
                                                             <label for="ipaddress" class="form-label">Endereço IP*</label>
-                                                            <input id="ipaddress" name="ipaddress" type="text" class="form-control" placeholder="Ex: 192.168.1.1" maxlength="15" require>
+                                                            <input id="ipaddress" name="ipaddress" type="text" class="form-control" placeholder="Ex: 192.168.1.1" maxlength="15" required>
                                                         </div>
 
                                                         <div class="col-4">
                                                             <label for="statusEquipamento" class="form-label">Status*</label>
-                                                            <select id="statusEquipamento" name="statusEquipamento" class="form-select" require>
+                                                            <select id="statusEquipamento" name="statusEquipamento" class="form-select" required>
                                                                 <option selected disabled>Selecione o status</option>>
                                                                 <option value="Ativado">Ativado</option>
                                                                 <option value="Em Implementação">Em Implementação</option>
                                                                 <option value="Inativado">Inativado</option>
                                                             </select>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <label for="comunidadeSNMPRead" class="form-label">Comunidade SNMP Leitura</label>
-                                                            <input name="comunidadeSNMPRead" type="text" class="form-control" id="comunidadeSNMPRead">
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <label for="comunidadeSNMPWrite" class="form-label">Comunidade SNMP Escrita</label>
-                                                            <input name="comunidadeSNMPWrite" type="text" class="form-control" id="comunidadeSNMPWrite">
-                                                        </div>
-
-                                                        <div class="col-4"></div>
-
-                                                        <div class="col-4">
-                                                            <label for="usuarioIntegracao" class="form-label">Usuário integração</label>
-                                                            <input name="usuarioIntegracao" type="text" class="form-control" id="usuarioIntegracao">
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <label for="senhaIntegracao" class="form-label">Senha integração</label>
-                                                            <input name="senhaIntegracao" type="password" class="form-control" id="senhaIntegracao">
                                                         </div>
 
                                                         <hr class="sidebar-divider">
@@ -264,6 +242,18 @@ LIMIT $limiteBusca
                                     while ($empresa = mysqli_fetch_object($resultado)) :
                                         echo "<option value='$empresa->id'> $empresa->empresa</option>";
                                     endwhile;
+
+                                    if ($_SERVER["REQUEST_METHOD"] == 'POST') :
+
+                                    ?>
+                                        <script>
+                                            let nomeEmpresa = '<?= $_POST['empresaPesquisa']; ?>'
+                                            if (nomeEmpresa == '%') {} else {
+                                                document.querySelector("#empresaPesquisa").value = nomeEmpresa
+                                            }
+                                        </script>
+                                    <?php
+                                    endif;
                                     ?>
                                 </select>
                             </div>
@@ -278,6 +268,17 @@ LIMIT $limiteBusca
                             <div class="col-3">
                                 <label for="ipaddressPesquisa" class="form-label">Endereço IP</label>
                                 <input id="ipaddressPesquisa" name="ipaddressPesquisa" type="text" class="form-control" placeholder="Ex: 192.168.1.1" maxlength="15">
+
+                                <?php if ($_SERVER["REQUEST_METHOD"] == 'POST') : ?>
+                                    <script>
+                                        let ipaddr = '<?= $_POST['ipaddressPesquisa']; ?>'
+                                        if (ipaddr == '%') {} else {
+                                            document.querySelector("#ipaddressPesquisa").value = ipaddr
+                                        }
+                                    </script>
+                                <?php
+                                endif;
+                                ?>
                             </div>
 
                             <div class="col-2"></div>
@@ -286,6 +287,18 @@ LIMIT $limiteBusca
                             <div class="col-3">
                                 <label for="hostnamePesquisa" class="form-label">Hostname</label>
                                 <input name="hostnamePesquisa" type="text" class="form-control" id="hostnamePesquisa">
+
+                                <?php if ($_SERVER["REQUEST_METHOD"] == 'POST') : ?>
+                                    <script>
+                                        let hostname = '<?= $_POST['hostnamePesquisa']; ?>'
+                                        if (hostname == '%') {} else {
+                                            document.querySelector("#hostnamePesquisa").value = hostname
+                                        }
+                                    </script>
+                                <?php
+                                endif;
+                                ?>
+
                             </div>
 
                             <div class="col-3">
@@ -297,6 +310,18 @@ LIMIT $limiteBusca
                                     while ($tipos = mysqli_fetch_object($resultado)) :
                                         echo "<option value='$tipos->id'> $tipos->tipo</option>";
                                     endwhile;
+
+                                    if ($_SERVER["REQUEST_METHOD"] == 'POST') :
+
+                                    ?>
+                                        <script>
+                                            let tipoEquipamentoPesquisa = '<?= $_POST['tipoEquipamentoPesquisa']; ?>'
+                                            if (tipoEquipamentoPesquisa == '%') {} else {
+                                                document.querySelector("#tipoEquipamentoPesquisa").value = tipoEquipamentoPesquisa
+                                            }
+                                        </script>
+                                    <?php
+                                    endif;
                                     ?>
                                 </select>
                             </div>
@@ -310,6 +335,18 @@ LIMIT $limiteBusca
                                     while ($fabricante = mysqli_fetch_object($resultado)) :
                                         echo "<option value='$fabricante->id'> $fabricante->fabricante</option>";
                                     endwhile;
+
+                                    if ($_SERVER["REQUEST_METHOD"] == 'POST') :
+
+                                    ?>
+                                        <script>
+                                            let fabricantePesquisa = '<?= $_POST['fabricantePesquisa']; ?>'
+                                            if (fabricantePesquisa == '%') {} else {
+                                                document.querySelector("#fabricantePesquisa").value = fabricantePesquisa
+                                            }
+                                        </script>
+                                    <?php
+                                    endif;
                                     ?>
                                 </select>
                             </div>
@@ -323,23 +360,47 @@ LIMIT $limiteBusca
 
                             <div class="col-3">
                                 <label for="statusEquipamentoPesquisa" class="form-label">Status</label>
-                                <select id="statusEquipamentoPesquisa" name="statusEquipamentoPesquisa" class="form-select" require>
+                                <select id="statusEquipamentoPesquisa" name="statusEquipamentoPesquisa" class="form-select" required>
                                     <option selected disabled>Ativado</option>>
                                     <option value="Ativado">Ativado</option>
                                     <option value="Em Implementação">Em Implementação</option>
                                     <option value="Inativado">Inativado</option>
+
+
+                                    <?php if ($_SERVER["REQUEST_METHOD"] == 'POST') : ?>
+                                        <script>
+                                            let statusEquipamentoPesquisa = '<?= $_POST['statusEquipamentoPesquisa']; ?>'
+                                            if (statusEquipamentoPesquisa == 'Ativado') {} else {
+                                                document.querySelector("#statusEquipamentoPesquisa").value = statusEquipamentoPesquisa
+                                            }
+                                        </script>
+                                    <?php
+                                    endif;
+                                    ?>
+
                                 </select>
                             </div>
 
-
                             <div class="col-2">
                                 <label for="limiteBusca" class="form-label">Limite de busca*</label>
-                                <select id="limiteBusca" name="limiteBusca" class="form-select" require>
+                                <select id="limiteBusca" name="limiteBusca" class="form-select" required>
                                     <option disabled selected>100 Resultados</option>
                                     <option value="10">10 Resultados</option>
                                     <option value="50">50 Resultados</option>
                                     <option value="500">500 Resultados</option>
                                     <option value="1000">1000 Resultados</option>
+
+                                    <?php if ($_SERVER["REQUEST_METHOD"] == 'POST') : ?>
+                                        <script>
+                                            let limiteBusca = '<?= $_POST['limiteBusca']; ?>'
+                                            if (limiteBusca == '100') {} else {
+                                                document.querySelector("#limiteBusca").value = limiteBusca
+                                            }
+                                        </script>
+                                    <?php
+                                    endif;
+                                    ?>
+
                                 </select>
                             </div>
 
@@ -374,7 +435,7 @@ LIMIT $limiteBusca
                                 ?>
                                     </td>
                                     <td style="text-align: center;"><?php echo $campos['hostname']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['empresa'];?> / <?php echo $campos['pop']; ?></td>
+                                    <td style="text-align: center;"><?php echo $campos['empresa']; ?> / <?php echo $campos['pop']; ?></td>
                                     <td style="text-align: center;"><?php echo $campos['ipaddress']; ?></td>
                                     <td style="text-align: center;"><?php echo $campos['equipamento']; ?></td>
                                     <td style="text-align: center;" style="text-align: center;"><?php echo $campos['statuseqp']; ?></td>

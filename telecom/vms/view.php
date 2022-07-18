@@ -15,6 +15,7 @@ vm.hostname as hostname,
 vm.ipaddress as ipaddress,
 vm.dominio as dominio,
 vm.statusVM as statusVM,
+vm.anotacaoVM as anotacaoVM,
 vm.recursoMemoria as recursoMemoria,
 vm.recursoCPU as recursoCPU,
 vm.recursoDisco1 as recursoDisco1,
@@ -52,27 +53,6 @@ vm.id = '$id'
 
 $resultado = mysqli_query($mysqli, $sql_sql_vm);
 $row = mysqli_fetch_assoc($resultado);
-
-$sql_anotacao_publica =
-    "SELECT
-apube.anotacao as anotacaoPublica
-FROM
-anotacaopublica_vm as apube
-WHERE
-vm_id = '$id'
-ORDER BY
-apube.id DESC
-LIMIT 1
-";
-
-$resultado_apube = mysqli_query($mysqli, $sql_anotacao_publica);
-$row_apube = mysqli_fetch_assoc($resultado_apube);
-
-if (empty($row_apube['anotacaoPublica'])) {
-    $row_apube['anotacaoPublica'] = "";
-}
-
-$EmDesenvolvimento = "Em desenvolvimento";
 
 ?>
 
@@ -145,7 +125,7 @@ $EmDesenvolvimento = "Em desenvolvimento";
 
                             <div class="col-3">
                                 <label for="editDominio" class="form-label">Dominio</label>
-                                <input id="editDominio" name="editDominio" type="text" class="form-control" value="<?php echo $row['dominio']; ?>" maxlength="15" require>
+                                <input id="editDominio" name="editDominio" type="text" class="form-control" value="<?php echo $row['dominio']; ?>" require>
                             </div>
 
                             <div class="col-2">
@@ -183,21 +163,10 @@ $EmDesenvolvimento = "Em desenvolvimento";
                                 <input name="editDisco2" type="number" class="form-control" id="editDisco2" value="<?php echo $row['recursoDisco2']; ?>">
                             </div>
 
-                            <div class="col-4">
-                                <label for="anotacaoPublicaVM" class="form-label">Anotações públicas</label>
-                                <textarea id="anotacaoPublicaVM" name="anotacaoPublicaVM" maxlength="10000" class="form-control" rows="20"><?php echo $row_apube['anotacaoPublica'] ?></textarea>
+                            <div class="col-12">
+                                <label for="anotacaoVM" class="form-label">Anotações</label>
+                                <textarea id="anotacaoVM" name="anotacaoVM" maxlength="10000" class="form-control" rows="10"><?php echo $row['anotacaoVM'] ?></textarea>
                             </div>
-
-                            <div class="col-4">
-                                <label for="anotacaoEquipeVM" class="form-label">Anotações equipe</label>
-                                <textarea id="anotacaoEquipeVM" name="anotacaoEquipeVM" maxlength="10000" disabled class="form-control" rows="20"><?php echo $EmDesenvolvimento ?></textarea>
-                            </div>
-
-                            <div class="col-4">
-                                <label for="anotacaoPrivadaVM" class="form-label">Anotações privadas</label>
-                                <textarea id="anotacaoPrivadaVM" name="anotacaoPrivadaVM" maxlength="10000" disabled class="form-control" rows="20"><?php echo $EmDesenvolvimento ?></textarea>
-                            </div>
-
 
                             <div class="text-center">
                                 <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>

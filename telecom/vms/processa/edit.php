@@ -36,14 +36,11 @@ require "../../../conexoes/conexao.php";
         $editVCPU = $_POST['editVCPU'];
         $editDisco1 = $_POST['editDisco1'];
         $editDisco2 = $_POST['editDisco2'];
-        $anotacaoPublicaVM = $_POST['anotacaoPublicaVM'];
+        $anotacaoVM = $_POST['anotacaoVM'];
         $usuario_id = $_SESSION['id'];
 
-        $result_insert_apube = "INSERT INTO anotacaopublica_vm (usuario_id, vm_id, anotacao, criado) VALUES ('$usuario_id', '$id', '$anotacaoPublicaVM', NOW())";
-        $resultado_apube = mysqli_query($mysqli, $result_insert_apube);
 
-
-        $result_update_vm = "UPDATE vms SET empresa_id='$editEmpresa', pop_id='$editPOP', servidor_id='$editServidor', hostname='$editHostname', ipaddress='$editIPAddress',
+        $result_update_vm = "UPDATE vms SET anotacaoVM='$anotacaoVM', empresa_id='$editEmpresa', pop_id='$editPOP', servidor_id='$editServidor', hostname='$editHostname', ipaddress='$editIPAddress',
         dominio='$editDominio', vlan='$editVLAN', sistemaOperacional='$editSO', recursoMemoria='$editMemoria', recursoCPU='$editVCPU', 
         recursoDisco1='$editDisco1', recursoDisco2='$editDisco2', statusvm='$editStatusVM', modificado=NOW() WHERE id='$id'";
         $resultado_eqpop = mysqli_query($mysqli, $result_update_vm);

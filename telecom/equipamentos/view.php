@@ -14,11 +14,8 @@ eqpop.id as id_equipamentoPop,
 eqpop.hostname as hostname,
 eqpop.pop_id as id_pop,
 eqpop.ipaddress as ipaddress,
+eqpop.anotacaoEquipamento as anotacaoEquipamento,
 eqpop.statusEquipamento as eqpopstatus,
-eqpop.comunidadeSNMPRead as SNMPRead,
-eqpop.comunidadeSNMPWrite as SNMPWrite,
-eqpop.usuarioIntegracao as usuarioIntegracao,
-eqpop.senhaIntegracao as senhaIntegracao,
 emp.fantasia as nome_empresa,
 emp.id as id_empresa,
 pop.pop as nome_pop,
@@ -56,27 +53,6 @@ eqpop.id = '$id'
 
 $resultado = mysqli_query($mysqli, $sql_sql_equipamentopop);
 $row = mysqli_fetch_assoc($resultado);
-
-$sql_anotacao_publica =
-"SELECT
-apube.anotacao as anotacaoPublica
-FROM
-anotacaopublicaequipamento as apube
-WHERE
-equipamento_id = '$id'
-ORDER BY
-apube.id DESC
-LIMIT 1
-";
-
-$resultado_apube = mysqli_query($mysqli, $sql_anotacao_publica);
-$row_apube = mysqli_fetch_assoc($resultado_apube);
-
-if(empty($row_apube['anotacaoPublica'])){
-    $row_apube['anotacaoPublica'] = "";
-}
-
-$EmDesenvolvimento = "Em desenvolvimento";
 
 ?>
 
@@ -167,47 +143,12 @@ $EmDesenvolvimento = "Em desenvolvimento";
                                 </select>
                             </div>
 
-                            <div class="col-4"></div>
-
-                            <div class="col-4">
-                                <label for="comunidadeSNMPRead" class="form-label">Comunidade SNMP Leitura</label>
-                                <input name="comunidadeSNMPRead" type="text" class="form-control" id="comunidadeSNMPRead" value="<?php echo $row['SNMPRead']; ?>">
-                            </div>
-
-                            <div class="col-4">
-                                <label for="comunidadeSNMPWrite" class="form-label">Comunidade SNMP Escrita</label>
-                                <input name="comunidadeSNMPWrite" type="text" class="form-control" id="comunidadeSNMPWrite" value="<?php echo $row['SNMPWrite']; ?>">
-                            </div>
-
-                            <div class="col-4"></div>
-
-                            <div class="col-4">
-                                <label for="usuarioIntegracao" class="form-label">Usuário integração</label>
-                                <input name="usuarioIntegracao" type="text" class="form-control" id="usuarioIntegracao" value="<?php echo $row['usuarioIntegracao']; ?>">
-                            </div>
-
-                            <div class="col-4">
-                                <label for="senhaIntegracao" class="form-label">Senha integração</label>
-                                <input name="senhaIntegracao" type="password" class="form-control" id="senhaIntegracao" value="<?php echo $row['senhaIntegracao']; ?>">
-                            </div>
-
                             <hr class="sidebar-divider">
 
-                            <div class="col-4">
-                                <label for="anotacaoPublicaEquipamento" class="form-label">Anotações públicas</label>
-                                <textarea id="anotacaoPublicaEquipamento" name="anotacaoPublicaEquipamento" class="form-control" maxlength="10000" rows="20"><?php echo $row_apube['anotacaoPublica'] ?></textarea>
+                            <div class="col-12">
+                                <label for="anotacaoEquipamento" class="form-label">Anotações</label>
+                                <textarea id="anotacaoEquipamento" name="anotacaoEquipamento" class="form-control" maxlength="10000" rows="10"><?php echo $row['anotacaoEquipamento'] ?></textarea>
                             </div>
-
-                            <div class="col-4">
-                                <label for="anotacaoEquipeEquipamento" class="form-label">Anotações equipe</label>
-                                <textarea id="anotacaoEquipeEquipamento" name="anotacaoEquipeEquipamento" maxlength="10000" disabled class="form-control" rows="20"><?php echo $EmDesenvolvimento?></textarea>
-                            </div>
-
-                            <div class="col-4">
-                                <label for="anotacaoPrivadaEquipamento" class="form-label">Anotações privadas</label>
-                                <textarea id="anotacaoPrivadaEquipamento" name="anotacaoPrivadaEquipamento" disabled maxlength="10000" class="form-control" rows="20"><?php echo $EmDesenvolvimento?></textarea>
-                            </div>
-
 
                             <div class="text-center">
                                 <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>

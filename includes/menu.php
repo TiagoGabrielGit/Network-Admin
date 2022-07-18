@@ -4,7 +4,7 @@ session_start();
 // Verifica se existe os dados da sessão de login
 if (!isset($_SESSION["id"])) {
   // Usuário não logado! Redireciona para a página de login
-  header("Location: login.php");
+  header("Location: /login.php");
   exit;
 }
 
@@ -46,6 +46,7 @@ $user_ip = $_SESSION['ip_address']
 
   <!-- Template Main CSS File -->
   <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/stylesheet.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.2.2
