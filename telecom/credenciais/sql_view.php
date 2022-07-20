@@ -22,6 +22,7 @@ credvm.vmusuario as cred_usuario,
 credvm.vmsenha as cred_senha,
 vm.hostname as vm_hostname,
 vm.id as vm_id,
+vm.ipaddress as cred_ip,
 emp.id as emp_id,
 emp.fantasia as emp_fantasia
 FROM
@@ -71,6 +72,7 @@ credequip.equipamentodescricao as cred_descricao,
 credequip.equipamentousuario as cred_usuario,
 credequip.equipamentosenha as cred_senha,
 eqp.hostname as cred_hostname,
+eqp.ipaddress as cred_ip,
 emp.fantasia as emp_fantasia
 FROM
 credenciais_equipamento as credequip

@@ -52,6 +52,11 @@
                                 <input disabled name="editEquipamento" type="text" class="form-control" id="editEquipamento" value="<?= $row['cred_hostname']; ?>">
                             </div>
 
+                            <div class="col-3" style="display: inline-block;">
+                                <label class="form-label">Endereço IP</label>
+                                <input disabled type="text" class="form-control" value="<?= $row['cred_ip']; ?>">
+                            </div>
+
                             <hr class="sidebar-divider">
 
                             <div class="col-6" style="display: inline-block;">
@@ -59,7 +64,7 @@
                                 <input name="editDescricao" type="text" class="form-control" id="editDescricao" value="<?= $row['cred_descricao']; ?>">
                             </div>
 
-                            <div class="col-4" style="display: inline-block;"> </div>
+                            <div class="col-4" style="display: inline-block;"></div>
 
                             <div class="col-4" style="display: inline-block;">
                                 <label for="editUsuario" class="form-label">Usuário</label>

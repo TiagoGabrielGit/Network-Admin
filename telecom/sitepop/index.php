@@ -48,7 +48,7 @@ require "sql.php";
 
                                                         <div class="col-12">
                                                             <label for="inputEmpresa" class="form-label">Empresa*</label>
-                                                            <select id="empresa" name="empresa" class="form-select" require>
+                                                            <select id="empresa" name="empresa" class="form-select" required>
                                                                 <option selected disabled>Selecione a empresa</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $sql_lista_empresas);
@@ -61,7 +61,7 @@ require "sql.php";
 
                                                         <div class="col-4">
                                                             <label for="inputPOP" class="form-label">POP*</label>
-                                                            <input name="pop" type="text" class="form-control" id="inputPOP" require>
+                                                            <input name="pop" type="text" class="form-control" id="inputPOP" required>
                                                         </div>
 
                                                         <div class="col-8">
@@ -71,7 +71,7 @@ require "sql.php";
 
                                                         <div class="col-6">
                                                             <label for="cidade" class="form-label">Cidade*</label>
-                                                            <select id="cidade" name="cidade" class="form-select" require>
+                                                            <select id="cidade" name="cidade" class="form-select" required>
                                                                 <option selected disabled>Selecione a cidade</option>
                                                                 <?php
                                                                 $resultado = mysqli_query($mysqli, $sql_lista_cidades);
@@ -84,14 +84,14 @@ require "sql.php";
 
                                                         <div class="col-6">
                                                             <label for="inputBairro" class="form-label">Bairro*</label>
-                                                            <select id="bairro" name="bairro" class="form-select" require>
+                                                            <select id="bairro" name="bairro" class="form-select" required>
                                                                 <option selected disabled>Selecione a cidade</option>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-8">
                                                             <label for="inputLogradouro" class="form-label">Logradouro*</label>
-                                                            <select id="logradouro" name="logradouro" class="form-select" require>
+                                                            <select id="logradouro" name="logradouro" class="form-select" required>
                                                                 <option selected disabled>Selecione o bairro</option>
                                                             </select>
                                                         </div>
@@ -139,7 +139,6 @@ require "sql.php";
                                     <th scope="col">Descrição</th>
                                     <th scope="col">Cidade</th>
                                     <th style="text-align: center;" scope="col">Visualizar</th>
-                                    <th style="text-align: center;" scope="col">Excluir</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -158,10 +157,8 @@ require "sql.php";
                                     <td><?php echo $campos['apelidoPop']; ?></td>
                                     <td><?php echo $campos['cidade']; ?></td>
                                     <td style="text-align: center;">
-                                        <?php echo "<a href='view.php?id=" . $campos['id'] . "'" . "class='bi bi-eye-fill'</a>"; ?>   
-                                    </td>
-                                    <td style="text-align: center;">
-                                    <?php echo "<a href='processa/delete.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-trash-fill' </a>"; ?>
+                                        <a href="view.php?id=<?= $campos['id']; ?>" type="button" title="Ver mais" class="bi bi-eye-fill"></a>
+                                        <a href="rack.php?id=<?= $campos['id']; ?>&pop=<?=$campos['pop']?>" type="button" title="Racks" class="bi bi-menu-button-wide"></a>
                                     </td>
                                     </tr>
                                 <?php } ?>

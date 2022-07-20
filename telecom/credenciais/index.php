@@ -2,6 +2,19 @@
 require "../../includes/menu.php";
 require "../../conexoes/conexao.php";
 
+$id_elemento = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$tipo_elemento = filter_input(INPUT_GET, 'tipo');
+
+if ($tipo_elemento == "Equipamento") {
+    $_POST['pesquisaTipo'] = "equipamento";
+    $id_equipamento = $id_elemento;
+}
+
+if ($tipo_elemento == "VM") {
+    $_POST['pesquisaTipo'] = "vm";
+    $id_vm = $id_elemento;
+}
+
 if (empty($_POST['pesquisaTipo'])) {
     $_POST['pesquisaTipo'] = "%";
 }
@@ -12,6 +25,14 @@ if (empty($_POST['empresaPesquisa'])) {
 
 if (empty($_POST['pesquisaDescricao'])) {
     $_POST['pesquisaDescricao'] = "%";
+}
+
+if (empty($id_equipamento)) {
+    $id_equipamento = "%";
+}
+
+if (empty($id_vm)) {
+    $id_vm = "%";
 }
 
 
@@ -84,7 +105,7 @@ require "sql.php";
                                                         <div class="col-3">
                                                             <label for="cadastroTipo" class="form-label">Tipo*</label>
                                                             <select id="cadastroTipo" name="cadastroTipo" class="form-select" required>
-                                                                <option value="">Selecione</option>>
+                                                                <option disabled value="">Selecione</option>>
                                                                 <option value="email">E-mail</option>
                                                                 <option value="equipamento">Equipamento</option>
                                                                 <option value="portal">Portal</option>
@@ -364,6 +385,7 @@ require "sql.php";
                                 <tr>
                                     <th style="text-align: center;" scope="col">Empresa</th>
                                     <th style="text-align: center;" scope="col">Tipo</th>
+                                    <th style="text-align: center;" scope="col">Equipamento/VM</th>
                                     <th style="text-align: center;" scope="col">Descrição</th>
                                     <th style="text-align: center;" scope="col">Usuário</th>
                                     <th style="text-align: center;" scope="col">Privacidade</th>
@@ -380,11 +402,12 @@ require "sql.php";
                                     echo "<tr>";
                                 ?>
                                     </td>
-                                    <td style="text-align: center;"><?php echo $campos['emp_fant']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_tipo']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_desc']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_usuario']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_priv']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['emp_fant']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_tipo']; ?></td>
+                                    <td style="text-align: center;"><?= "-" ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_desc']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_usuario']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_priv']; ?></td>
                                     <td style="text-align: center;">
                                         <a class='bi bi-eye-fill' href="view.php?id=<?= $campos['cred_id']; ?>&tipo=<?= $campos['cred_tipo']; ?>"> </a>
                                     </td>
@@ -399,11 +422,12 @@ require "sql.php";
                                     echo "<tr>";
                                 ?>
                                     </td>
-                                    <td style="text-align: center;"><?php echo $campos['emp_fant']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_tipo']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_hostname']; ?> - <?php echo $campos['cred_desc']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_usuario']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_priv']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['emp_fant']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_tipo']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_hostname']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_desc']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_usuario']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_priv']; ?></td>
                                     <td style="text-align: center;">
                                         <a class="bi bi-eye-fill" href="view.php?id=<?= $campos['cred_id']; ?>&tipo=<?= $campos['cred_tipo']; ?>"></a>
                                     </td>
@@ -418,11 +442,12 @@ require "sql.php";
                                     echo "<tr>";
                                 ?>
                                     </td>
-                                    <td style="text-align: center;"><?php echo $campos['emp_fant']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_tipo']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_desc']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_usuario']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_priv']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['emp_fant']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_tipo']; ?></td>
+                                    <td style="text-align: center;"><?= "-" ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_desc']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_usuario']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_priv']; ?></td>
                                     <td style="text-align: center;">
                                         <a class="bi bi-eye-fill" href="view.php?id=<?= $campos['cred_id']; ?>&tipo=<?= $campos['cred_tipo']; ?>"></a>
                                     </td>
@@ -437,11 +462,20 @@ require "sql.php";
                                     echo "<tr>";
                                 ?>
                                     </td>
-                                    <td style="text-align: center;"><?php echo $campos['emp_fant']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_tipo']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_hostname']; ?> - <?php echo $campos['cred_desc']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_usuario']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['cred_priv']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['emp_fant']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_tipo']; ?></td>
+                                    <td style="text-align: center;">
+                                        <?php
+                                        if (empty($campos['cred_hostname'])) {
+                                            echo "Não localizado";
+                                        } else {
+                                            echo $campos['cred_hostname'];
+                                        }
+                                        ?>
+                                    </td>
+                                    <td style="text-align: center;"><?= $campos['cred_desc']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_usuario']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_priv']; ?></td>
                                     <td style="text-align: center;">
                                         <a class="bi bi-eye-fill" href="view.php?id=<?= $campos['cred_id']; ?>&tipo=<?= $campos['cred_tipo']; ?>"></a>
                                     </td>

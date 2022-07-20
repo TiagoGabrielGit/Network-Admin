@@ -63,15 +63,15 @@ $row = mysqli_fetch_assoc($resultado);
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Código <?php echo $row['id_equipamentoPop']; ?> - <?php echo $row['hostname'];?></h5>
+                        <h5 class="card-title">Código <?php echo $row['id_equipamentoPop']; ?> - <?php echo $row['hostname']; ?></h5>
 
                         <form method="POST" action="processa/edit.php" class="row g-3">
 
                             <input name="id" type="text" class="form-control" id="id" value="<?php echo $row['id_equipamentoPop']; ?>" hidden>
 
-                            <div class="col-6">
+                            <div class="col-3">
                                 <label for="inputEmpresa" class="form-label">Empresa*</label>
-                                <select id="inputEmpresa" name="inputEmpresa" class="form-select" require>
+                                <select id="inputEmpresa" name="inputEmpresa" class="form-select" required>
                                     <option value="<?= $row['id_empresa']; ?>"><?= $row['nome_empresa']; ?></option>
                                     <?php
                                     $resultado = mysqli_query($mysqli, $sql_lista_empresas);
@@ -82,8 +82,8 @@ $row = mysqli_fetch_assoc($resultado);
                             </div>
 
                             <div class="col-2">
-                                <label for="inputPop" class="form-label">POP*</label>
-                                <select id="inputPop" name="inputPop" class="form-select" value="<?php echo $row['nome_pop']; ?>" require>
+                                <label for="editEquipamentoPop" class="form-label">POP*</label>
+                                <select id="editEquipamentoPop" name="editEquipamentoPop" class="form-select" value="<?php echo $row['nome_pop']; ?>" required>
                                     <option value="<?= $row['id_pop']; ?>"><?= $row['nome_pop']; ?></option>
                                     <?php
                                     $resultado = mysqli_query($mysqli, $sql_lista_pop);
@@ -93,16 +93,24 @@ $row = mysqli_fetch_assoc($resultado);
                                 </select>
                             </div>
 
+                            <div class="col-2">
+                                <label for="editEquipamentoRack" class="form-label">Rack*</label>
+                                <select id="editEquipamentoRack" name="editEquipamentoRack" class="form-select">
+                                    <option value="Desenvolver">Em desenvolvimento</option>
+                                </select>
+                            </div>
+                            <!-- REVISAR PARTE DE SCRIPT JS E AJUSTAR OS ARQUIVOS DE BANCO PARA TRABALHAR COM PDO -->
+
                             <div class="col-4">
                                 <label for="inputHostname" class="form-label">Hostname*</label>
-                                <input name="inputHostname" type="text" class="form-control" id="inputHostname" value="<?php echo $row['hostname']; ?>" require>
+                                <input name="inputHostname" type="text" class="form-control" id="inputHostname" value="<?php echo $row['hostname']; ?>" required>
                             </div>
 
                             <hr class="sidebar-divider">
 
                             <div class="col-4">
                                 <label for="inputFabricante" class="form-label">Fabricante*</label>
-                                <select id="inputFabricante" name="inputFabricante" class="form-select" value="<?php echo $row['nome_cidade']; ?>" require>
+                                <select id="inputFabricante" name="inputFabricante" class="form-select" value="<?php echo $row['nome_cidade']; ?>" required>
                                     <option value="<?= $row['id_fabricante']; ?>"><?= $row['nome_fabricante']; ?></option>
                                     <?php
                                     $resultado = mysqli_query($mysqli, $sql_lista_fabricantes);
@@ -114,14 +122,14 @@ $row = mysqli_fetch_assoc($resultado);
 
                             <div class="col-4">
                                 <label for="inputEquipamento" class="form-label">Equipamento*</label>
-                                <select id="inputEquipamento" name="inputEquipamento" class="form-select" require>
+                                <select id="inputEquipamento" name="inputEquipamento" class="form-select" required>
                                     <option value="<?= $row['id_equipamento']; ?>"><?= $row['nome_equipamento']; ?></option>
                                 </select>
                             </div>
 
                             <div class="col-4">
                                 <label for="inputTipoEquipamento" class="form-label select-label">Tipo de equipamento*</label>
-                                <select id="inputTipoEquipamento" name="inputTipoEquipamento" class="form-select" require>
+                                <select id="inputTipoEquipamento" name="inputTipoEquipamento" class="form-select" required>
                                     <option value="<?= $row['id_tipoEquipamento']; ?>"><?= $row['nome_tipoEquipamento']; ?></option>
 
                                 </select>
@@ -129,13 +137,13 @@ $row = mysqli_fetch_assoc($resultado);
 
                             <div class="col-4">
                                 <label for="inputIpAddress" class="form-label">Endereço IP*</label>
-                                <input name="inputIpAddress" type="text" class="form-control" id="inputIpAddress" value="<?php echo $row['ipaddress']; ?>" maxlength="15" require>
+                                <input name="inputIpAddress" type="text" class="form-control" id="inputIpAddress" value="<?php echo $row['ipaddress']; ?>" maxlength="15" required>
                             </div>
- 
+
 
                             <div class="col-4">
                                 <label for="inputStatus" class="form-label select-label">Status*</label>
-                                <select id="inputStatus" name="inputStatus" class="form-select" require>
+                                <select id="inputStatus" name="inputStatus" class="form-select" required>
                                     <option value="<?= $row['eqpopstatus']; ?>"><?= $row['eqpopstatus']; ?></option>
                                     <option value="Ativado">Ativado</option>
                                     <option value="Em Implementação">Em Implementação</option>
@@ -150,9 +158,17 @@ $row = mysqli_fetch_assoc($resultado);
                                 <textarea id="anotacaoEquipamento" name="anotacaoEquipamento" class="form-control" maxlength="10000" rows="10"><?php echo $row['anotacaoEquipamento'] ?></textarea>
                             </div>
 
-                            <div class="text-center">
+                            <div class="col-4" style="text-align: left;">
+                                <a href="/telecom/credenciais/index.php?id=<?= $id ?>&tipo=Equipamento"><input type="button" class="btn btn-info" value="Visualizar credenciais"></input></a>
+                            </div>
+
+                            <div class="col-4" style="text-align: center;">
                                 <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>
                                 <a href="/telecom/equipamentos/index.php"><input type="button" value="Voltar" class="btn btn-secondary"></a>
+                            </div>
+
+                            <div class="col-4" style="text-align: right;">
+                                <a href="processa/delete.php?id=<?= $id ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
                             </div>
                         </form><!-- Vertical Form -->
 

@@ -63,7 +63,7 @@ $row = mysqli_fetch_assoc($resultado);
                             <div class="col-4">
                                 <label for="inputTamanho" class="form-label">Tamanho (U)</label>
                                 <select name="inputTamanho" class="form-select" aria-label="Default select example">
-                                    <option value="<?= $row['tamanho']; ?>"><?= $row['tamanho']; ?></option>
+                                    <option value="<?= $row['tamanho']; ?>"><?= $row['tamanho']; ?>U</option>
                                     <option value="1">1U</option>
                                     <option value="2">2U's</option>
                                     <option value="3">3U's</option>

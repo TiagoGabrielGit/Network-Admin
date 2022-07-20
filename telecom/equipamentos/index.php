@@ -440,7 +440,8 @@ LIMIT $limiteBusca
                                     <td style="text-align: center;"><?php echo $campos['equipamento']; ?></td>
                                     <td style="text-align: center;" style="text-align: center;"><?php echo $campos['statuseqp']; ?></td>
                                     <td style="text-align: center;">
-                                        <?php echo "<a href='view.php?id=" . $campos['id_equipop'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
+                                        <a title="Ver mais" class="bi bi-eye-fill" href="view.php?id=<?= $campos['id_equipop']; ?>"></a>
+                                        <a title="Credenciais" class="bi bi-key" href="/telecom/credenciais/index.php?id=<?= $campos['id_equipop']; ?>&tipo=Equipamento"></a>
                                     </td>
                                     </tr>
                                 <?php } ?>

@@ -56,7 +56,7 @@ bairros as bairro
 ON
 bairro.cidade = city.id
 WHERE
-pop.deleted = 1
+pop.active = 1
 and
 pop.id = $id        
 ORDER BY
@@ -161,10 +161,19 @@ $row = mysqli_fetch_assoc($resultado);
 
                             <hr class="sidebar-divider">
 
-                            <div class="text-center">
+                            <div class="col-4" style="text-align: left;">
+                                <a href="/telecom/sitepop/rack.php?id=<?= $id ?>&pop=<?=$row['pop']?>"><input type="button" class="btn btn-info" value="Visualizar racks"></input></a>
+                            </div>
+
+                            <div class="col-4" style="text-align: center;">
                                 <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>
                                 <input type="button" value="Voltar" onClick="history.go(-1)" class="btn btn-secondary">
                             </div>
+
+                            <div class="col-4" style="text-align: right;">
+                                <a href="processa/delete.php?id=<?= $id ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
+                            </div>
+
                         </form><!-- Vertical Form -->
 
                     </div>

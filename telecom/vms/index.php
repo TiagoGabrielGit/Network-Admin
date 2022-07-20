@@ -431,7 +431,8 @@ LIMIT $limiteBusca
                                         <?php echo $campos['statusvm']; ?>
                                     </td>
                                     <td style="text-align: center;">
-                                        <?php echo "<a href='view.php?id=" . $campos['idvm'] . "'" . "class='bi bi-eye-fill'</a>"; ?>
+                                    <a title="Ver mais" class="bi bi-eye-fill" href="view.php?id=<?= $campos['idvm']; ?>"></a>
+                                        <a title="Credenciais" class="bi bi-key" href="/telecom/credenciais/index.php?id=<?= $campos['idvm']; ?>&tipo=VM"></a>
                                     </td>
                                     </tr>
                                 <?php } ?>

@@ -4,7 +4,7 @@ include_once '../../../conexoes/conexao_pdo.php';
 $idCadastro = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $cont_insert = false;
 
-$sql = "DELETE FROM pop WHERE id='$idCadastro'";
+$sql = "DELETE FROM equipamentospop WHERE id='$idCadastro'";
 
 $stmt = $pdo->prepare($sql);
 
@@ -19,7 +19,7 @@ if ($cont_insert) {
 ?>
     <script>
         setTimeout(function() {
-            window.location.href = "/telecom/sitepop/index.php";
+            window.location.href = "/telecom/equipamentos/index.php";
         });
 
         alert("Excluido com sucesso!");
@@ -31,7 +31,7 @@ if ($cont_insert) {
         alert("Erro do excluir!");
 
         setTimeout(function() {
-            window.location.href = "/telecom/sitepop/index.php";
+            window.location.href = "/telecom/equipamentos/index.php";
         });
     </script>
 <?php

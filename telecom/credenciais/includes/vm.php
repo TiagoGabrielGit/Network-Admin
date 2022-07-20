@@ -49,8 +49,13 @@
                             </div>
 
                             <div class="col-4">
-                                <label for="editVm" class="form-label">VM</label>
-                                <input disabled name="editVm" type="text" class="form-control" id="editVm" value="<?= $row['vm_hostname']; ?>">
+                                <label class="form-label">VM</label>
+                                <input disabled type="text" class="form-control"  value="<?= $row['vm_hostname']; ?>">
+                            </div>
+
+                            <div class="col-3" style="display: inline-block;">
+                                <label class="form-label">Endereço IP</label>
+                                <input disabled type="text" class="form-control" value="<?= $row['cred_ip']; ?>">
                             </div>
 
                             <hr class="sidebar-divider">

@@ -32,7 +32,7 @@ pais as pais
 ON
 pais.id = est.pais
 WHERE
-pop.deleted = 1        
+pop.active = 1        
 ORDER BY
 emp.fantasia asc,
 city.cidade asc,

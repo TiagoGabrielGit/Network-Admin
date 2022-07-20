@@ -59,6 +59,8 @@ and
 eqp.equipamento_id LIKE '$varEmpresa'
 and
 eqp.equipamentodescricao LIKE '%$varDescricao%'
+and
+eqp.equipamento_id LIKE '$id_equipamento'
 ");
 
 $sql_pesquisa_portal =
@@ -120,6 +122,9 @@ and
 vm.empresa_id LIKE '$varEmpresa'
 and
 vm.vmdescricao LIKE '%$varDescricao%'
+and
+vm.vm_id LIKE '$id_vm'
+
 ");
 
 $sql_lista_empresas =

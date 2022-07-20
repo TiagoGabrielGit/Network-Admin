@@ -10,7 +10,7 @@ $sql_pop =
 FROM 
     pop as pop
 WHERE
-    pop.deleted = 1
+    pop.active = 1
     and
     pop.empresa_id = $id
 ORDER BY

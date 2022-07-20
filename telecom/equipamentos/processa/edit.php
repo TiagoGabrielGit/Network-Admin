@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "../../../conexoes/conexao.php";
 ?>
 
@@ -23,7 +24,7 @@ require "../../../conexoes/conexao.php";
 
                 //Captura todos os dados        
                 $inputEmpresa = $_POST['inputEmpresa'];
-                $inputPop = $_POST['inputPop'];
+                $inputPop = $_POST['editEquipamentoPop'];
                 $inputHostname = $_POST['inputHostname'];
                 $inputFabricante = $_POST['inputFabricante'];
                 $inputEquipamento = $_POST['inputEquipamento'];

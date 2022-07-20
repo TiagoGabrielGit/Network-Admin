@@ -168,9 +168,18 @@ $row = mysqli_fetch_assoc($resultado);
                                 <textarea id="anotacaoVM" name="anotacaoVM" maxlength="10000" class="form-control" rows="10"><?php echo $row['anotacaoVM'] ?></textarea>
                             </div>
 
-                            <div class="text-center">
+                            <div class="col-4" style="text-align: left;">
+                                <a href="/telecom/credenciais/index.php?id=<?=$id?>&tipo=VM"><input type="button" class="btn btn-info" value="Visualizar credenciais"></input></a>
+                            </div>
+
+                            <div class="col-4" style="text-align: center;">
                                 <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>
                                 <a href="/telecom/vms/index.php"><input type="button" value="Voltar" class="btn btn-secondary"></a>
+                            </div>
+
+
+                            <div class="col-4" style="text-align: right;">
+                                <a href="processa/delete.php?id=<?= $id ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
                             </div>
                         </form><!-- Vertical Form -->
 

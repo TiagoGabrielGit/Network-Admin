@@ -60,7 +60,7 @@ pop.pop as nome_pop
 FROM
 pop as pop
 WHERE
-pop.deleted = 1
+pop.active = 1
 ORDER BY
 pop.pop ASC
 ";

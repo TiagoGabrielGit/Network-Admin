@@ -19,6 +19,48 @@ require "../includes/menu.php";
             <div class="accordion" id="accordionExample">
 
 
+              <!-- Versão 1.8 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading9">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                    Versão 1.8 - 20/07/2022
+                  </button>
+                </h2>
+                <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. Adicionado botão key em VMs e Equipamentos onde direciona para tela de credenciais;<br>
+                    2. Incluido cluna Equipamento/VM na tela de credenciais;<br>
+                    3. Adicionado campo IP na visualização de credenciais;<br>
+                    4. Adicionado campo "Visualizar credenciais" na visualização de equipamentos e VMs;<br>
+                    5. Adicionado botão Excluir permanente em cadastro de POP;<br>
+                    6. Adicionado cadastro de rack no POP;<br>
+                    
+                    <br><strong>Melhorias</strong><br>
+                    1. ;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. Corrigido filtro de credenciais, substituido clausa de contém para exato na busca do id equipamento e vm;<br>
+                    2. Corrigido obrigatoriedade em alguns preenchimentos no cadastro de POP;<br>
+                    3. Corrigido obrigatoriedade em alguns preenchimentos no editar equipamentos;<br>
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Alterado a coluna deleted na tabela pop para tipo boolean, e alterado nome para active;<br>
+                    2. Criado a tabela pop_rack;<br>
+
+                    <br><strong>Previsto para próxima atualização</strong><br>
+                    1. Vinculo de equipamento com rack;<br>
+                    2. Campo serial no cadastro de equipamento;<br>
+                    3. Cadastro de regiões;<br>
+                    4. Cadastro de equipes;<br>
+                    5. Iniciar página de relatórios;<br>
+                  </div>
+                </div>
+              </div>
+
+
+
+
               <!-- Versão 1.7 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading8">
@@ -53,7 +95,7 @@ require "../includes/menu.php";
                     7. Excluido a tabela anotacaopublica_vm, migrar o que tem dela para a coluna criada no item 6;<br>
                     8. Criado tabela credenciais_equipamento;<br>
                     9. Criado tabela credenciais_vms;<br>
-                    
+
                   </div>
                 </div>
               </div>
