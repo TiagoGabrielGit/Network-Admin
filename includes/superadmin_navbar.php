@@ -133,6 +133,15 @@
                 <span>Orçamentos</span>
             </a>
         </li>
+        
+        <li class="nav-heading">Service Desk</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/servicedesk/atividades/index.php">
+                <i class="bi bi-bar-chart-steps"></i>
+                <span>Atividades</span>
+            </a>
+        </li>
 
         <li class="nav-heading">Telecom</li>
 

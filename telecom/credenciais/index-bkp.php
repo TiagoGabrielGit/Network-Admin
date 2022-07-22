@@ -47,12 +47,22 @@ $varEquipamentoVM = $_POST['pesquisaEquipamentoVM'];
 
 require "sql.php";
 
+if ($varEquipamentoVM != "%") {
+    require "sql_pesquisa_equipamento.php";
+    require "sql_pesquisa_vm.php";
+} else {
+    require "sql_pesquisa_equipamento.php";
+    require "sql_pesquisa_vm.php";
+    require "sql_pesquisa_email.php";
+    require "sql_pesquisa_portal.php";
+}
 ?>
 
 <main id="main" class="main">
 
     <div class="pagetitle">
         <h1>Credenciais</h1>
+        <h1>varEquipamentoVM: <?= $varEquipamentoVM ?></h1>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -409,19 +419,98 @@ require "sql.php";
                             </thead>
                             <tbody>
 
-                                <?php
-                                if ($varEquipamentoVM == "%") {
-                                    require "pesquisa_email.php";
-                                    require "pesquisa_equipamento.php";
-                                    require "pesquisa_portal.php";
-                                    require "pesquisa_vm.php";
-                                }?>
 
                                 <?php
-                                if ($varEquipamentoVM != "%") {
-                                    require "pesquisa_equipamento.php";
-                                    require "pesquisa_vm.php";
-                                }?>
+
+                                $resultado = mysqli_query($mysqli, $sql_pesquisa_email) or die("Erro ao retornar dados");
+
+                                while ($campos = $resultado->fetch_array()) {
+                                    $id = $campos['cred_id'];
+                                    echo "<tr>";
+                                ?>
+                                    </td>
+                                    <td style="text-align: center;"><?= $campos['emp_fant']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_tipo']; ?></td>
+                                    <td style="text-align: center;"><?= "-" ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_desc']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_usuario']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_priv']; ?></td>
+                                    <td style="text-align: center;">
+                                        <a class='bi bi-eye-fill' href="view.php?id=<?= $campos['cred_id']; ?>&tipo=<?= $campos['cred_tipo']; ?>"> </a>
+                                    </td>
+                                    </tr>
+                                <?php } ?>
+
+
+
+
+                                <?php
+                                $resultado = mysqli_query($mysqli, $sql_pesquisa_equipamento) or die("Erro ao retornar dados");
+
+                                while ($campos = $resultado->fetch_array()) {
+                                    $id = $campos['cred_id'];
+                                    echo "<tr>";
+                                ?>
+                                    </td>
+                                    <td style="text-align: center;"><?= $campos['emp_fant']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_tipo']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_hostname']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_desc']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_usuario']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_priv']; ?></td>
+                                    <td style="text-align: center;">
+                                        <a class="bi bi-eye-fill" href="view.php?id=<?= $campos['cred_id']; ?>&tipo=<?= $campos['cred_tipo']; ?>"></a>
+                                    </td>
+                                    </tr>
+                                <?php } ?>
+
+                                <?php
+                                $resultado = mysqli_query($mysqli, $sql_pesquisa_portal) or die("Erro ao retornar dados");
+
+                                while ($campos = $resultado->fetch_array()) {
+                                    $id = $campos['cred_id'];
+                                    echo "<tr>";
+                                ?>
+                                    </td>
+                                    <td style="text-align: center;"><?= $campos['emp_fant']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_tipo']; ?></td>
+                                    <td style="text-align: center;"><?= "-" ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_desc']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_usuario']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_priv']; ?></td>
+                                    <td style="text-align: center;">
+                                        <a class="bi bi-eye-fill" href="view.php?id=<?= $campos['cred_id']; ?>&tipo=<?= $campos['cred_tipo']; ?>"></a>
+                                    </td>
+                                    </tr>
+                                <?php } ?>
+
+                                <?php
+                                $resultado = mysqli_query($mysqli, $sql_pesquisa_vm) or die("Erro ao retornar dados");
+
+                                while ($campos = $resultado->fetch_array()) {
+                                    $id = $campos['cred_id'];
+                                    echo "<tr>";
+                                ?>
+                                    </td>
+                                    <td style="text-align: center;"><?= $campos['emp_fant']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_tipo']; ?></td>
+                                    <td style="text-align: center;">
+                                        <?php
+                                        if (empty($campos['cred_hostname'])) {
+                                            echo "Não localizado";
+                                        } else {
+                                            echo $campos['cred_hostname'];
+                                        }
+                                        ?>
+                                    </td>
+                                    <td style="text-align: center;"><?= $campos['cred_desc']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_usuario']; ?></td>
+                                    <td style="text-align: center;"><?= $campos['cred_priv']; ?></td>
+                                    <td style="text-align: center;">
+                                        <a class="bi bi-eye-fill" href="view.php?id=<?= $campos['cred_id']; ?>&tipo=<?= $campos['cred_tipo']; ?>"></a>
+                                    </td>
+                                    </tr>
+                                <?php } ?>
 
                             </tbody>
                         </table>

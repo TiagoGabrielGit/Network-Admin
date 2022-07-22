@@ -71,6 +71,12 @@
                                 <input name="editSenha" type="text" class="form-control" id="editSenha" value="<?= $row['cred_senha']; ?>">
                             </div>
 
+                            <hr class="sidebar-divider">
+
+                            <div class="col-12">
+                                <label for="anotacaoPortal" class="form-label">Anotações</label>
+                                <textarea id="anotacaoPortal" name="anotacaoPortal" class="form-control" maxlength="10000" rows="4"><?= $row['anotacaoEmail'] ?></textarea>
+                            </div>
 
                             <hr class="sidebar-divider">
 

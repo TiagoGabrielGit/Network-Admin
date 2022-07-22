@@ -72,6 +72,7 @@ require "sql.php";
                                                                 <option value="8">8U's</option>
                                                                 <option value="9">9U's</option>
                                                                 <option value="10">10u's</option>
+                                                                <option value="11">11u's</option>
                                                             </select>
                                                         </div> 
 

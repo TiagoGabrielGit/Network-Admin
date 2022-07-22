@@ -165,7 +165,7 @@ $row = mysqli_fetch_assoc($resultado);
 
                             <div class="col-12">
                                 <label for="anotacaoVM" class="form-label">Anotações</label>
-                                <textarea id="anotacaoVM" name="anotacaoVM" maxlength="10000" class="form-control" rows="10"><?php echo $row['anotacaoVM'] ?></textarea>
+                                <textarea id="anotacaoVM" name="anotacaoVM" maxlength="10000" class="form-control" rows="4"><?php echo $row['anotacaoVM'] ?></textarea>
                             </div>
 
                             <div class="col-4" style="text-align: left;">

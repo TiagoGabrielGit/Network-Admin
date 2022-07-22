@@ -72,6 +72,12 @@
                                 <input name="editSenha" type="text" class="form-control" id="editSenha" value="<?= $row['cred_senha']; ?>">
                             </div>
 
+                            <hr class="sidebar-divider">
+
+                            <div class="col-12">
+                                <label for="anotacaoEmail" class="form-label">Anotações</label>
+                                <textarea id="anotacaoEmail" name="anotacaoEmail" class="form-control" maxlength="10000" rows="4"><?= $row['anotacaoEmail'] ?></textarea>
+                            </div>
 
                             <hr class="sidebar-divider">
 
@@ -84,8 +90,8 @@
                             </div>
 
                             <div class="col-4" style="text-align: right;">
-                                <a href="processa/delete.php?id=<?=$id?>&tipo=<?=$row['cred_tipo']; ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
-                                
+                                <a href="processa/delete.php?id=<?= $id ?>&tipo=<?= $row['cred_tipo']; ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
+
                             </div>
                         </form><!-- Vertical Form -->
 

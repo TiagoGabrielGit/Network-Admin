@@ -19,6 +19,50 @@ require "../includes/menu.php";
             <div class="accordion" id="accordionExample">
 
 
+              <!-- Versão 1.9 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading10">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                    Versão 1.9 - XX/07/2022
+                  </button>
+                </h2>
+                <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. ;<br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Criado campo para anotação no cadastro de credenciais tipo email;<br>
+                    2. Criado campo para anotação no cadastro de credenciais tipo portal;<br>
+                    3. Aumentado tamanho dos campos email e senha no cadastro tipo email;<br>
+                    4. Aumentado tamanho dos campos usuario e senha no cadastro tipo portal;<br>
+                    5. Adicionado campo de pesquisa por equipamento na tela de credenciais;<br>
+                    6. Diminuido campo de anotação na visualização de equipamentos;<br>
+                    7. Diminuido campo de anotação na visualização de vms;<br>
+                    8. Adicionado tamanho 11U no cadastro de produtos;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. Corrigido o tipo de cadastro de credenciais que estava vindo preenchido automaticamente como E-mail;<br>
+                    2. Corrigido alguns erros de filtros ao pesquisar credenciais
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Criado a coluna anotacao na tabela "credenciais_email";<br>
+                    2. Criado a coluna anotacao na tabela "credenciais_portal";<br>
+
+                    <br><strong>Previsto para próximas atualizações</strong><br>
+                    1. Colocar opção se equipamento é rack ou não e vincular equipamento com rack quando for de rack;<br>
+                    2. Campo serial no cadastro de equipamento;<br>
+                    3. Cadastro de regiões;<br>
+                    4. Cadastro de equipes;<br>
+                    5. Iniciar página de relatórios;<br>
+                    6. Colocar opção de portas de acesso (SSH, WEB, Telnet) em equipamentos;<br>
+                    7. Mostrar LOG de alteração e criação de registros por usuário;<br>
+                    
+                  </div>
+                </div>
+              </div>
+
+
               <!-- Versão 1.8 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading9">
@@ -35,7 +79,7 @@ require "../includes/menu.php";
                     4. Adicionado campo "Visualizar credenciais" na visualização de equipamentos e VMs;<br>
                     5. Adicionado botão Excluir permanente em cadastro de POP;<br>
                     6. Adicionado cadastro de rack no POP;<br>
-                    
+
                     <br><strong>Melhorias</strong><br>
                     1. ;<br>
 

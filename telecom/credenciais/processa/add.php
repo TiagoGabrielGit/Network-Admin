@@ -15,12 +15,14 @@ $portalPaginaAcesso = $_POST['portalPaginaAcesso'];
 $portalDescricao = $_POST['portalDescricao'];
 $portalUsuario = $_POST['portalUsuario'];
 $portalSenha = $_POST['portalSenha'];
+$portalAnotacao = $_POST['portalAnotacao'];
 
 //tipo = email
 $acessoWebmail = $_POST['acessoWebmail'];
 $emailDescricao = $_POST['emailDescricao'];
 $emailUsuario = $_POST['emailUsuario'];
 $emailSenha = $_POST['emailSenha'];
+$emailAnotacao = $_POST['emailAnotacao'];
 
 //tipo = vm
 $vmVm = $_POST['vmVm'];
@@ -38,10 +40,10 @@ $cont_insert = false;
 
 if ($cadastroTipo == "portal") {
 
-    $sql = "INSERT INTO credenciais_portal (empresa_id, tipo, usuario_id, privacidade, paginaacesso, portaldescricao, portalusuario, portalsenha) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO credenciais_portal (empresa_id, tipo, usuario_id, privacidade, paginaacesso, portaldescricao, portalusuario, portalsenha, anotacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
 
-    if ($stmt->execute([$cadastroEmpresa, $cadastroTipo, $usuarioCriador, $cadastroPrivacidade, $portalPaginaAcesso, $portalDescricao, $portalUsuario, $portalSenha])) {
+    if ($stmt->execute([$cadastroEmpresa, $cadastroTipo, $usuarioCriador, $cadastroPrivacidade, $portalPaginaAcesso, $portalDescricao, $portalUsuario, $portalSenha, $portalAnotacao])) {
         $cont_insert = true;
     } else {
         $cont_insert = false;
@@ -58,10 +60,10 @@ if ($cadastroTipo == "portal") {
 
 if ($cadastroTipo == "email") {
 
-    $sql = "INSERT INTO credenciais_email (empresa_id, tipo, usuario_id, privacidade, webmail, emaildescricao, emailusuario, emailsenha) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO credenciais_email (empresa_id, tipo, usuario_id, privacidade, webmail, emaildescricao, emailusuario, emailsenha, anotacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
 
-    if ($stmt->execute([$cadastroEmpresa, $cadastroTipo, $usuarioCriador, $cadastroPrivacidade, $acessoWebmail, $emailDescricao, $emailUsuario, $emailSenha])) {
+    if ($stmt->execute([$cadastroEmpresa, $cadastroTipo, $usuarioCriador, $cadastroPrivacidade, $acessoWebmail, $emailDescricao, $emailUsuario, $emailSenha, $emailAnotacao])) {
         $cont_insert = true;
     } else {
         $cont_insert = false;

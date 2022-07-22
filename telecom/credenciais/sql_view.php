@@ -49,6 +49,7 @@ credemail.tipo as cred_tipo,
 credemail.emailusuario as cred_usuario,
 credemail.emailsenha as cred_senha,
 credemail.webmail as cred_webmail,
+credemail.anotacao as anotacaoEmail,
 emp.id as emp_id,
 emp.fantasia as emp_fantasia
 FROM
@@ -97,6 +98,7 @@ portal.paginaacesso as cred_portal,
 portal.portalusuario as cred_usuario,
 portal.portalsenha as cred_senha,
 portal.tipo as cred_tipo,
+portal.anotacao as anotacaoEmail,
 emp.fantasia as emp_fantasia
 FROM
 credenciais_portal as portal

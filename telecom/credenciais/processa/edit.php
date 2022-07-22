@@ -19,7 +19,7 @@ $cont_insert = false;
 if ($IDTipo == "email") {
     $webmail = $_POST['editWebmail'];
 
-    $sql = "UPDATE credenciais_email SET usuario_id = :usuario, privacidade = :priv, webmail = :webmail, emaildescricao = :descr, emailusuario = :user, emailsenha = :senha WHERE id = :id";
+    $sql = "UPDATE credenciais_email SET usuario_id = :usuario, privacidade = :priv, webmail = :webmail, emaildescricao = :descr, emailusuario = :user, emailsenha = :senha, anotacao = :anotacao WHERE id = :id";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':usuario', $usuarioCriador);
@@ -29,6 +29,8 @@ if ($IDTipo == "email") {
     $stmt->bindParam(':user', $usuario);
     $stmt->bindParam(':senha', $senha);
     $stmt->bindParam(':id', $idCadastro);
+    $stmt->bindParam(':anotacao', $anotacaoEmail);
+    
 
     if ($stmt->execute()) {
         $cont_insert = true;
@@ -105,8 +107,9 @@ if ($IDTipo == "portal") {
 
 
 
-    $sql = "UPDATE credenciais_portal SET usuario_id = :usuario, privacidade = :priv, paginaacesso = :pagina, portaldescricao = :descr, portalusuario = :user, portalsenha = :senha WHERE id = :id";
+    $sql = "UPDATE credenciais_portal SET usuario_id = :usuario, privacidade = :priv, paginaacesso = :pagina, portaldescricao = :descr, portalusuario = :user, portalsenha = :senha, anotacao = :anotacao WHERE id = :id";
     $pagina = $_POST['editPagina'];
+    $anotacaoPortal = $_POST['anotacaoPortal'];
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':usuario', $usuarioCriador);
@@ -116,6 +119,8 @@ if ($IDTipo == "portal") {
     $stmt->bindParam(':user', $usuario);
     $stmt->bindParam(':senha', $senha);
     $stmt->bindParam(':id', $idCadastro);
+    $stmt->bindParam(':anotacao', $anotacaoPortal);
+    
 
     if ($stmt->execute()) {
         $cont_insert = true;
