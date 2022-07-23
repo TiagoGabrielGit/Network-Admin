@@ -17,7 +17,6 @@ if ($_POST['atualizar'] == 1) {
     $old_version = $_POST['old_version'];
     $new_version = $_POST['new_version'];
     $usuario = $_POST['usuario'];
-    $horario = $_POST['horario'];
     $insert_db = "INSERT INTO atualizacao (old_version, new_version, usuario, horario) VALUES ('$old_version', '$new_version', '$usuario', NOW())";
     $resultado = mysqli_query($mysqli, $insert_db);
 }
@@ -43,14 +42,6 @@ if ($_POST['atualizar'] == 1) {
                                 <div class="col-8">
                                     <h5 class="card-title">Versão atual: <?= $versao_atual ?> <br><br> Última versão: <?= $ultima_versão ?></h5>
 
-                                    <?php
-
-                                    if ($_POST['atualizar'] == 1) {
-                                        echo "$insert_db";
-                                    }
-
-                                    ?>
-
                                 </div>
 
                                 <div class="col-4">
@@ -60,7 +51,6 @@ if ($_POST['atualizar'] == 1) {
                                             <input hidden type="text" name="usuario" id="usuario" value="<?= $_SESSION['id']; ?>">
                                             <input hidden type="text" name="old_version" id="old_version" value="<?= $versao_atual ?>">
                                             <input hidden type="text" name="new_version" id="new_version" value="<?= $ultima_versão ?>">
-                                            <input hidden type="text" name="horario" id="horario" value="<?= $horario = date('d/m/Y H:i'); ?>">
 
                                             <?php
                                             if ($versao_atual != $ultima_versão) { ?>
@@ -68,6 +58,7 @@ if ($_POST['atualizar'] == 1) {
 
                                             <?php } else { ?>
                                                 <button disabled style="margin-top: 30px" type="button" class="btn btn-secondary">Sem atualização disponivel</button>
+                                                <button hidden value="1" id="atualizar" name="atualizar" style="margin-top: 30px" class="btn btn-primary">Atualizar</button>
                                             <?php } ?>
                                         </form>
                                     </div>

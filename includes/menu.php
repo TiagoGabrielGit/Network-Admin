@@ -7,13 +7,12 @@ if (!isset($_SESSION["id"])) {
   header("Location: /login.php");
   exit;
 }
-
 $nome = $_SESSION['nome'];
 $id = $_SESSION['id'];
 $perfil = $_SESSION['nome_perfil'];
 $perfil_id = $_SESSION['perfil'];
 $user_ip = $_SESSION['ip_address'];
-
+$horario = date('d/m/Y H:i');
 
 $versao_atual = "2.0";
 $ultima_versão = "2.0";
@@ -238,9 +237,10 @@ $ultima_versão = "2.0";
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6><?php echo $nome; ?></h6>
-              <span><?php echo $perfil; ?></span> <br>
-              <span><?php echo $user_ip; ?></span>
+              <h6><?= $nome; ?></h6>
+              <span><?= $perfil; ?></span> <br>
+              <span><?= $user_ip; ?></span> <br>
+              <span><?=$horario ?></span>
             </li>
             <li>
               <hr class="dropdown-divider">

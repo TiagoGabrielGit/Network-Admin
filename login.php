@@ -15,6 +15,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
     $sql_code =
       "SELECT 
       user.id as id,
+      pess.nome as nome,
       user.email as email,
       user.senha as senha,
       userPerfil.permissao_id as perfil,
@@ -29,6 +30,10 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
       perfil_permissoes as perfil
       ON
       perfil.id = userPerfil.permissao_id
+      LEFT JOIN
+      pessoas as pess
+      ON
+      pess.id = user.pessoa_id
       WHERE 
       user.email = '$email' 
       AND 
@@ -58,7 +63,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
 
       $usuario_id = $_SESSION['id'];
       $ip_address = $_SESSION['ip_address'];
-      
+
       $insert_log = "INSERT INTO log_acesso (usuario_id, ip_address, horario) VALUES ('$usuario_id', '$ip_address', NOW())";
       mysqli_query($mysqli, $insert_log);
 
