@@ -18,12 +18,50 @@ require "../includes/menu.php";
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
 
+              <!-- Versão 2.0 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading2-0">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-0" aria-expanded="false" aria-controls="collapse2-0">
+                    Versão 2.0 - 23/07/2022
+                  </button>
+                </h2>
+                <div id="collapse2-0" class="accordion-collapse collapse" aria-labelledby="heading2-0" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. Botão de atualizar frontend;<br>
+                    2. LOG de acesso;<br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. ;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. Corrigido o cadastro de novo POP;<br>
+                    1. Corrigido o salvamento de anotação em credenciais de email;<br>
+                    
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Criado tabela atualizacao;<br>
+                    2. Criado tabela log_Acesso;<br>
+
+                    <br><strong>Previsto para próximas atualizações</strong><br>
+                    1. Colocar opção se equipamento é rack ou não e vincular equipamento com rack quando for de rack;<br>
+                    2. Campo serial no cadastro de equipamento;<br>
+                    3. Cadastro de regiões;<br>
+                    4. Cadastro de equipes;<br>
+                    5. Iniciar página de relatórios;<br>
+                    6. Colocar opção de portas de acesso (SSH, WEB, Telnet) em equipamentos;<br>
+                    7. Mostrar LOG de alteração e criação de registros por usuário;<br>
+
+                  </div>
+                </div>
+              </div>
+
 
               <!-- Versão 1.9 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading10">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
-                    Versão 1.9 - XX/07/2022
+                    Versão 1.9 - 22-07/2022
                   </button>
                 </h2>
                 <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#accordionExample">
@@ -57,7 +95,7 @@ require "../includes/menu.php";
                     5. Iniciar página de relatórios;<br>
                     6. Colocar opção de portas de acesso (SSH, WEB, Telnet) em equipamentos;<br>
                     7. Mostrar LOG de alteração e criação de registros por usuário;<br>
-                    
+
                   </div>
                 </div>
               </div>
@@ -148,7 +186,7 @@ require "../includes/menu.php";
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading7">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-                    Versão 1.6 - 12/07/2022
+                    Versão 1.6 - 12-07/2022
                   </button>
                 </h2>
                 <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#accordionExample">

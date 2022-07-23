@@ -18,6 +18,7 @@ $cont_insert = false;
 //tipo = email
 if ($IDTipo == "email") {
     $webmail = $_POST['editWebmail'];
+    $anotacaoEmail = $_POST['anotacaoEmail'];
 
     $sql = "UPDATE credenciais_email SET usuario_id = :usuario, privacidade = :priv, webmail = :webmail, emaildescricao = :descr, emailusuario = :user, emailsenha = :senha, anotacao = :anotacao WHERE id = :id";
 

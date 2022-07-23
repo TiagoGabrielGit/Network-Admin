@@ -55,6 +55,13 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
       $_SESSION['nome_perfil'] = $usuario['nome_perfil'];
       $_SESSION['ip_address'] = $_SERVER['REMOTE_ADDR'];
 
+
+      $usuario_id = $_SESSION['id'];
+      $ip_address = $_SESSION['ip_address'];
+      
+      $insert_log = "INSERT INTO log_acesso (usuario_id, ip_address, horario) VALUES ('$usuario_id', '$ip_address', NOW())";
+      mysqli_query($mysqli, $insert_log);
+
       header("Location: index.php");
     } else {
       echo "Falha ao logar! E-mail ou senha incorretos";

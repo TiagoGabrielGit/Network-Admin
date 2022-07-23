@@ -133,7 +133,7 @@
                 <span>Orçamentos</span>
             </a>
         </li>
-        
+
         <li class="nav-heading">Service Desk</li>
 
         <li class="nav-item">
@@ -188,6 +188,12 @@
                 </li>
 
                 <li>
+                    <a href="/gerenciamento/log_acesso/index.php">
+                        <i class="bi bi-circle"></i><span>LOG de acesso</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="/desenvolvimento.php">
                         <i class="bi bi-circle"></i><span>Perfil</span>
                     </a>
@@ -207,6 +213,12 @@
                 <i class="bi bi-info-circle"></i><span>Sistema</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="sistema-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li>
+                    <a href="/sistema/atualizar/index.php">
+                        <i class="bi bi-circle"></i><span>Atualização</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="/sistema/changelog.php">

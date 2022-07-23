@@ -12,8 +12,11 @@ $nome = $_SESSION['nome'];
 $id = $_SESSION['id'];
 $perfil = $_SESSION['nome_perfil'];
 $perfil_id = $_SESSION['perfil'];
-$user_ip = $_SESSION['ip_address']
+$user_ip = $_SESSION['ip_address'];
 
+
+$versao_atual = "2.0";
+$ultima_versão = "2.0";
 ?>
 
 <!DOCTYPE html>

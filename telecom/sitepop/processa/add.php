@@ -27,7 +27,7 @@ require "../../../conexoes/conexao.php";
         $numero = $_POST['numero'];
         $complemento = $_POST['complemento'];
 
-        $result = "INSERT INTO pop (pop, apelidoPop, empresa_id, logradouro_id, numero, complemento, deleted, criado)
+        $result = "INSERT INTO pop (pop, apelidoPop, empresa_id, logradouro_id, numero, complemento, active, criado)
         VALUES ('$pop','$apelidoPop', '$empresa', '$logradouro', '$numero', '$complemento', '1', NOW())";
         $resultado = mysqli_query($mysqli, $result);
 
