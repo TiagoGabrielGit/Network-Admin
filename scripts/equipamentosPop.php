@@ -217,3 +217,43 @@
         });
     });
 </script>
+
+<script>
+    //Procura os racks de acordo com o POP selecionado
+    $("#editEquipamentoPop").change(function() {
+        var popSelecionado = $(this).children("option:selected").val();
+
+        $.ajax({
+            url: "/api/pesquisa_racks.php",
+            method: "GET",
+            dataType: "HTML",
+            data: {
+                id: popSelecionado
+            }
+        }).done(function(resposta) {
+            $("#editEquipamentoRack1").html(resposta);
+        }).fail(function(resposta) {
+            alert(resposta)
+        });
+    });
+</script>
+
+<script>
+    //Procura os pop de acordo com a emresa selecionada
+    $("#inputEmpresa").change(function() {
+        var empresaSelecionado = $(this).children("option:selected").val();
+
+        $.ajax({
+            url: "/api/pesquisa_pop.php",
+            method: "GET",
+            dataType: "HTML",
+            data: {
+                id: empresaSelecionado
+            }
+        }).done(function(resposta) {
+            $("#editEquipamentoPop").html(resposta);
+        }).fail(function(resposta) {
+            alert(resposta)
+        });
+    });
+</script>

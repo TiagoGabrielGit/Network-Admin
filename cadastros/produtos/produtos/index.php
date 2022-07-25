@@ -46,6 +46,7 @@ require "sql.php";
                                                             <label for="inputEquipamento" class="form-label">Equipamento</label>
                                                             <input name="equipamento" type="text" class="form-control" id="inputEquipamento" require>
                                                         </div>
+
                                                         <div class="col-6">
                                                             <label for="inputFabricante" class="form-label">Fabricante</label>
                                                             <select name="fabricante" class="form-select" required>
@@ -56,11 +57,19 @@ require "sql.php";
                                                                     <option value="<?= $c['id']; ?>"><?= $c['fabricante']; ?></option>
                                                                 <?php endwhile; ?>
                                                             </select>
-                                                        </div>                                                    
-                                                        
+                                                        </div>
+
                                                         <div class="col-6">
+                                                            <label for="equipamentoRack" class="form-label">Equipamento de rack</label>
+                                                            <select id="equipamentoRack" name="equipamentoRack" class="form-select" required>
+                                                                <option value="0">Não</option>
+                                                                <option value="1">Sim</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div id="inputTamanhoDiv" class="col-6">
                                                             <label for="inputTamanho" class="form-label">Tamanho</label>
-                                                            <select name="inputTamanho" class="form-select" required>
+                                                            <select name="inputTamanho" class="form-select">
                                                                 <option selected disabled>Selecione</option>
                                                                 <option value="1">1U</option>
                                                                 <option value="2">2U's</option>
@@ -74,7 +83,7 @@ require "sql.php";
                                                                 <option value="10">10u's</option>
                                                                 <option value="11">11u's</option>
                                                             </select>
-                                                        </div> 
+                                                        </div>
 
                                                         <div class="text-center">
                                                             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -137,5 +146,6 @@ require "sql.php";
 
 </main><!-- End #main -->
 <?php
+require "../../../scripts/produtos.php";
 require "../../../includes/footer.php";
 ?>

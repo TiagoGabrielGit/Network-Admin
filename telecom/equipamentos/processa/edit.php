@@ -22,6 +22,44 @@ require "../../../conexoes/conexao.php";
                 <?php
                 $id = $_POST['id'];
 
+                if (isset($_POST['editEquipamentoRack1'])) {
+
+                        $rack_id = $_POST['editEquipamentoRack1'];
+                } else {
+                        $rack_id = "0";
+                }
+
+                if (empty($_POST['inputSerial'])) {
+                        $serialEquipamento = "";
+                } else {
+                        $serialEquipamento = $_POST['inputSerial'];
+                }
+
+                if (empty($_POST['portaWeb'])) {
+                        $portaWeb = "";
+                } else {
+                        $portaWeb = $_POST['portaWeb'];
+                }
+
+                if (empty($_POST['portaSSH'])) {
+                        $portaSSH = "";
+                } else {
+                        $portaSSH = $_POST['portaSSH'];
+                }
+
+                if (empty($_POST['portaTelnet'])) {
+                        $portaTelnet = "";
+                } else {
+                        $portaTelnet = $_POST['portaTelnet'];
+                }
+
+                if (empty($_POST['portaWinbox'])) {
+                        $portaWinbox = "";
+                } else {
+                        $portaWinbox = $_POST['portaWinbox'];
+                }
+
+
                 //Captura todos os dados        
                 $inputEmpresa = $_POST['inputEmpresa'];
                 $inputPop = $_POST['editEquipamentoPop'];
@@ -35,7 +73,8 @@ require "../../../conexoes/conexao.php";
                 $usuario_id = $_SESSION['id'];
 
 
-                $result_update_eqpop = "UPDATE equipamentospop SET anotacaoEquipamento='$anotacaoEquipamento', empresa_id='$inputEmpresa', pop_id='$inputPop', ipaddress='$inputIpAddress', hostname='$inputHostname', tipoEquipamento_id='$inputTipoEquipamento', equipamento_id='$inputEquipamento', statusEquipamento='$inputStatus', modificado=NOW() WHERE id='$id'";
+
+                $result_update_eqpop = "UPDATE equipamentospop SET serialEquipamento='$serialEquipamento', portaTelnet='$portaTelnet', portaSSH='$portaSSH', portaWeb='$portaWeb', portaWinbox='$portaWinbox', anotacaoEquipamento='$anotacaoEquipamento', empresa_id='$inputEmpresa', pop_id='$inputPop', ipaddress='$inputIpAddress', hostname='$inputHostname', tipoEquipamento_id='$inputTipoEquipamento', equipamento_id='$inputEquipamento', statusEquipamento='$inputStatus', rack_id='$rack_id', modificado=NOW() WHERE id='$id'";
                 $resultado_eqpop = mysqli_query($mysqli, $result_update_eqpop);
 
 
@@ -71,6 +110,7 @@ require "../../../conexoes/conexao.php";
                                                         <h4 class="modal-title" id="myModalLabel">Erro ao editar!</h4>
                                                 </div>
                                                 <div class="modal-body">
+                                                        <?= $result_update_eqpop; ?> <>
                                                         <?php echo $inputHostname; ?>
                                                 </div>
                                                 <div class="modal-footer">

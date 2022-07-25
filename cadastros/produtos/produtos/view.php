@@ -8,6 +8,7 @@ $id_equipamento = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $result = "SELECT
 eqp.id as id,
 fab.id as idfabricante,
+eqp.rack as rack,
 eqp.tamanho as tamanho,
 eqp.equipamento as equipamento,
 fab.fabricante as fabricante,
@@ -29,11 +30,11 @@ $row = mysqli_fetch_assoc($resultado);
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo $row['fabricante']; ?> - <?php echo $row['equipamento']; ?> </h5>
+                        <h5 class="card-title"><?= $row['fabricante']; ?> - <?= $row['equipamento']; ?> </h5>
 
                         <!-- Multi Columns Form -->
                         <form method="POST" action="processa/edit.php" class="row g-3">
-                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                            <input type="hidden" name="id" value="<?= $row['id']; ?>">
 
                             <div class="row mb-3">
                                 <label for="codigo" class="col-sm-12 col-form-label">Código</label>
@@ -45,7 +46,6 @@ $row = mysqli_fetch_assoc($resultado);
                             <div class="col-4">
                                 <label for="inputEquipamento" class="col-sm-12 col-form-label">Equipamento</label>
                                 <input name="equipamento" type="text" class="form-control" id="inputEquipamento" value="<?php echo $row['equipamento']; ?>">
-
                             </div>
 
                             <div class="col-4">
@@ -60,22 +60,35 @@ $row = mysqli_fetch_assoc($resultado);
                                 </select>
                             </div>
 
-                            <div class="col-4">
-                                <label for="inputTamanho" class="form-label">Tamanho (U)</label>
-                                <select name="inputTamanho" class="form-select" aria-label="Default select example">
-                                    <option value="<?= $row['tamanho']; ?>"><?= $row['tamanho']; ?>U</option>
-                                    <option value="1">1U</option>
-                                    <option value="2">2U's</option>
-                                    <option value="3">3U's</option>
-                                    <option value="4">4U's</option>
-                                    <option value="5">5U's</option>
-                                    <option value="6">6U's</option>
-                                    <option value="7">7U's</option>
-                                    <option value="8">8U's</option>
-                                    <option value="9">9U's</option>
-                                    <option value="10">10u's</option>
-                                </select>
+                            <div class="col-2">
+                                <label  class="col-sm-12 col-form-label">Tipo rack</label>
+                                <input disabled type="text" class="form-control" value="<?php if ($row['rack'] == '1') {echo "Sim";} else {echo "Não";}  ?>">
                             </div>
+
+                            <?php
+                            if ($row['rack'] == 1) { ?>
+                                <div class="col-2">
+                                    <label for="inputTamanho" class="form-label">Tamanho (U)</label>
+                                    <select name="inputTamanho" class="form-select" aria-label="Default select example">
+                                        <option value="<?= $row['tamanho']; ?>"><?= $row['tamanho']; ?>U</option>
+                                        <option value="1">1U</option>
+                                        <option value="2">2U's</option>
+                                        <option value="3">3U's</option>
+                                        <option value="4">4U's</option>
+                                        <option value="5">5U's</option>
+                                        <option value="6">6U's</option>
+                                        <option value="7">7U's</option>
+                                        <option value="8">8U's</option>
+                                        <option value="9">9U's</option>
+                                        <option value="10">10u's</option>
+                                    </select>
+                                </div>
+                            <?php } else { ?>
+                                <div class="col-2"> </div>
+                            <?php } ?>
+
+
+
 
                             <div class="col-6">
                                 <label for="inputTipoEquipamento" class="form-label">Tipo de equipamento</label>

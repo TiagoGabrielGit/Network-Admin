@@ -20,18 +20,23 @@ require "../../../../conexoes/conexao.php";
     <div class="container theme-showcase" role="main">
         <?php
 
+        if (empty($_POST['inputTamanho'])) {
+            $tamanho = "0";
+        } else {
+            $tamanho = $_POST['inputTamanho'];
+        }
+
         $equipamento = $_POST['equipamento'];
         $fabricante = $_POST['fabricante'];
-        $tamanho = $_POST['inputTamanho'];
-        $result = "INSERT INTO equipamentos (equipamento, fabricante, tamanho, deleted, criado) VALUES ('$equipamento','$fabricante', '$tamanho', '1', NOW())";
-        echo $result;
-        
+        $rack = $_POST['equipamentoRack'];
+        $result = "INSERT INTO equipamentos (equipamento, rack, fabricante, tamanho, deleted, criado) VALUES ('$equipamento', '$rack', '$fabricante', '$tamanho', '1', NOW())";
+
         $resultado = mysqli_query($mysqli, $result);
 
         $equipamento_id = mysqli_insert_id($mysqli);
 
         $busca_atributos =
-            "SELECT
+        "SELECT
         te.id as id_te,
         te.tipo as tipo
         FROM
@@ -65,7 +70,7 @@ require "../../../../conexoes/conexao.php";
             <?php
             header("Location: /cadastros/produtos/produtos/view.php?id=$equipamento_id");
             ?>
-            
+
         <?php } else { ?>
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

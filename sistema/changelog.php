@@ -18,6 +18,47 @@ require "../includes/menu.php";
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
 
+              <!-- Versão 2.1 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading2-1">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-1" aria-expanded="false" aria-controls="collapse2-1">
+                    Versão 2.1 - 25/07/2022
+                  </button>
+                </h2>
+                <div id="collapse2-1" class="accordion-collapse collapse" aria-labelledby="heading2-1" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. <br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Atribuido opção de dizer se equipamento é ou não de rack;<br>
+                    2. Atribuido opção de vincular equipamento ao rack quando equipamento for do tipo de rack;<br>
+                    3. Atribuido opção de portas de acesso (SSH, WEB, Telnet) em equipamentos;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. <br>
+
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Criado a coluna rack na tabela equipamentos;<br>
+                    2. Criado a coluna rack_id na tabela equipamentospop;<br>
+                    3. Criado a coluna serialEquipamento na tabela equipamentospop;<br>
+                    4. Criado a coluna portaWeb na tabela equipamentospop;<br>
+                    5. Criado a coluna portaTelnet na tabela equipamentospop;<br>
+                    6. Criado a coluna portaSSH na tabela equipamentospop;<br>
+                    7. Criado a coluna portaWinbox na tabela equipamentospop;<br>
+
+                    <br><strong>Previsto para próximas atualizações</strong><br>
+                    1. Cadastro de regiões;<br>
+                    2. Cadastro de equipes;<br>
+                    3. Iniciar página de relatórios;<br>
+                    4. Mostrar LOG de alteração e criação de registros por usuário;<br>
+
+                  </div>
+                </div>
+              </div>
+
+
               <!-- Versão 2.0 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading2-0">
@@ -37,7 +78,7 @@ require "../includes/menu.php";
                     <br><strong>Correções de BUG</strong><br>
                     1. Corrigido o cadastro de novo POP;<br>
                     1. Corrigido o salvamento de anotação em credenciais de email;<br>
-                    
+
 
                     <br><strong>Alterações banco de dados</strong><br>
                     1. Criado tabela atualizacao;<br>

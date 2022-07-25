@@ -14,17 +14,25 @@ eqpop.id as id_equipamentoPop,
 eqpop.hostname as hostname,
 eqpop.pop_id as id_pop,
 eqpop.ipaddress as ipaddress,
+eqpop.serialEquipamento as serialEquipamento,
 eqpop.anotacaoEquipamento as anotacaoEquipamento,
 eqpop.statusEquipamento as eqpopstatus,
+eqpop.portaWeb as portaWeb,
+eqpop.portaTelnet as portaTelnet,
+eqpop.portaSSH as portaSSH,
+eqpop.portaWinbox as portaWinbox,
 emp.fantasia as nome_empresa,
 emp.id as id_empresa,
 pop.pop as nome_pop,
 eqp.id as id_equipamento,
 eqp.equipamento as nome_equipamento,
+eqp.rack as rack,
 fab.id as id_fabricante,
 fab.fabricante as nome_fabricante,
 tipo.id as id_tipoEquipamento,
-tipo.tipo as nome_tipoEquipamento
+tipo.tipo as nome_tipoEquipamento,
+rack.id as id_rack,
+rack.nomenclatura as nome_rack
 FROM
 equipamentospop as eqpop
 LEFT JOIN
@@ -47,6 +55,10 @@ LEFT JOIN
 tipoequipamento as tipo
 ON
 tipo.id = eqpop.tipoEquipamento_id
+LEFT JOIN
+pop_rack as rack
+ON
+eqpop.rack_id = rack.id
 WHERE
 eqpop.id = '$id'
 ";
@@ -85,21 +97,21 @@ $row = mysqli_fetch_assoc($resultado);
                                 <label for="editEquipamentoPop" class="form-label">POP*</label>
                                 <select id="editEquipamentoPop" name="editEquipamentoPop" class="form-select" value="<?php echo $row['nome_pop']; ?>" required>
                                     <option value="<?= $row['id_pop']; ?>"><?= $row['nome_pop']; ?></option>
-                                    <?php
-                                    $resultado = mysqli_query($mysqli, $sql_lista_pop);
-                                    while ($c = $resultado->fetch_assoc()) : ?>
-                                        <option value="<?= $c['id_pop']; ?>"><?= $c['nome_pop']; ?></option>
-                                    <?php endwhile; ?>
+
                                 </select>
                             </div>
 
-                            <div class="col-2">
-                                <label for="editEquipamentoRack" class="form-label">Rack*</label>
-                                <select id="editEquipamentoRack" name="editEquipamentoRack" class="form-select">
-                                    <option value="Desenvolver">Em desenvolvimento</option>
-                                </select>
-                            </div>
-                            <!-- REVISAR PARTE DE SCRIPT JS E AJUSTAR OS ARQUIVOS DE BANCO PARA TRABALHAR COM PDO -->
+                            <?php
+                            if ($row['rack'] == "1") { ?>
+                                <div class="col-4">
+                                    <label for="editEquipamentoRack1" class="form-label">Rack*</label>
+                                    <select id="editEquipamentoRack1" name="editEquipamentoRack1" class="form-select" required>
+                                        <option value="<?= $row['id_rack']; ?>"><?= $row['nome_rack']; ?></option>
+                                    </select>
+                                </div>
+                            <?php } else { ?>
+                                <div class="col-4"></div>
+                            <?php } ?>
 
                             <div class="col-4">
                                 <label for="inputHostname" class="form-label">Hostname*</label>
@@ -140,6 +152,10 @@ $row = mysqli_fetch_assoc($resultado);
                                 <input name="inputIpAddress" type="text" class="form-control" id="inputIpAddress" value="<?php echo $row['ipaddress']; ?>" maxlength="15" required>
                             </div>
 
+                            <div class="col-4">
+                                <label for="inputSerial" class="form-label">Serial</label>
+                                <input name="inputSerial" type="text" class="form-control" id="inputSerial" value="<?= $row['serialEquipamento']; ?>">
+                            </div>
 
                             <div class="col-4">
                                 <label for="inputStatus" class="form-label select-label">Status*</label>
@@ -152,6 +168,29 @@ $row = mysqli_fetch_assoc($resultado);
                             </div>
 
                             <hr class="sidebar-divider">
+
+                            <div class="col-2">
+                                <label for="portaWeb" class="form-label select-label">Porta WEB</label>
+                                <input id="portaWeb" name="portaWeb" class="form-control" value="<?= $row['portaWeb']?>"></input>
+                            </div>
+
+                            <div class="col-2">
+                                <label for="portaSSH" class="form-label select-label">Porta SSH</label>
+                                <input id="portaSSH" name="portaSSH" class="form-control" value="<?= $row['portaSSH']?>"></input>
+                            </div>
+
+                            <div class="col-2">
+                                <label for="portaTelnet" class="form-label select-label">Porta Telnet</label>
+                                <input id="portaTelnet" name="portaTelnet" class="form-control" value="<?= $row['portaTelnet']?>"></input>
+                            </div>
+
+                            <?php
+                            if ($row['nome_fabricante'] == "Mikrotik") { ?>
+                                <div class="col-2">
+                                    <label for="portaWinbox" class="form-label select-label">Porta Winbox</label>
+                                    <input id="portaWinbox" name="portaWinbox" class="form-control" value="<?= $row['portaWinbox']?>"></input>
+                                    </div>
+                            <?php } ?>
 
                             <div class="col-12">
                                 <label for="anotacaoEquipamento" class="form-label">Anotações</label>
