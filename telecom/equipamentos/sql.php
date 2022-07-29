@@ -77,4 +77,3 @@ ORDER BY
 tipo.tipo ASC
 ";
 
-?>

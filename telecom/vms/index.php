@@ -399,6 +399,13 @@ LIMIT $limiteBusca
 
                         <hr class="sidebar-divider">
 
+                        <style>
+                            #tabelaLista:hover {
+                                cursor: pointer;
+                                background-color: #E0FFFF;
+                            }
+                        </style>
+
                         <table class="table datatable">
                             <thead>
                                 <tr>
@@ -408,7 +415,6 @@ LIMIT $limiteBusca
                                     <th style="text-align: center;" scope="col">Endereço IP</th>
                                     <th style="text-align: center;" scope="col">Sistema Operacional</th>
                                     <th style="text-align: center;" scope="col">Status</th>
-                                    <th style="text-align: center;" scope="col">Visualizar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -418,22 +424,15 @@ LIMIT $limiteBusca
 
                                 // Obtendo os dados por meio de um loop while
                                 while ($campos = $resultado->fetch_array()) {
-                                    $id = $campos['idvm'];
-                                    echo "<tr>";
-                                ?>
-                                    </td>
-                                    <td style="text-align: center;"><?php echo $campos['hostname']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['empresa']; ?> / <?php echo $campos['pop']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['servidor']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['ipaddress']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['sistemaOperacional']; ?></td>
-                                    <td style="text-align: center;" style="text-align: center;">
-                                        <?php echo $campos['statusvm']; ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                    <a title="Ver mais" class="bi bi-eye-fill" href="view.php?id=<?= $campos['idvm']; ?>"></a>
-                                        <a title="Credenciais" class="bi bi-key" href="/telecom/credenciais/index.php?id=<?= $campos['idvm']; ?>&tipo=VM"></a>
-                                    </td>
+                                    $id = $campos['idvm']; ?>
+                                    <tr id="tabelaLista" onclick="location.href='view.php?id=<?= $campos['idvm']; ?>'">
+                                        </td>
+                                        <td style="text-align: center;"><?php echo $campos['hostname']; ?></td>
+                                        <td style="text-align: center;"><?php echo $campos['empresa']; ?> / <?php echo $campos['pop']; ?></td>
+                                        <td style="text-align: center;"><?php echo $campos['servidor']; ?></td>
+                                        <td style="text-align: center;"><?php echo $campos['ipaddress']; ?></td>
+                                        <td style="text-align: center;"><?php echo $campos['sistemaOperacional']; ?></td>
+                                        <td style="text-align: center;" style="text-align: center;"><?= $campos['statusvm']; ?></td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

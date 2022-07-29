@@ -66,8 +66,6 @@
             </ul>
         </li>
 
-
-
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#Produtos-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-layout-text-window-reverse"></i><span>Produtos</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -99,6 +97,22 @@
                 </li>
             </ul>
 
+        <li class="nav-heading">Service Desk</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/servicedesk/consultar_chamados/index.php">
+                <i class="bi bi-file-text"></i>
+                <span>Chamados</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/portal/tipos_chamados/index.php">
+                <i class="bi bi-clipboard-plus"></i>
+                <span>Tipos de Chamados</span>
+            </a>
+        </li>
+
         <li class="nav-heading">Telecom</li>
 
         <li class="nav-item">
@@ -114,7 +128,6 @@
                 <span>POP/Site</span>
             </a>
         </li>
-
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="/telecom/equipamentos/index.php">
@@ -138,22 +151,22 @@
             </a>
             <ul id="gerenciamento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
-
                 <li>
                     <a href="/gerenciamento/log_acesso/index.php">
-                        <i class="bi bi-circle"></i><span>LOG de acesso</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/desenvolvimento.php">
-                        <i class="bi bi-circle"></i><span>Perfil</span>
+                        <i class="bi bi-circle"></i><span>LOG de acesso - Admin</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="/gerenciamento/usuarios/usuarios.php">
-                        <i class="bi bi-circle"></i><span>Usuários</span>
+                        <i class="bi bi-circle"></i><span>Usuários - Admin</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="/portal/usuarios/index.php">
+                        <i class="bi bi-person-circle"></i>
+                        <span>Usuários - Portal</span>
                     </a>
                 </li>
 
@@ -165,12 +178,6 @@
                 <i class="bi bi-info-circle"></i><span>Sistema</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="sistema-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-
-                <li>
-                    <a href="/sistema/atualizar/index.php">
-                        <i class="bi bi-circle"></i><span>Atualização</span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="/sistema/changelog.php">

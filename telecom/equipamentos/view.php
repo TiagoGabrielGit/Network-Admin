@@ -75,7 +75,8 @@ $row = mysqli_fetch_assoc($resultado);
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Código <?php echo $row['id_equipamentoPop']; ?> - <?php echo $row['hostname']; ?></h5>
+                        <h5 class="card-title">Código <?php echo $row['id_equipamentoPop']; ?> -
+                            <?php echo $row['hostname']; ?></h5>
 
                         <form method="POST" action="processa/edit.php" class="row g-3">
 
@@ -115,15 +116,16 @@ $row = mysqli_fetch_assoc($resultado);
 
                             <div class="col-4">
                                 <label for="inputHostname" class="form-label">Hostname*</label>
-                                <input name="inputHostname" type="text" class="form-control" id="inputHostname" value="<?php echo $row['hostname']; ?>" required>
+                                <input name="inputHostname" type="text" class="form-control" id="inputHostname" value="<?= $row['hostname']; ?>" required>
                             </div>
 
                             <hr class="sidebar-divider">
 
                             <div class="col-4">
                                 <label for="inputFabricante" class="form-label">Fabricante*</label>
-                                <select id="inputFabricante" name="inputFabricante" class="form-select" value="<?php echo $row['nome_cidade']; ?>" required>
-                                    <option value="<?= $row['id_fabricante']; ?>"><?= $row['nome_fabricante']; ?></option>
+                                <select id="inputFabricante" name="inputFabricante" class="form-select" value="<?= $row['nome_cidade']; ?>" required>
+                                    <option value="<?= $row['id_fabricante']; ?>"><?= $row['nome_fabricante']; ?>
+                                    </option>
                                     <?php
                                     $resultado = mysqli_query($mysqli, $sql_lista_fabricantes);
                                     while ($c = $resultado->fetch_assoc()) : ?>
@@ -135,14 +137,17 @@ $row = mysqli_fetch_assoc($resultado);
                             <div class="col-4">
                                 <label for="inputEquipamento" class="form-label">Equipamento*</label>
                                 <select id="inputEquipamento" name="inputEquipamento" class="form-select" required>
-                                    <option value="<?= $row['id_equipamento']; ?>"><?= $row['nome_equipamento']; ?></option>
+                                    <option value="<?= $row['id_equipamento']; ?>"><?= $row['nome_equipamento']; ?>
+                                    </option>
                                 </select>
                             </div>
 
                             <div class="col-4">
-                                <label for="inputTipoEquipamento" class="form-label select-label">Tipo de equipamento*</label>
+                                <label for="inputTipoEquipamento" class="form-label select-label">Tipo de
+                                    equipamento*</label>
                                 <select id="inputTipoEquipamento" name="inputTipoEquipamento" class="form-select" required>
-                                    <option value="<?= $row['id_tipoEquipamento']; ?>"><?= $row['nome_tipoEquipamento']; ?></option>
+                                    <option value="<?= $row['id_tipoEquipamento']; ?>">
+                                        <?= $row['nome_tipoEquipamento']; ?></option>
 
                                 </select>
                             </div>
@@ -171,25 +176,25 @@ $row = mysqli_fetch_assoc($resultado);
 
                             <div class="col-2">
                                 <label for="portaWeb" class="form-label select-label">Porta WEB</label>
-                                <input id="portaWeb" name="portaWeb" class="form-control" value="<?= $row['portaWeb']?>"></input>
+                                <input id="portaWeb" name="portaWeb" class="form-control" value="<?= $row['portaWeb'] ?>"></input>
                             </div>
 
                             <div class="col-2">
                                 <label for="portaSSH" class="form-label select-label">Porta SSH</label>
-                                <input id="portaSSH" name="portaSSH" class="form-control" value="<?= $row['portaSSH']?>"></input>
+                                <input id="portaSSH" name="portaSSH" class="form-control" value="<?= $row['portaSSH'] ?>"></input>
                             </div>
 
                             <div class="col-2">
                                 <label for="portaTelnet" class="form-label select-label">Porta Telnet</label>
-                                <input id="portaTelnet" name="portaTelnet" class="form-control" value="<?= $row['portaTelnet']?>"></input>
+                                <input id="portaTelnet" name="portaTelnet" class="form-control" value="<?= $row['portaTelnet'] ?>"></input>
                             </div>
 
                             <?php
                             if ($row['nome_fabricante'] == "Mikrotik") { ?>
                                 <div class="col-2">
                                     <label for="portaWinbox" class="form-label select-label">Porta Winbox</label>
-                                    <input id="portaWinbox" name="portaWinbox" class="form-control" value="<?= $row['portaWinbox']?>"></input>
-                                    </div>
+                                    <input id="portaWinbox" name="portaWinbox" class="form-control" value="<?= $row['portaWinbox'] ?>"></input>
+                                </div>
                             <?php } ?>
 
                             <div class="col-12">
@@ -198,7 +203,7 @@ $row = mysqli_fetch_assoc($resultado);
                             </div>
 
                             <div class="col-4" style="text-align: left;">
-                                <a href="/telecom/credenciais/index.php?id=<?= $id ?>&tipo=Equipamento"><input type="button" class="btn btn-info" value="Visualizar credenciais"></input></a>
+                                <a onclick="capturaDados(<?= $id ?>, '<?= $row['hostname']; ?>')" data-bs-toggle="modal" data-bs-target="#basicModalCredenciais"><input type="button" class="btn btn-info" value="Visualizar credenciais"></input></a>
                             </div>
 
                             <div class="col-4" style="text-align: center;">
@@ -214,11 +219,94 @@ $row = mysqli_fetch_assoc($resultado);
                     </div>
                 </div>
             </div>
-
+ 
         </div>
     </section>
 
 </main><!-- End #main -->
+
+<script>
+    function capturaDados(id, equipamento) {
+        document.querySelector("#idEquipamentoModal").value = id;
+        document.querySelector("#EquipamentoModal").value = equipamento;
+    }
+</script>
+
+<div class=" modal fade" id="basicModalCredenciais" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Senhas cadastradas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="col-lg-12">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="idEquipamentoModal" class="form-label">ID</label>
+                                    <input type="Text" name="idEquipamentoModal" class="form-control" id="idEquipamentoModal" disabled>
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="EquipamentoModal" class="form-label">Equipamento</label>
+                                    <input type="Text" name="EquipamentoModal" class="form-control" id="EquipamentoModal" disabled>
+                                </div>
+
+                            </div>
+                            <hr class="sidebar-divider">
+
+                            <div class="col-12">
+                                <div class="accordion" id="accordionExample">
+                                    <?php
+                                    $sql_credenciais =
+                                        "SELECT
+                                        ce.id as id_credencial,
+                                        ce.equipamentodescricao as descricao,
+                                        ce.equipamentousuario as eqpuser,
+                                        ce.equipamentosenha as eqpsenha,
+                                        e.ipaddress as ip
+                                        FROM
+                                        credenciais_equipamento as ce
+                                        LEFT JOIN
+                                        equipamentospop as e
+                                        ON
+                                        e.id = ce.equipamento_id
+                                        WHERE
+                                        ce.equipamento_id = $id";
+
+                                    $resultado_credenciais = mysqli_query($mysqli, $sql_credenciais)  or die("Erro ao retornar dados");
+                                    $cont = 1;
+
+                                    while ($campos = $resultado_credenciais->fetch_array()) {
+                                        $id_credencial = $campos['id_credencial'];
+
+                                    ?>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="heading<?= $cont ?>"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $cont ?>" aria-expanded="false" aria-controls="collapse<?= $cont ?>"> <?= $campos['descricao'] ?> </button></h2>
+                                            <div id="collapse<?= $cont ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $cont ?>" data-bs-parent="#accordionExample" style="">
+                                                <div class="accordion-body">
+                                                    <strong>IP:</strong><?= $campos['ip']; ?><br>
+                                                    <strong>Usuário:</strong> <?= $campos['eqpuser']; ?> <br>
+                                                    <strong>Senha:</strong> <?= $campos['eqpsenha']; ?> <br>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <?php $cont++;
+                                    } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
 require "../../scripts/equipamentosPop.php";

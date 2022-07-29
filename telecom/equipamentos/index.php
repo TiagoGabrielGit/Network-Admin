@@ -145,7 +145,7 @@ LIMIT $limiteBusca
                                                     <!-- Vertical Form -->
                                                     <form method="POST" action="/telecom/equipamentos/processa/add.php" class="row g-3">
 
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <label for="cadastroEmpresa" class="form-label">Empresa*</label>
                                                             <select id="cadastroEmpresa" name="cadastroEmpresa" class="form-select" required>
                                                                 <option selected disabled>Selecione a empresa</option>
@@ -162,6 +162,13 @@ LIMIT $limiteBusca
                                                             <label for="cadastroPop" class="form-label">POP*</label>
                                                             <select id="cadastroPop" name="cadastroPop" class="form-select" required>
                                                                 <option selected disabled>Selecione o pop</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <label for="rackPop" class="form-label">Rack*</label>
+                                                            <select id="rackPop" name="rackPop" class="form-select" required>
+                                                                <option selected disabled>Selecione o rack</option>
                                                             </select>
                                                         </div>
 
@@ -206,6 +213,14 @@ LIMIT $limiteBusca
                                                             <input id="ipaddress" name="ipaddress" type="text" class="form-control" placeholder="Ex: 192.168.1.1" maxlength="15" required>
                                                         </div>
 
+                                                        <div class="col-4"></div>
+
+
+                                                        <div class="col-4">
+                                                            <label for="serialEquipamento" class="form-label">Serial</label>
+                                                            <input id="serialEquipamento" name="serialEquipamento" type="text" class="form-control" placeholder="Ex: AXT123ZXC">
+                                                        </div>
+
                                                         <div class="col-4">
                                                             <label for="statusEquipamento" class="form-label">Status*</label>
                                                             <select id="statusEquipamento" name="statusEquipamento" class="form-select" required>
@@ -215,12 +230,11 @@ LIMIT $limiteBusca
                                                                 <option value="Inativado">Inativado</option>
                                                             </select>
                                                         </div>
-
                                                         <hr class="sidebar-divider">
 
                                                         <div class="text-center">
                                                             <button type="submit" class="btn btn-primary">Salvar</button>
-                                                            <button type="reset" class="btn btn-secondary">Limpar</button>
+                                                            <a href="/telecom/equipamentos/index.php"> <input type="button" value="Voltar" class="btn btn-secondary"></input></a>
                                                         </div>
                                                     </form><!-- Vertical Form -->
                                                 </div>
@@ -412,6 +426,13 @@ LIMIT $limiteBusca
 
                         <hr class="sidebar-divider">
 
+                        <style>
+                            #tabelaLista:hover {
+                                cursor: pointer;
+                                background-color: #E0FFFF;
+                            }
+                        </style>
+
                         <table class="table datatable">
                             <thead>
                                 <tr>
@@ -420,7 +441,6 @@ LIMIT $limiteBusca
                                     <th style="text-align: center;" scope="col">Endereço IP</th>
                                     <th style="text-align: center;" scope="col">Equipamento</th>
                                     <th style="text-align: center;" scope="col">Status</th>
-                                    <th style="text-align: center;" scope="col">Visualizar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -430,21 +450,16 @@ LIMIT $limiteBusca
 
                                 // Obtendo os dados por meio de um loop while
                                 while ($campos = $resultado->fetch_array()) {
-                                    $id = $campos['id_equipop'];
-                                    echo "<tr>";
-                                ?>
-                                    </td>
-                                    <td style="text-align: center;"><?php echo $campos['hostname']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['empresa']; ?> / <?php echo $campos['pop']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['ipaddress']; ?></td>
-                                    <td style="text-align: center;"><?php echo $campos['equipamento']; ?></td>
-                                    <td style="text-align: center;" style="text-align: center;"><?php echo $campos['statuseqp']; ?></td>
-                                    <td style="text-align: center;">
-                                        <a title="Ver mais" class="bi bi-eye-fill" href="view.php?id=<?= $campos['id_equipop']; ?>"></a>
-                                        <a title="Credenciais" class="bi bi-key" href="/telecom/credenciais/index.php?id=<?= $campos['id_equipop']; ?>&tipo=Equipamento"></a>
-                                    </td>
-                                    </tr>
-                                <?php } ?>
+                                    $id = $campos['id_equipop']; ?>
+
+                                    <tr id="tabelaLista" onclick="location.href='view.php?id=<?= $campos['id_equipop']; ?>'">
+                                        </td>
+                                        <td style="text-align: center;"><?php echo $campos['hostname']; ?></td>
+                                        <td style="text-align: center;"><?php echo $campos['empresa']; ?> / <?php echo $campos['pop']; ?></td>
+                                        <td style="text-align: center;"><?php echo $campos['ipaddress']; ?></td>
+                                        <td style="text-align: center;"><?php echo $campos['equipamento']; ?></td>
+                                        <td style="text-align: center;" style="text-align: center;"><?php echo $campos['statuseqp']; ?></td>
+                                    <?php } ?>
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->

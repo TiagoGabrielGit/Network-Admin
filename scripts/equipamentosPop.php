@@ -257,3 +257,23 @@
         });
     });
 </script>
+
+<script>
+    //Procura os rack's de acordo com pop selecionado
+    $("#cadastroPop").change(function() {
+        var popSelecionado = $(this).children("option:selected").val();
+
+        $.ajax({
+            url: "/api/pesquisa_racks.php",
+            method: "GET",
+            dataType: "HTML",
+            data: {
+                id: popSelecionado
+            }
+        }).done(function(resposta) {
+            $("#rackPop").html(resposta);
+        }).fail(function(resposta) {
+            alert(resposta)
+        });
+    });
+</script>

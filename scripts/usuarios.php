@@ -4,7 +4,6 @@
 
 
 <script>
-    //Pesquisa os estados passando ID do país
     $("#inputNome").change(function() {
         var nomeSelecionado = $(this).children("option:selected").val();
 
@@ -24,7 +23,6 @@
 </script>
 
 <script>
-    //Pesquisa os estados passando ID do país
     $("#inputNome").change(function() {
         var nomeSelecionado = $(this).children("option:selected").val();
 

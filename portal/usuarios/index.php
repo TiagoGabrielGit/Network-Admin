@@ -1,15 +1,13 @@
 <?php
-require '../../includes/menu.php';
+require "../../includes/menu.php";
 require "../../conexoes/conexao.php";
-require "../../conexoes/sql.php";
-require "../../includes/remove_setas_number.php";
-require "sql.php";
+require "sql.php"
 ?>
 
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Usuários</h1>
+        <h1>Usuários portal</h1>
     </div><!-- End Page Title -->
 
     <section class="section">
@@ -19,8 +17,6 @@ require "sql.php";
                 <div class="card">
 
                     <div class="card-body">
-
-
                         <div class="container">
                             <div class="row">
                                 <div class="col-8">
@@ -46,7 +42,9 @@ require "sql.php";
                                             <div class="modal-body">
                                                 <div class="card-body">
                                                     <!-- Vertical Form -->
-                                                    <form method="POST" action="processa/add.php" class="row g-3 needs-validation" novalidate>
+                                                    <form id="cadastraUsuarioPortal" method="POST" class="row g-3 needs-validation">
+
+                                                        <span id="msg"></span>
 
                                                         <div class="col-12">
                                                             <label for="inputNome" class="form-label">Nome*</label>
@@ -63,31 +61,33 @@ require "sql.php";
 
                                                         <div class="col-12">
                                                             <label for="inputEmail" class="form-label">E-mail/Usuário</label>
-                                                            <select id="inputEmail" name="inputEmail" class="form-select" disabled required></select>
-                                                            <select id="inputEmailHidden" name="inputEmailHidden" class="form-select" hidden></select>
+                                                            <input id="inputEmail" name="inputEmail" class="form-control" disabled required></input>
+                                                            <input id="inputEmailHidden" name="inputEmailHidden" class="form-control" hidden></input>
                                                         </div>
 
                                                         <div class="col-12">
-                                                            <label for="inputPerfil" class="form-label">Perfil</label>
-                                                            <select name="perfil" id="perfil" class="form-select" required>
-
-                                                                <option selected disabled>Selecione o perfil</option>
+                                                            <label for="inputEmpresa" class="form-label">Empresa*</label>
+                                                            <select id="inputEmpresa" name="inputEmpresa" class="form-select" required>
+                                                                <option require selected disabled>Selecione a empresa</option>
                                                                 <?php
-                                                                $resultado = mysqli_query($mysqli, $sql_perfil) or die("Erro ao retornar dados");
-                                                                while ($p = $resultado->fetch_assoc()) : ?>
-                                                                    <option value="<?= $p['id']; ?>"><?= $p['perfil']; ?></option>
-                                                                <?php endwhile; ?>
+                                                                $resultado = mysqli_query($mysqli, $lista_empresas);
+                                                                while ($empresa = mysqli_fetch_object($resultado)) :
+                                                                    echo "<option value='$empresa->empresa_id'> $empresa->empresa_nome</option>";
+                                                                endwhile;
+                                                                ?>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-12">
-                                                            <label for="yourPassword" class="form-label">Senha</label>
-                                                            <input type="password" name="senha" class="form-control" id="yourPassword" required>
-                                                            <div class="invalid-feedback">Digite uma senha.</div>
+                                                            <label for="inputSenha" class="form-label">Senha</label>
+                                                            <input id="inputSenha" name="inputSenha" class="form-control" required></input>
                                                         </div>
 
-                                                        <div class="col-12">
-                                                            <button class="btn btn-primary w-100" type="submit">Cadastrar usuário</button>
+                                                        <hr class="sidebar-divider">
+
+                                                        <div class="text-center">
+                                                            <input id="btnSalvar" name="btnSalvar" type="button" value="Salvar" class="btn btn-primary"></input>
+                                                            <a href="/portal/usuarios/index.php"> <input type="button" value="Voltar" class="btn btn-secondary"></input></a>
                                                         </div>
 
                                                     </form>
@@ -107,10 +107,10 @@ require "sql.php";
                         <table class="table datatable">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Perfil</th>
-                                    <th scope="col">E-mail/Usuário</th>
-                                    <th scope="col">Ativo</th>
+                                    <th style="text-align: center;" scope="col">Nome</th>
+                                    <th style="text-align: center;" scope="col">Empresa</th>
+                                    <th style="text-align: center;" scope="col">E-mail/Usuário</th>
+                                    <th style="text-align: center;" scope="col">Ativo</th>
                                     <th style="text-align: center;" scope="col">Ativar/Inativar</th>
                                     <th style="text-align: center;" scope="col">Alterar Senha</th>
                                 </tr>
@@ -119,66 +119,28 @@ require "sql.php";
                                 <!-- Preenchendo a tabela com os dados do banco: -->
                                 <?php
 
-                                $sql =
-                                    "SELECT 
-                                        user.id as id,
-                                        pess.nome as nome,
-                                        user.email as email,
-                                        user.senha as senha,
-                                        user.deleted as deleted,
-                                        userPerfil.permissao_id as perfil,
-                                        perfil.perfil as nome_perfil,
-                                        CASE
-                                            WHEN user.deleted = 1 THEN 'Ativado'
-                                            WHEN user.deleted = 2 THEN 'Inativado'
-                                        END AS deleted
-                                        FROM 
-                                        usuarios as user
-                                        LEFT JOIN
-                                        usuarios_perfil as userPerfil
-                                        ON
-                                        userPerfil.usuario_id = user.id
-                                        LEFT JOIN
-                                        perfil_permissoes as perfil
-                                        ON
-                                        perfil.id = userPerfil.permissao_id
-                                        LEFT JOIN                            
-                                        pessoas as pess
-                                        ON
-                                        pess.id = user.pessoa_id
-                                        WHERE
-                                        userPerfil.permissao_id != 1
-                                        ORDER BY
-                                        pess.nome ASC
-                                        ";
-
-                                $resultado = mysqli_query($mysqli, $sql) or die("Erro ao retornar dados");
+                                $resultado = mysqli_query($mysqli, $sql_lista_user_portal) or die("Erro ao retornar dados");
 
                                 // Obtendo os dados por meio de um loop while
                                 while ($campos = $resultado->fetch_array()) {
-                                    $id = $campos['id'];
-                                    $usuario = $campos['nome'];
-                                    $deleted = $campos['deleted'];
+                                    $id = $campos['id_usuario'];
                                     echo "<tr>";
                                 ?>
-                                    <td><?php echo $campos['nome']; ?></td>
-                                    <td><?php echo $campos['nome_perfil']; ?></td>
-                                    <td><?php echo $campos['email']; ?></td>
-                                    <td><?php echo $campos['deleted']; ?></td>
+                                    <td style="text-align: center;"><?php echo $campos['nome_pessoa']; ?></td>
+                                    <td style="text-align: center;"><?php echo $campos['fantasia_empresa']; ?></td>
+                                    <td style="text-align: center;"><?php echo $campos['user_usuario']; ?></td>
+                                    <td style="text-align: center;"><?php echo $campos['active']; ?></td>
                                     <td style="text-align: center;">
                                         <?php
-                                        if ($campos['deleted'] == "Ativado") {
-                                            echo "<a href='/gerenciamento/usuarios/processa/deleta.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-arrow-left-right' </a>";
-                                        } else if ($campos['deleted'] == "Inativado") {
-                                            echo "<a href='/gerenciamento/usuarios/processa/reativa.php?id=" . $campos['id'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-arrow-left-right' </a>";
+                                        if ($campos['active'] == "Ativado") {
+                                            echo "<a href='processa/inativa.php?id=" . $campos['id_usuario'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-arrow-left-right' </a>";
+                                        } else if ($campos['active'] == "Inativado") {
+                                            echo "<a href='processa/ativa.php?id=" . $campos['id_usuario'] . "' data-confirm='Tem certeza que deseja excluir permanentemente esse registro?'" . " class='bi bi-arrow-left-right' </a>";
                                         }
                                         ?>
-                                    </td> 
+                                    </td>
                                     <td style="text-align: center;">
-
-                                        <!--  <a href="#" style="margin-top: 15px" class="bi bi-key-fill" data-bs-toggle="modal" data-bs-target="#basicModalSenha"></a> -->
-                                        <a onclick="capturaDadosLogin(<?php echo $campos['id'] ?>,'<?php echo $campos['email'] ?>','<?php echo $campos['nome'] ?>')" class="bi bi-key-fill" role="button" data-bs-toggle="modal" data-bs-target="#basicModalSenha"></a>
-
+                                        <a onclick="capturaDadosLogin(<?= $campos['id_usuario'] ?>,'<?= $campos['user_usuario'] ?>','<?= $campos['nome_pessoa'] ?>')" class="bi bi-key-fill" role="button" data-bs-toggle="modal" data-bs-target="#basicModalSenha"></a>
                                     </td>
                                     </tr>
                                 <?php } ?>
@@ -195,7 +157,6 @@ require "sql.php";
 
 </main><!-- End #main -->
 
-
 <script>
     function capturaDadosLogin(id, usuario, nome) {
         document.querySelector("#id").value = id;
@@ -205,6 +166,7 @@ require "sql.php";
         document.querySelector("#nomeUsuario").value = nome;
     }
 </script>
+
 
 <div class=" modal fade" id="basicModalSenha" tabindex="-1">
     <div class="modal-dialog">
@@ -216,7 +178,7 @@ require "sql.php";
             <div class="modal-body">
                 <div class="card-body">
                     <!-- Vertical Form -->
-                    <form method="POST" action="/gerenciamento/usuarios/processa/alterarSenha.php" class="row g-3 needs-validation" novalidate>
+                    <form method="POST" action="/portal/usuarios/processa/senha.php" class="row g-3 needs-validation" novalidate>
 
                         <div class="col-12">
                             <label for="nomeUsuario" class="form-label">Nome </label>
@@ -259,7 +221,15 @@ require "sql.php";
     </div>
 </div><!-- End Basic Modal-->
 
+
+
+
+
+
+
+
+
 <?php
-require "../../scripts/usuarios.php";
+require "../../scripts/usuario_portal.php";
 require "../../includes/footer.php";
 ?>

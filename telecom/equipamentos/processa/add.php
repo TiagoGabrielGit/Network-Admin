@@ -29,10 +29,17 @@ require "../../../conexoes/conexao.php";
         $hostname = $_POST['hostname'];
         $ipaddress = $_POST['ipaddress'];
         $statusEquipamento = $_POST['statusEquipamento'];
+        $rackPop = $_POST['rackPop'];
+
+        if (empty($_POST['serialEquipamento'])) {
+            $serialEquipamento = "";
+        } else {
+            $serialEquipamento = $_POST['serialEquipamento'];
+        }
 
         //Realiza o cadastro 
-        $result = "INSERT INTO equipamentospop (empresa_id, pop_id, equipamento_id, tipoEquipamento_id, hostname, ipaddress, statusEquipamento, deleted, criado)
-        VALUES ('$cadastroEmpresa', '$cadastroPop', '$cadastroEquipamento', '$cadastroTipoEquipamento', '$hostname', '$ipaddress', '$statusEquipamento', '1', NOW())";
+        $result = "INSERT INTO equipamentospop (empresa_id, pop_id, equipamento_id, tipoEquipamento_id, hostname, ipaddress, statusEquipamento, deleted, rack_id, serialEquipamento, criado)
+        VALUES ('$cadastroEmpresa', '$cadastroPop', '$cadastroEquipamento', '$cadastroTipoEquipamento', '$hostname', '$ipaddress', '$statusEquipamento', '1', '$rackPop', '$serialEquipamento', NOW())";
         $resultado = mysqli_query($mysqli, $result);
 
         $id_equipamento = mysqli_insert_id($mysqli);
@@ -48,7 +55,7 @@ require "../../../conexoes/conexao.php";
                         <div class="modal-body">
                         </div>
                         <div class="modal-footer">
-                            <a href="/telecom/equipamentos/view.php?id=<?= $id_equipamento?>"><button type="button" class="btn btn-success">Ok</button></a>
+                            <a href="/telecom/equipamentos/view.php?id=<?= $id_equipamento ?>"><button type="button" class="btn btn-success">Ok</button></a>
 
                         </div>
                     </div>

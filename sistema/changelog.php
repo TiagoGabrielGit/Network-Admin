@@ -18,6 +18,44 @@ require "../includes/menu.php";
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
 
+              <!-- Versão 2.2 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading2-2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-2" aria-expanded="false" aria-controls="collapse2-2">
+                    Versão 2.2 - 29/07/2022
+                  </button>
+                </h2>
+                <div id="collapse2-2" class="accordion-collapse collapse" aria-labelledby="heading2-2" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. Cadastro de usuários de portal;<br>
+                    2. Criado cadastro de tipo de chamado;<br>
+                    3. Criado pagina para ver chamados, relatar e abrir chamado;<br>
+                    4. Botao apropriar na visualização do chamado;<br>
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Melhorias na visualização das senhas dos equipamentos;<br>
+                    2. Preenchimento rack e serial no cadastro do equimento no pop;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. <br>
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Criado coluna atendende_id na tabela chamados;<br>
+                    2. Criado coluna relator_id na tabela chamado_relato;<br>
+                    3. Criado coluna in_execution na tabela chamados;<br>
+                    4. Criado coluna in_execution_atd_id na tabela chamados;<br>
+                    5. Criado coluna in_execution_start na tabela chamados;<br>
+
+                    <br><strong>Previsto para próximas atualizações</strong><br>
+                    1. Cadastro de equipes;<br>
+                    2. Iniciar página de relatórios;<br>
+                    3. Mostrar LOG de alteração e criação de registros por usuário;<br>
+                  </div>
+                </div>
+              </div>
+
+
               <!-- Versão 2.1 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading2-1">

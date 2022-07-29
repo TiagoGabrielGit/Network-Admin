@@ -169,14 +169,13 @@ $row = mysqli_fetch_assoc($resultado);
                             </div>
 
                             <div class="col-4" style="text-align: left;">
-                                <a href="/telecom/credenciais/index.php?id=<?=$id?>&tipo=VM"><input type="button" class="btn btn-info" value="Visualizar credenciais"></input></a>
+                                <a onclick="capturaDados(<?= $id ?>, '<?= $row['hostname']; ?>')" data-bs-toggle="modal" data-bs-target="#basicModalCredenciais"><input type="button" class="btn btn-info" value="Visualizar credenciais"></input></a>
                             </div>
 
                             <div class="col-4" style="text-align: center;">
                                 <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>
                                 <a href="/telecom/vms/index.php"><input type="button" value="Voltar" class="btn btn-secondary"></a>
                             </div>
-
 
                             <div class="col-4" style="text-align: right;">
                                 <a href="processa/delete.php?id=<?= $id ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
@@ -191,6 +190,91 @@ $row = mysqli_fetch_assoc($resultado);
     </section>
 
 </main><!-- End #main -->
+
+
+<script>
+    function capturaDados(id, VM) {
+        document.querySelector("#idVMModal").value = id;
+        document.querySelector("#VMModal").value = VM;
+    }
+</script>
+
+<div class=" modal fade" id="basicModalCredenciais" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Senhas cadastradas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="col-lg-12">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="idVMModal" class="form-label">ID</label>
+                                    <input type="Text" name="idVMModal" class="form-control" id="idVMModal" disabled>
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="VMModal" class="form-label">VM</label>
+                                    <input type="Text" name="VMModal" class="form-control" id="VMModal" disabled>
+                                </div>
+
+                            </div>
+                            <hr class="sidebar-divider">
+
+                            <div class="col-12">
+                                <div class="accordion" id="accordionExample">
+                                    <?php
+                                    $sql_credenciais =
+                                        "SELECT
+                                        cv.id as id_credencial,
+                                        cv.vmdescricao as descricao,
+                                        cv.vmusuario as vmuser,
+                                        cv.vmsenha as vmsenha,
+                                        vm.ipaddress as ip
+                                        FROM
+                                        credenciais_vms as cv
+                                        LEFT JOIN
+                                        vms as vm
+                                        ON
+                                        vm.id = cv.vm_id
+                                        WHERE
+                                        cv.vm_id = $id";
+
+                                    $resultado_credenciais = mysqli_query($mysqli, $sql_credenciais)  or die("Erro ao retornar dados");
+                                    $cont = 1;
+
+                                    while ($campos = $resultado_credenciais->fetch_array()) {
+                                        $id_credencial = $campos['id_credencial'];
+
+                                    ?>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="heading<?= $cont ?>"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $cont ?>" aria-expanded="false" aria-controls="collapse<?= $cont ?>"> <?= $campos['descricao'] ?> </button></h2>
+                                            <div id="collapse<?= $cont ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $cont ?>" data-bs-parent="#accordionExample" style="">
+                                                <div class="accordion-body">
+                                                    <strong>IP:</strong> <?= $campos['ip']; ?><br>
+                                                    <strong>Usuário:</strong> <?= $campos['vmuser']; ?> <br>
+                                                    <strong>Senha:</strong> <?= $campos['vmsenha']; ?> <br>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <?php $cont++;
+                                    } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?php
 require "../../scripts/vms.php";

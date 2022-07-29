@@ -63,16 +63,8 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="/cadastros/localidades/regioes.php">
-                        <i class="bi bi-circle"></i><span>Regiões</span>
-                    </a>
-                </li>
-
             </ul>
         </li>
-
-
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#Produtos-nav" data-bs-toggle="collapse" href="#">
@@ -83,12 +75,6 @@
                 <li>
                     <a href="/cadastros/produtos/fabricantes.php">
                         <i class="bi bi-circle"></i><span>Fabricantes</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/cadastros/produtos/grupoProdutos.php">
-                        <i class="bi bi-circle"></i><span>Grupos Podutos e Serviçõs</span>
                     </a>
                 </li>
 
@@ -111,35 +97,20 @@
                 </li>
             </ul>
 
-        <li class="nav-heading">Negócios</li>
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#catalogo-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-layout-text-window-reverse"></i><span>Catálogos</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="catalogo-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-
-                <li>
-                    <a href="/catalogos/catalogosProdutos.php">
-                        <i class="bi bi-circle"></i><span>Produtos</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#.html">
-                <i class="bi bi-currency-dollar"></i>
-                <span>Orçamentos</span>
-            </a>
-        </li>
 
         <li class="nav-heading">Service Desk</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/servicedesk/atividades/index.php">
-                <i class="bi bi-bar-chart-steps"></i>
-                <span>Atividades</span>
+            <a class="nav-link collapsed" href="/servicedesk/consultar_chamados/index.php">
+                <i class="bi bi-file-text"></i>
+                <span>Consultar chamados</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/portal/tipos_chamados/index.php">
+                <i class="bi bi-clipboard-plus"></i>
+                <span>Tipos de Chamados</span>
             </a>
         </li>
 
@@ -182,26 +153,21 @@
             <ul id="gerenciamento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                 <li>
-                    <a href="/desenvolvimento.php">
-                        <i class="bi bi-circle"></i><span>Equipes</span>
-                    </a>
-                </li>
-
-                <li>
                     <a href="/gerenciamento/log_acesso/index.php">
-                        <i class="bi bi-circle"></i><span>LOG de acesso</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/desenvolvimento.php">
-                        <i class="bi bi-circle"></i><span>Perfil</span>
+                        <i class="bi bi-circle"></i><span>LOG de acesso - Admin</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="/gerenciamento/usuarios/usuarios.php">
-                        <i class="bi bi-circle"></i><span>Usuários</span>
+                        <i class="bi bi-circle"></i><span>Usuários - Admin</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="/portal/usuarios/index.php">
+                        <i class="bi bi-person-circle"></i>
+                        <span>Usuários - Portal</span>
                     </a>
                 </li>
 
@@ -226,29 +192,9 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="/sistema/relataBug/relateBug.php">
-                        <i class="bi bi-circle"></i><span>Relatar um problema</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/sistema/sugestaoMelhoria/sugereMelhoria.php">
-                        <i class="bi bi-circle"></i><span>Sugerir uma melhoria</span>
-                    </a>
-                </li>
-
             </ul>
         </li>
 
-        <li class="nav-heading">Área do desenvolvedor</li>
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="/....php">
-                <i class="bi bi-file-diff"></i>
-                <span>...</span>
-            </a>
-        </li>
     </ul>
 
 </aside><!-- End Sidebar-->
