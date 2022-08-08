@@ -85,12 +85,7 @@
                             <div class="col-4" style="text-align: center;">
                                 <!-- <div class="text-center"> -->
                                 <input id="btnSalvarEdit" name="btnSalvarEdit" type="button" value="Salvar" class="btn btn-primary"></input>
-                                <a href="/telecom/credenciais/index.php"><input type="button" class="btn btn-secondary" value="Voltar"></input></a>
-                            </div>
-
-                            <div class="col-4" style="text-align: right;">
-                                <a href="processa/delete.php?id=<?= $id ?>&tipo=<?= $row['cred_tipo']; ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
-
+                                <a href="/telecom/vms/view.php?id=<?=$row['vm_id'];?>"><input type="button" class="btn btn-secondary" value="Voltar"></input></a>
                             </div>
                         </form><!-- Vertical Form -->
 

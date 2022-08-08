@@ -60,24 +60,35 @@ if ($chamado['in_execution'] == 1) {
                 <div class="card">
                     <div class="card-body">
                         <div class="container">
-                            <div class="row">
-                                <div style="text-align: left;" class="col-5 <?= $classeColor ?>">
+                            <div class="row justify-content-between <?= $classeColor ?>">
+                                <div class="col-5">
+
+                                    <?php
+                                    $calc_tempo_total =
+                                        "SELECT SUM(seconds_worked) as secondsTotal
+                                        from chamado_relato
+                                        where chamado_id = $id_chamado";
+
+                                    $seconds_total = mysqli_query($mysqli, $calc_tempo_total);
+                                    $res_second = $seconds_total->fetch_array();
+                                    ?>
+
                                     <h5 class="card-title">Tipo de atendimento: <?= $chamado['tipo']; ?> </h5>
                                     <b>Empresa:</b> <?= $chamado['empresa']; ?> <br>
                                     <b>Solicitante:</b> <?= $solicitante['solicitante']; ?><br>
-                                    <b>Atendente:</b> <?= $atendente ?><br>
-
+                                    <b>Atendente:</b> <?= $atendente ?><br><br>
+                                    <b>Tempo total de atendimento:</b> <?= gmdate("H:i:s", $res_second['secondsTotal']); ?> <br>
                                 </div>
 
-                                <div style="text-align: left;" class="col-5 <?= $classeColor ?>">
-                                    <h5 class="card-title"></h5><br>                                    
+                                <div class="col-5">
+                                    <h5 class="card-title"></h5><br>
                                     <b>Data abertura: </b><?= $chamado['abertura']; ?> <br>
                                     <b>Data fechamento: </b><?= $chamado['fechado']; ?> <br>
-                                    <b>Status: </b><?= $chamado['status']; ?> <br>
+                                    <b>Status: </b><?= $chamado['status']; ?> <br><br>
+
                                 </div>
 
-                                <div style="text-align: right;" class="col-2">
-
+                                <div class="col-2">
                                     <?php
                                     if ($pessoaID['pessoaID'] != $chamado['id_atendente'] && $chamado['status'] != "Fechado") { ?>
                                         <a href="processa/apropriar.php?id=<?= $id_chamado  ?>&pessoa=<?= $pessoaID['pessoaID'] ?> "><button style="margin-top: 15px" class="btn btn-primary">Apropriar</button></a>
@@ -156,6 +167,7 @@ if ($chamado['in_execution'] == 1) {
 
                             while ($campos = $resultado_relatos->fetch_array()) {
                                 $id_relato = $campos['id_relato'];
+                                $tempoAtendimento = gmdate("H:i:s", $campos['seconds_worked']);
 
                             ?>
                                 <div class="accordion-item">
@@ -163,11 +175,12 @@ if ($chamado['in_execution'] == 1) {
                                     <div id="flush-collapse<?= $cont ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $cont ?>" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             <b>Relatante: </b> <?= $campos['relatante']; ?> <br>
-                                            <b>Período: </b> <?= $campos['inicio']; ?> à <?= $campos['final']; ?>
+                                            <b>Período: </b> <?= $campos['inicio']; ?> à <?= $campos['final']; ?><br>
+                                            <b>Tempo de atendimento: </b> <?= $tempoAtendimento ?><br>
 
                                             <hr class="sidebar-divider">
 
-                                            <b>Descrição: </b> <br><?= $campos['relato']; ?>
+                                            <b>Descrição: </b> <br><?= nl2br($campos['relato']); ?>
                                         </div>
                                     </div>
                                 </div>

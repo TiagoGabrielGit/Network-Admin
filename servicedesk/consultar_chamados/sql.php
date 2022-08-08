@@ -75,7 +75,8 @@ cr.chamado_id as id_chamado,
 p.nome as relatante,
 cr.relato as relato,
 cr.relato_hora_inicial as inicio,
-cr.relato_hora_final as final
+cr.relato_hora_final as final,
+cr.seconds_worked as seconds_worked
 FROM
 chamado_relato as cr
 LEFT JOIN

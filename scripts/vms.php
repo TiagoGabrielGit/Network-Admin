@@ -140,3 +140,26 @@
         }
     });
 </script>
+
+<script>
+    $("#btnSalvar").click(function() {
+        var dados = $("#cadastraSenhaVM").serialize();
+
+        $.post("processa/addNovaSenha.php", dados, function(retorna) {
+            $("#msg").slideDown('slow').html(retorna);
+
+            //Limpar os campos
+            $('#cadastraSenhaVM')[0].reset();
+
+            //Apresentar a mensagem leve
+            retirarMsg();
+        });
+    });
+
+    //Retirar a mensagem após 1700 milissegundos
+    function retirarMsg() {
+        setTimeout(function() {
+            $("#msg").slideUp('slow', function() {});
+        }, 1700);
+    }
+</script>

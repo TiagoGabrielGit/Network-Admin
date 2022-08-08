@@ -31,18 +31,14 @@ email.emaildescricao LIKE '%$varDescricao%'
 $resultado_email = mysqli_query($mysqli, $sql_pesquisa_email) or die("Erro ao retornar dados");
 
 while ($campos_email = $resultado_email->fetch_array()) {
-    $id = $campos_email['cred_id'];
-    echo "<tr>";
-?>
-    </td>
-    <td style="text-align: center;"><?= $campos_email['emp_fant']; ?></td>
-    <td style="text-align: center;"><?= $campos_email['cred_tipo']; ?></td>
-    <td style="text-align: center;"><?= "-" ?></td>
-    <td style="text-align: center;"><?= $campos_email['cred_desc']; ?></td>
-    <td style="text-align: center;"><?= $campos_email['cred_usuario']; ?></td>
-    <td style="text-align: center;"><?= $campos_email['cred_priv']; ?></td>
-    <td style="text-align: center;">
-        <a class='bi bi-eye-fill' href="view.php?id=<?= $campos_email['cred_id']; ?>&tipo=<?= $campos_email['cred_tipo']; ?>"> </a>
-    </td>
+    $id = $campos_email['cred_id']; ?>
+
+    <tr id="tabelaLista" onclick="location.href='view.php?id=<?= $id ?>&tipo=E-mail'">
+        </td>
+        <td style="text-align: center;"><?= $campos_email['emp_fant']; ?></td>
+        <td style="text-align: center;"><?= $campos_email['cred_tipo']; ?></td>
+        <td style="text-align: center;"><?= $campos_email['cred_desc']; ?></td>
+        <td style="text-align: center;"><?= $campos_email['cred_usuario']; ?></td>
+        <td style="text-align: center;"><?= $campos_email['cred_priv']; ?></td>
     </tr>
 <?php } ?>

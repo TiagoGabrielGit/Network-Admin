@@ -19,6 +19,7 @@ ch.assuntoChamado as assunto,
 ch.atendente_id as id_atendente,
 ch.data_abertura as dataAbertura,
 ch.in_execution as inExecution,
+ch.status_id as id_status,
 cs.status_chamado as statusChamado,
 tc.tipo as tipoChamado,
 emp.fantasia as fantasia,
@@ -63,6 +64,37 @@ id = '$id_usuario'
 $result_cap_pessoa = mysqli_query($mysqli, $sql_captura_id_pessoa);
 $pessoaID = mysqli_fetch_assoc($result_cap_pessoa);
 ?>
+
+<style>
+    #closed:hover {
+        cursor: pointer;
+        background-color: #a9a9a9;
+    }
+
+    #open:hover {
+        cursor: pointer;
+        background-color: #c1f8f8;
+    }
+
+    #inExecution:hover {
+        background-color: #7efb7e;
+    }
+
+    .closed {
+        background-color: #c8c8c8;
+        border-color: black;
+    }
+
+    .open {
+        background-color: #ecfefe;
+        border-color: black;
+    }
+
+    .inExecution {
+        background-color: #a5fba5;
+        border-color: black;
+    }
+</style>
 
 <main id="main" class="main">
 
@@ -221,75 +253,83 @@ $pessoaID = mysqli_fetch_assoc($result_cap_pessoa);
 
                         <hr class="sidebar-divider">
 
-                        <style>
-                            #tabelaListaNotExecution:hover {
-                                cursor: pointer;
-                                background-color: #E0FFFF;
-                            }
-                        </style>
+                        <div class="accordion" id="accordionFlushExample">
 
-                        <style>
-                            #tabelaListaInExecution:hover {
-                                cursor: pointer;
-                                background-color: #66CDAA;
-                            }
-                        </style>
+                            <?php
+                            $resultado = mysqli_query($mysqli, $lista_chamados) or die("Erro ao retornar dados");
 
-                        <style>
-                            .playColor {
-                                background-color: #98FB98;
-                            }
-                        </style>
+                            $cont = 1;
 
-                        <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <th style="text-align: center;" scope="col">Número</th>
-                                    <th style="text-align: center;" scope="col">Empresa</th>
-                                    <th style="text-align: center;" scope="col">Tipo chamado</th>
-                                    <th style="text-align: center;" scope="col">Assunto</th>
-                                    <th style="text-align: center;" scope="col">Atendente</th>
-                                    <th style="text-align: center;" scope="col">Data abertura</th>
-                                    <th style="text-align: center;" scope="col">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $resultado = mysqli_query($mysqli, $lista_chamados) or die("Erro ao retornar dados");
-                                while ($campos = $resultado->fetch_array()) {
-                                    $id = $campos['id_chamado']; ?>
+                            while ($campos = $resultado->fetch_array()) {
+                                $id_chamado = $campos['id_chamado'];
+
+                                if (empty($campos['atendente'])) {
+                                    $atendente = "Sem atendente";
+                                } else {
+                                    $atendente = $campos['atendente'];
+                                }
+
+                                if ($campos['inExecution'] == 1) {
+                                    $Color = "inExecution";
+                                } else if ($campos['id_status'] == 3) {
+                                    $Color = "closed";
+                                } else {
+                                    $Color = "open";
+                                }
+
+                                $calc_tempo_total =
+                                    "SELECT SUM(seconds_worked) as secondsTotal
+                                from chamado_relato
+                                where chamado_id = $id_chamado";
+
+                                $seconds_total = mysqli_query($mysqli, $calc_tempo_total);
+                                $res_second = $seconds_total->fetch_array();
+
+                            ?>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading<?= $cont ?>">
+                                        <button class="accordion-button collapsed <?= $Color ?>" id="<?= $Color ?>" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $cont ?>" aria-expanded="false" aria-controls="flush-collapse<?= $cont ?>">
+                                            Chamado #<?= $id_chamado ?> - <?= $campos['tipoChamado']; ?> - <?= $campos['assunto']; ?>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse<?= $cont ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $cont ?>" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body <?= $Color ?> ">
+                                            <div class="row justify-content-between">
+                                                <div class="col-5">
+                                                    <b>Chamado: </b><?= $id_chamado ?><br>
+                                                    <b>Tipo de chamado: </b><?= $campos['tipoChamado']; ?><br>
+                                                    <b>Cliente: </b><?= $campos['fantasia']; ?><br>
+                                                    <b>Atendente: </b><?= $atendente ?><br>
 
 
-                                    <?php
-                                    if ($campos['inExecution'] == 1) {
-                                        $classeColor = "playColor";
-                                        $tabelaLista = "tabelaListaInExecution";
-                                    } else {
-                                        $classeColor = "";
-                                        $tabelaLista = "tabelaListaNotExecution";
-                                    }
-                                    ?>
+                                                </div>
+                                                <div class="col-5">
+                                                    <b>Data abertura: </b><?= $campos['dataAbertura']; ?><br>
+                                                    <b>Status: </b><?= $campos['statusChamado']; ?><br><br>
 
-                                    <tr class="<?= $classeColor ?>" id="<?= $tabelaLista ?>" onclick="location.href='view.php?id=<?= $campos['id_chamado']; ?>'">
-                                        <?php
-                                        if (empty($campos['atendente'])) {
-                                            $atendente = "Sem atendente";
-                                        } else {
-                                            $atendente = $campos['atendente'];
-                                        }
-                                        ?>
-                                        </td>
-                                        <td style="text-align: center;"><?= $campos['id_chamado']; ?></td>
-                                        <td style="text-align: center;"><?= $campos['fantasia']; ?></td>
-                                        <td style="text-align: center;"><?= $campos['tipoChamado']; ?></td>
-                                        <td style="text-align: center;"><?= $campos['assunto']; ?></td>
-                                        <td style="text-align: center;"><?= $atendente ?></td>
-                                        <td style="text-align: center;"><?= $campos['dataAbertura']; ?></td>
-                                        <td style="text-align: center;"><?= $campos['statusChamado']; ?></td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                                    <b>Tempo total atendimento: </b> <?= gmdate("H:i:s", $res_second['secondsTotal']); ?>
+                                                </div>
+                                                <div class="col-2">
+                                                    <a href="/servicedesk/consultar_chamados/view.php?id=<?= $id_chamado ?>" title="Visualizar">
+                                                        <button type="button" class="btn btn-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                            </svg>
+                                                            Ver chamado
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php $cont++;
+                            } ?>
+                        </div>
+
                         <!-- End Table with stripped rows -->
                     </div>
                 </div>

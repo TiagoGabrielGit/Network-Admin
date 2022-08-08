@@ -3,17 +3,6 @@ require "../../includes/menu.php";
 require "../../conexoes/conexao.php";
 
 $id_elemento = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$tipo_elemento = filter_input(INPUT_GET, 'tipo');
-
-if ($tipo_elemento == "Equipamento") {
-    $_POST['pesquisaTipo'] = "equipamento";
-    $id_equipamento = $id_elemento;
-}
-
-if ($tipo_elemento == "VM") {
-    $_POST['pesquisaTipo'] = "vm";
-    $id_vm = $id_elemento;
-}
 
 if (empty($_POST['pesquisaTipo'])) {
     $_POST['pesquisaTipo'] = "%";
@@ -27,29 +16,15 @@ if (empty($_POST['pesquisaDescricao'])) {
     $_POST['pesquisaDescricao'] = "%";
 }
 
-if (empty($_POST['pesquisaEquipamentoVM'])) {
-    $_POST['pesquisaEquipamentoVM'] = "%";
-}
-
-if (empty($id_equipamento)) {
-    $id_equipamento = "%";
-}
-
-if (empty($id_vm)) {
-    $id_vm = "%";
-}
-
-
 $varTipo = $_POST['pesquisaTipo'];
 $varEmpresa = $_POST['empresaPesquisa'];
 $varDescricao = $_POST['pesquisaDescricao'];
-$varEquipamentoVM = $_POST['pesquisaEquipamentoVM'];
 
 require "sql.php";
 
 ?>
 
-<main id="main" class="main">
+<main id="main" class="main"> 
 
     <div class="pagetitle">
         <h1>Credenciais</h1>
@@ -66,7 +41,7 @@ require "sql.php";
                         <div class="container">
                             <div class="row">
                                 <div class="col-10">
-                                    <h5 class="card-title">Pesquisar</h5>
+                                    <h5 class="card-title">Filtros</h5>
                                 </div>
 
                                 <div class="col-2">
@@ -113,9 +88,7 @@ require "sql.php";
                                                             <select id="cadastroTipo" name="cadastroTipo" class="form-select" required>
                                                                 <option disabled selected value="">Selecione</option>>
                                                                 <option value="email">E-mail</option>
-                                                                <option value="equipamento">Equipamento</option>
                                                                 <option value="portal">Portal</option>
-                                                                <option value="vm">VMs</option>
                                                             </select>
                                                         </div>
 
@@ -205,82 +178,6 @@ require "sql.php";
                                                             </div>
 
 
-                                                            <div class="row" id="equipamento">
-
-                                                                <div class="col-6">
-                                                                    <label for="equipamentoEquipamento" class="form-label">Equipamento</label>
-                                                                    <select id="equipamentoEquipamento" name="equipamentoEquipamento" class="form-select">
-                                                                        <option value="" selected disabled>Selecione primeiro e empresa</option>
-                                                                    </select>
-                                                                </div>
-
-                                                                <!-- 
-                                                                <div class="col-2" style="text-align: right; margin-top: 12px; display: inline-block;">
-                                                                <button style="text-align: right;" class="btn btn-info" type="button" id="add-campo"> + </button>
-                                                                </div>
-                                                                -->
-
-                                                                <br><br>
-
-                                                                <hr class="sidebar-divider">
-
-                                                                <div class="col-6" style="display: inline-block;">
-                                                                    <label for="equipamentoDescricao" class="form-label">Descrição</label>
-                                                                    <input name="equipamentoDescricao" type="text" class="form-control" id="equipamentoDescricao">
-                                                                </div>
-
-                                                                <div class="col-4" style="display: inline-block;"> </div>
-
-                                                                <div class="col-4" style="display: inline-block;">
-                                                                    <label for="equipamentoUsuario" class="form-label">Usuário</label>
-                                                                    <input name="equipamentoUsuario" type="text" class="form-control" id="equipamentoUsuario">
-                                                                </div>
-
-                                                                <div class="col-4" style="display: inline-block;">
-                                                                    <label for="equipamentoSenha" class="form-label">Senha</label>
-                                                                    <input name="equipamentoSenha" type="text" class="form-control" id="equipamentoSenha">
-                                                                </div>
-
-                                                            </div>
-
-
-                                                            <div class="row" id="vm">
-                                                                <div class="col-6">
-                                                                    <label for="vmVm" class="form-label">VM</label>
-                                                                    <select id="vmVm" name="vmVm" class="form-select">
-                                                                        <option value="" selected disabled>Selecione primeiro e empresa</option>
-                                                                    </select>
-                                                                </div>
-
-                                                                <!-- 
-                                                                <div class="col-2" style="text-align: right; margin-top: 12px; display: inline-block;">
-                                                                <button style="text-align: right;" class="btn btn-info" type="button" id="add-campo"> + </button>
-                                                                </div>
-                                                                -->
-
-                                                                <br><br>
-
-                                                                <hr class="sidebar-divider">
-
-                                                                <div class="col-6" style="display: inline-block;">
-                                                                    <label for="vmDescricao" class="form-label">Descrição</label>
-                                                                    <input name="vmDescricao" type="text" class="form-control" id="vmDescricao">
-                                                                </div>
-
-                                                                <div class="col-4" style="display: inline-block;"> </div>
-
-                                                                <div class="col-4" style="display: inline-block;">
-                                                                    <label for="vmUsuario" class="form-label">Usuário</label>
-                                                                    <input name="vmUsuario" type="text" class="form-control" id="vmUsuario">
-                                                                </div>
-
-                                                                <div class="col-4" style="display: inline-block;">
-                                                                    <label for="vmSenha" class="form-label">Senha</label>
-                                                                    <input name="vmSenha" type="text" class="form-control" id="vmSenha">
-                                                                </div>
-
-                                                            </div>
-
                                                         </div>
 
                                                         <hr class="sidebar-divider">
@@ -326,14 +223,12 @@ require "sql.php";
                             </div>
 
 
-                            <div class="col-4">
+                            <div class="col-2">
                                 <label for="pesquisaTipo" class="form-label">Tipo</label>
                                 <select id="pesquisaTipo" name="pesquisaTipo" class="form-select">
                                     <option select value="%">Todos</option>
                                     <option value="email">E-mail</option>
-                                    <option value="equipamento">Equipamento</option>
                                     <option value="portal">Portal</option>
-                                    <option value="vm">VMs</option>
 
                                     <?php
                                     if ($_SERVER["REQUEST_METHOD"] == 'POST') :
@@ -348,26 +243,6 @@ require "sql.php";
                                     endif;
                                     ?>
                                 </select>
-                            </div>
-
-                            <div class="col-4"></div>
-
-
-                            <div class="col-4">
-                                <label for="pesquisaEquipamentoVM" class="form-label">Equipamento / VM</label>
-                                <input name="pesquisaEquipamentoVM" type="text" class="form-control" id="pesquisaEquipamentoVM">
-                                <?php
-                                if ($_SERVER["REQUEST_METHOD"] == 'POST') :
-                                ?>
-                                    <script>
-                                        let pesquisaEquipamentoVM = '<?= $_POST['pesquisaEquipamentoVM']; ?>'
-                                        if (pesquisaEquipamentoVM == '%') {} else {
-                                            document.querySelector("#pesquisaEquipamentoVM").value = pesquisaEquipamentoVM
-                                        }
-                                    </script>
-                                <?php
-                                endif;
-                                ?>
                             </div>
 
                             <div class="col-4">
@@ -387,41 +262,39 @@ require "sql.php";
                                 ?>
                             </div>
 
+                            <div class="col-2"></div>
+
                             <div class="col-6">
-                                <button style="margin-top: 15px; " type="submit" class="btn btn-primary">Buscar</button>
+                                <button style="margin-top: 15px; " type="submit" class="btn btn-primary">Filtrar</button>
                             </div>
 
                         </form>
 
                         <hr class="sidebar-divider">
 
+                        <style>
+                            #tabelaLista:hover {
+                                cursor: pointer;
+                                background-color: #E0FFFF;
+                            }
+                        </style>
+
                         <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th style="text-align: center;" scope="col">Empresa</th>
                                     <th style="text-align: center;" scope="col">Tipo</th>
-                                    <th style="text-align: center;" scope="col">Equipamento/VM</th>
                                     <th style="text-align: center;" scope="col">Descrição</th>
                                     <th style="text-align: center;" scope="col">Usuário</th>
                                     <th style="text-align: center;" scope="col">Privacidade</th>
-                                    <th style="text-align: center;" scope="col">Visualizar</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <?php
-                                if ($varEquipamentoVM == "%") {
-                                    require "pesquisa_email.php";
-                                    require "pesquisa_equipamento.php";
-                                    require "pesquisa_portal.php";
-                                    require "pesquisa_vm.php";
-                                }?>
-
-                                <?php
-                                if ($varEquipamentoVM != "%") {
-                                    require "pesquisa_equipamento.php";
-                                    require "pesquisa_vm.php";
-                                }?>
+                                require "pesquisa_email.php";
+                                require "pesquisa_portal.php";
+                                ?>
 
                             </tbody>
                         </table>

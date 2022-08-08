@@ -18,6 +18,50 @@ require "../includes/menu.php";
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
 
+
+              <!-- Versão 2.2 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading2-3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-3" aria-expanded="false" aria-controls="collapse2-3">
+                    Versão 2.3 - 07/08/2022
+                  </button>
+                </h2>
+                <div id="collapse2-3" class="accordion-collapse collapse" aria-labelledby="heading2-3" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. Contador de tempo chamado e ralato;
+
+                    <br><strong>Melhorias</strong><br>
+                    1. Destacar na barra superior quando um chamado esta em execução;<br>
+                    2. Botão para adicionar, inativar e editar senhas junto a equipamento e VM;<br>
+                    3. Removido visualização de senhas de vms e equipamentos através de credenciais;<br>
+
+                    <br><strong>Correções de BUG</strong><br>
+                    1. Corrigido cadastro de VM que estava quebrando quando não preenchido VLAN;<br>
+                    2. Ajustar quebra de linha dos relatos dos chamados;<br>
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Alterado tipo de campo VLAN na tabela vms para varchar(4)<br>;
+                    2. Alterado tipo de campo VLAN na tabela vms para null:<br>
+                    3. Criado coluna active na tabela credenciais_vms;<br>
+                    4. Criado coluna active na tabela credenciais_equipamentos;<br>
+                    5. Criado coluna seconds_worked na tabela chamado_relato;<br>
+                    6. Criado coluna seconds_worked na tabela chamados;<br>
+
+                    <br><strong>Previsto para próximas atualizações</strong><br>
+                    1. Cadastro de equipes;<br>
+                    2. Iniciar página de relatórios;<br>
+                    3. Mostrar LOG de alteração e criação de registros por usuário;<br>
+                    5. Correções nos formatos de data e hora;<br>
+                    6. Possibilidade de cadastrar uma VM a uma hospedagem; <br>
+                    7. Analisar espaçamento que esta ficando após a senha;<br>
+                  </div>
+                </div>
+              </div>
+
+
+
+
               <!-- Versão 2.2 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading2-2">

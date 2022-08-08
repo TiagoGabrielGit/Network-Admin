@@ -72,6 +72,7 @@ credequip.tipo as cred_tipo,
 credequip.equipamentodescricao as cred_descricao,
 credequip.equipamentousuario as cred_usuario,
 credequip.equipamentosenha as cred_senha,
+credequip.equipamento_id as eqp_id,
 eqp.hostname as cred_hostname,
 eqp.ipaddress as cred_ip,
 emp.fantasia as emp_fantasia

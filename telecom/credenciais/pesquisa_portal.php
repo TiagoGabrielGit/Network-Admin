@@ -32,18 +32,14 @@ portal.portaldescricao LIKE '%$varDescricao%'
 $resultado_portal = mysqli_query($mysqli, $sql_pesquisa_portal) or die("Erro ao retornar dados");
 
 while ($campos_portal = $resultado_portal->fetch_array()) {
-    $id = $campos_portal['cred_id'];
-    echo "<tr>";
-?>
-    </td>
-    <td style="text-align: center;"><?= $campos_portal['emp_fant']; ?></td>
-    <td style="text-align: center;"><?= $campos_portal['cred_tipo']; ?></td>
-    <td style="text-align: center;"><?= "-" ?></td>
-    <td style="text-align: center;"><?= $campos_portal['cred_desc']; ?></td>
-    <td style="text-align: center;"><?= $campos_portal['cred_usuario']; ?></td>
-    <td style="text-align: center;"><?= $campos_portal['cred_priv']; ?></td>
-    <td style="text-align: center;">
-        <a class="bi bi-eye-fill" href="view.php?id=<?= $campos_portal['cred_id']; ?>&tipo=<?= $campos_portal['cred_tipo']; ?>"></a>
-    </td>
+    $id = $campos_portal['cred_id']; ?>
+
+    <tr id="tabelaLista" onclick="location.href='view.php?id=<?= $id ?>&tipo=Portal'">
+        </td>
+        <td style="text-align: center;"><?= $campos_portal['emp_fant']; ?></td>
+        <td style="text-align: center;"><?= $campos_portal['cred_tipo']; ?></td>
+        <td style="text-align: center;"><?= $campos_portal['cred_desc']; ?></td>
+        <td style="text-align: center;"><?= $campos_portal['cred_usuario']; ?></td>
+        <td style="text-align: center;"><?= $campos_portal['cred_priv']; ?></td>
     </tr>
 <?php } ?>

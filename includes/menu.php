@@ -18,6 +18,49 @@ $versao_atual = "2.0";
 $ultima_versão = "2.0";
 ?>
 
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/conexoes/conexao.php');
+
+$sql_pessoa =
+  "SELECT
+p.id as id_pessoa
+FROM
+usuarios as u
+LEFT JOIN
+pessoas as p
+ON
+p.id = u.pessoa_id
+WHERE
+u.id = '$id'
+";
+
+$result_pessoa = mysqli_query($mysqli, $sql_pessoa);
+$pessoa = mysqli_fetch_assoc($result_pessoa);
+$pessoa_id = $pessoa['id_pessoa'];
+
+$sql_chamado =
+  "SELECT
+c.in_execution_atd_id as execucao,
+c.id as id_chamado
+FROM
+chamados as c
+WHERE
+c.in_execution_atd_id = '$pessoa_id'
+";
+
+$result_chamado = mysqli_query($mysqli, $sql_chamado);
+$chamado = mysqli_fetch_assoc($result_chamado);
+
+if (empty($chamado['execucao'])) {
+  $chamado_exec = "";
+} else {
+  $chamado_exec = $chamado['execucao'];
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -86,6 +129,32 @@ $ultima_versão = "2.0";
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
+
+
+        <?php
+        if ($chamado_exec == $pessoa_id) { 
+          $id_chamado = $chamado['id_chamado'];
+          $seconds_in_execution =
+          "SELECT TIMESTAMPDIFF(SECOND, in_execution_start, NOW()) as tempo
+          from chamados
+          where id = $id_chamado;
+          ";
+          $seconds_execution = mysqli_query($mysqli, $seconds_in_execution);
+          $res_seconds_execution = $seconds_execution->fetch_array();
+          $sec_exec = $res_seconds_execution['tempo']; ?>
+
+          <a href="/servicedesk/consultar_chamados/view.php?id=<?= $id_chamado ?>">
+            <button type="button" class="btn btn-success">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"></path>
+              </svg>
+              Chamado em execução - <?= gmdate("H:i:s", $sec_exec) ?>
+            </button>
+          </a>
+        <?php } else {
+        }
+        ?>
+
 
         <li class="nav-item dropdown">
 
@@ -240,7 +309,7 @@ $ultima_versão = "2.0";
               <h6><?= $nome; ?></h6>
               <span><?= $perfil; ?></span> <br>
               <span><?= $user_ip; ?></span> <br>
-              <span><?=$horario ?></span>
+              <span><?= $horario ?></span>
             </li>
             <li>
               <hr class="dropdown-divider">

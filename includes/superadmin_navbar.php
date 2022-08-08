@@ -119,7 +119,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="/telecom/credenciais/index.php">
                 <i class="bi bi-key"></i>
-                <span>Credenciais</span>
+                <span>Guardpass</span>
             </a>
         </li>
 

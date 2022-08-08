@@ -36,6 +36,12 @@ require "../../../conexoes/conexao.php";
         $cadastroDisco1 = $_POST['cadastroDisco1'];
         $cadastroDisco2 = $_POST['cadastroDisco2'];
 
+        if (empty($_POST['cadastroVLAN'])) {
+            $cadastroVLAN = $_POST['cadastroVLAN'];
+        } else {
+            $cadastroVLAN = "";
+        }
+
         //Realiza o cadastro
         $result = "INSERT INTO vms (empresa_id, pop_id, servidor_id, hostname, ipaddress, dominio, vlan, sistemaOperacional, recursoMemoria, recursoCPU, recursoDisco1, recursoDisco2, statusvm, criado) VALUES ('$cadastroEmpresa', '$cadastroPop', '$cadastroServidor', '$cadastroHostname', '$cadastroIPAddress', '$cadastroDomino', '$cadastroVLAN', '$cadastroSO', '$cadastroMemoria', '$cadastroVCPU', '$cadastroDisco1', '$cadastroDisco2', '$cadastroStatusVM', NOW())";
         $resultado = mysqli_query($mysqli, $result);
