@@ -214,7 +214,7 @@ if ($statusEquipe  == 'Ativo') {
 
 <?php
 require "confirmEdit.php";
-require "modalconfirmRemove.php";
-require "modalconfirmAdd.php";
+require "modalConfirmRemove.php";
+require "modalConfirmAdd.php";
 require "../../includes/footer.php";
 ?>
