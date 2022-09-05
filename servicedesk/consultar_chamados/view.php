@@ -91,9 +91,9 @@ if ($chamado['in_execution'] == 1) {
                                 <div class="col-2">
                                     <?php
                                     if ($pessoaID['pessoaID'] != $chamado['id_atendente'] && $chamado['status'] != "Fechado") { ?>
-                                        <a href="processa/apropriar.php?id=<?= $id_chamado  ?>&pessoa=<?= $pessoaID['pessoaID'] ?> "><button style="margin-top: 15px" class="btn btn-primary">Apropriar</button></a>
+                                        <a href="processa/apropriar.php?id=<?= $id_chamado  ?>&pessoa=<?= $pessoaID['pessoaID'] ?> "><button style="margin-top: 15px" class="btn btn-danger">Apropriar</button></a>
                                     <?php } else if ($pessoaID['pessoaID'] == $chamado['id_atendente'] && $chamado['in_execution'] == '1' && $chamado['in_execution_atd_id'] == $pessoaID['pessoaID']) { ?>
-                                        <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        <button style="margin-top: 15px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                                             Inserir um relato
                                         </button>
                                     <?php } else if ($pessoaID['pessoaID'] == $chamado['id_atendente'] && $chamado['in_execution'] == '0' && $chamado['status'] != "Fechado") { ?>
@@ -141,7 +141,7 @@ if ($chamado['in_execution'] == 1) {
                                                         <hr class="sidebar-divider">
 
                                                         <div class="text-center">
-                                                            <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>
+                                                            <button name="salvar" type="submit" class="btn btn-danger">Salvar</button>
 
                                                             <a href="/servicedesk/consultar_chamados/view.php?id=<?= $id_chamado ?>"> <input type="button" value="Voltar" class="btn btn-secondary"></input></a>
                                                         </div>

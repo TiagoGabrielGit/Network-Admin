@@ -4,15 +4,7 @@
 
 
 <!-- PARTE DE CADASTROS -->
-<script>
-    let inputIP = document.querySelector("#ipaddress");
-    inputIP.addEventListener("keydown", function(e) {
-        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace" || e.key == "CTRL" || e.key == "v" || e.key == "Delete"|| e.key == "V" || e.key == "A"|| e.key == "a"|| e.key == "C"|| e.key == "c") {
-        } else {
-            e.preventDefault();
-        }
-    });
-</script>
+
 
 
 <script>
@@ -116,16 +108,6 @@
 
 
 <!-- PARTE DE PESQUISAS -->
-<script>
-    let inputIPPesquisa = document.querySelector("#ipaddressPesquisa");
-    inputIPPesquisa.addEventListener("keydown", function(e) {
-        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace" || e.key == "CTRL" || e.key == "v" || e.key == "Delete"|| e.key == "V" || e.key == "A"|| e.key == "a"|| e.key == "C"|| e.key == "c") {
-
-        } else {
-            e.preventDefault();
-        }
-    });
-</script>
 
 <script>
     $("#empresaPesquisa").change(function() {
@@ -184,17 +166,6 @@
         }).fail(function(resposta) {
             alert(resposta)
         });
-    });
-</script>
-
-<script>
-    let inputIPView = document.querySelector("#inputIpAddress");
-    inputIPView.addEventListener("keydown", function(e) {
-        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace" || e.key == "CTRL" || e.key == "v" || e.key == "Delete"|| e.key == "V" || e.key == "A"|| e.key == "a"|| e.key == "C"|| e.key == "c") {
-
-        } else {
-            e.preventDefault();
-        }
     });
 </script>
 
@@ -283,10 +254,13 @@
         var dados = $("#cadastraSenhaEquipamento").serialize();
 
         $.post("processa/addNovaSenha.php", dados, function(retorna) {
-            $("#msg").slideDown('slow').html(retorna);
+            $("#msgAlertCad").slideDown('slow').html(retorna);
 
             //Limpar os campos
-            $('#cadastraSenhaEquipamento')[0].reset();
+            document.getElementById('equipamentoDescricao').value='';
+            document.getElementById('equipamentoUsuario').value='';
+            document.getElementById('equipamentoSenha').value='';
+
 
             //Apresentar a mensagem leve
             retirarMsg();
@@ -296,7 +270,7 @@
     //Retirar a mensagem após 1700 milissegundos
     function retirarMsg() {
         setTimeout(function() {
-            $("#msg").slideUp('slow', function() {});
+            $("#msgAlertCad").slideUp('slow', function() {});
         }, 1700);
     }
-</script> 
+</script>

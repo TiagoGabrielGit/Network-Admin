@@ -23,7 +23,7 @@ require "sql.php";
                                 <div class="col-9"></div>
                                 <div class="col-3">
                                     <div class="card">
-                                        <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        <button style="margin-top: 15px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                                             Novo tipo de chamado
                                         </button>
                                     </div>

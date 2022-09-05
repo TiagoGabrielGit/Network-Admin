@@ -133,6 +133,7 @@
         var dados = $("#editCredenciais").serialize();
 
         $.post("processa/edit.php", dados, function(retorna) {
+            
             $("#msg").slideDown('slow').html(retorna);
 
             //Apresentar a mensagem leve
@@ -142,9 +143,15 @@
 
     //Retirar a mensagem após 1700 milissegundos
     function retirarMsg() {
+        
         setTimeout(function() {
+            
+        location.reload();
             $("#msg").slideUp('slow', function() {});
+            
         }, 1700);
+
     }
 
+    
 </script>

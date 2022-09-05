@@ -47,7 +47,7 @@ require "sql.php";
                                 <div class="col-2">
                                     <div class="card">
                                         <!-- Basic Modal -->
-                                        <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        <button style="margin-top: 15px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                                             Cadastrar novo
                                         </button>
                                     </div>
@@ -101,7 +101,7 @@ require "sql.php";
 
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="radio" name="cadastroPrivacidade" id="cadastroPrivacidade" value="2">
-                                                                <label class="form-check-label" for="cadastroPrivacidade" value="2">Equipe</label>
+                                                                <label class="form-check-label" for="cadastroPrivacidade" value="2">Privado</label>
                                                             </div>
 
                                                             <div class="form-check">
@@ -183,7 +183,7 @@ require "sql.php";
                                                         <hr class="sidebar-divider">
 
                                                         <div class="text-center">
-                                                            <input id="btnSalvar" name="btnSalvar" type="button" value="Salvar" class="btn btn-primary"></input>
+                                                            <input id="btnSalvar" name="btnSalvar" type="button" value="Salvar" class="btn btn-danger"></input>
                                                             <a href="/telecom/credenciais/index.php"> <input type="button" value="Voltar" class="btn btn-secondary"></input></a>
                                                         </div>
                                                     </form><!-- Vertical Form -->
@@ -265,7 +265,7 @@ require "sql.php";
                             <div class="col-2"></div>
 
                             <div class="col-6">
-                                <button style="margin-top: 15px; " type="submit" class="btn btn-primary">Filtrar</button>
+                                <button style="margin-top: 15px; " type="submit" class="btn btn-danger">Filtrar</button>
                             </div>
 
                         </form>

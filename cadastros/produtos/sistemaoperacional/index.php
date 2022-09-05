@@ -23,11 +23,11 @@ require "sql.php"
                                 <div class="col-8">
                                     <h5 class="card-title">Cadastro de SO</h5>
                                 </div>
-
-                                <div class="col-4">
+                                <div class="col-2"></div>
+                                <div class="col-2">
                                     <div class="card">
                                         <!-- Basic Modal -->
-                                        <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        <button style="margin-top: 15px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                                             Novo SO
                                         </button>
                                     </div>

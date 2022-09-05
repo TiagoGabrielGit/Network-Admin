@@ -39,7 +39,7 @@
 
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="editPrivacidade" id="editPrivacidade" value="2" <?= $checkEquipe ?>>
-                                    <label class="form-check-label" for="editPrivacidade" value="2">Equipe</label>
+                                    <label class="form-check-label" for="editPrivacidade" value="2">Privado</label>
                                 </div>
 
                                 <div class="form-check">
@@ -85,12 +85,12 @@
 
                             <div class="col-4" style="text-align: center;">
                                 <!-- <div class="text-center"> -->
-                                <input id="btnSalvarEdit" name="btnSalvarEdit" type="button" value="Salvar" class="btn btn-primary"></input>
+                                <input id="btnSalvarEdit" name="btnSalvarEdit" type="button" value="Salvar" class="btn btn-danger"></input>
                                 <a href="/telecom/credenciais/index.php"><input type="button" class="btn btn-secondary" value="Voltar"></input></a>
                             </div>
 
                             <div class="col-4" style="text-align: right;">
-                                <a href="processa/delete.php?id=<?= $id ?>&tipo=<?= $row['cred_tipo']; ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
+                                <a onclick="return confirm('Tem certeza que deseja deletar este registro?')" href="processa/delete.php?id=<?= $id ?>&tipo=<?= $row['cred_tipo']; ?>"><input type="button" class="btn btn-warning" value="Excluir permanente"></input></a>
 
                             </div>
                         </form><!-- Vertical Form -->

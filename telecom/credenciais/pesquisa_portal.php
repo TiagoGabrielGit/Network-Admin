@@ -11,7 +11,7 @@ portal.portaldescricao as cred_desc,
 portal.portalusuario as cred_usuario,
 CASE
     WHEN portal.privacidade = 1 THEN 'Público'
-    WHEN portal.privacidade = 2 THEN 'Equipe'
+    WHEN portal.privacidade = 2 THEN 'Privado'
     WHEN portal.privacidade = 3 THEN 'Somente eu'
 END as cred_priv
 FROM

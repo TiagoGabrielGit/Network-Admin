@@ -119,7 +119,7 @@ LIMIT $limiteBusca
                                 <div class="col-2">
                                     <div class="card">
                                         <!-- Basic Modal -->
-                                        <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        <button style="margin-top: 15px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                                             Cadastrar novo
                                         </button>
                                     </div>
@@ -234,7 +234,7 @@ LIMIT $limiteBusca
                                                         </div>
 
                                                         <div class="text-center">
-                                                            <button type="submit" class="btn btn-primary">Salvar</button>
+                                                            <button type="submit" class="btn btn-danger">Salvar</button>
                                                             <button type="reset" class="btn btn-secondary">Limpar</button>
                                                         </div>
                                                     </form><!-- Vertical Form -->
@@ -392,7 +392,7 @@ LIMIT $limiteBusca
                             </div>
 
                             <div class="col-6">
-                                <button style="margin-top: 15px; " type="submit" class="btn btn-primary">Buscar</button>
+                                <button style="margin-top: 15px; " type="submit" class="btn btn-danger">Filtrar</button>
                             </div>
 
                         </form>

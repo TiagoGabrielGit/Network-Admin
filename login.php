@@ -155,10 +155,11 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
                       <input type="password" name="senha" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Digite sua senha.</div>
                     </div>
-
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                      <button class="btn btn-danger w-100" type="submit">Login</button>
                     </div>
+                    <div class="col-4"></div>
                   </form>
 
                 </div>

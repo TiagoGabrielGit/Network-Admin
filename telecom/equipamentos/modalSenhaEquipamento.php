@@ -22,7 +22,7 @@
                             <div class="row">
                                 <form id="cadastraSenhaEquipamento" method="POST" class="row g-3 needs-validation">
 
-                                    <span id="msg"></span>
+                                    <span id="msgAlertCad"></span>
 
                                     <div class="col-3">
                                         <label for="idSenha1" class="form-label">Equipamento ID</label>
@@ -89,4 +89,4 @@
             </div>
         </div>
     </div>
-</div> 
+</div>  

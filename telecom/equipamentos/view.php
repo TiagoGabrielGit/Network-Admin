@@ -152,7 +152,7 @@ $hostnameEquipamento = $row['hostname'];
                                         <?= $row['nome_tipoEquipamento']; ?></option>
 
                                 </select>
-                            </div>
+                            </div> 
 
                             <div class="col-4">
                                 <label for="inputIpAddress" class="form-label">Endereço IP*</label>
@@ -206,15 +206,16 @@ $hostnameEquipamento = $row['hostname'];
 
                             <div class="col-4" style="text-align: left;">
                                 <a onclick="capturaDados(<?= $id ?>, '<?= $row['hostname']; ?>')" data-bs-toggle="modal" data-bs-target="#basicModalCredenciais"><input type="button" class="btn btn-info" value="Visualizar credenciais"></input></a>
+                                <a onclick="modalAnexos(<?= $id ?>)" data-bs-toggle="modal" data-bs-target="#modalAnexos"><input type="button" class="btn btn-info" value="Anexos"></input></a>
                             </div>
 
                             <div class="col-4" style="text-align: center;">
-                                <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>
+                                <button name="salvar" type="submit" class="btn btn-danger">Salvar</button>
                                 <a href="/telecom/equipamentos/index.php"><input type="button" value="Voltar" class="btn btn-secondary"></a>
                             </div>
 
                             <div class="col-4" style="text-align: right;">
-                                <a href="processa/delete.php?id=<?= $id ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
+                                <a onclick="return confirm('Tem certeza que deseja deletar este registro?')" href="processa/delete.php?id=<?= $id ?>"><input type="button" class="btn btn-warning" value="Excluir permanente"></input></a>
                             </div>
                         </form><!-- Vertical Form -->
 
@@ -234,7 +235,7 @@ $hostnameEquipamento = $row['hostname'];
     }
 </script>
 
-<div class=" modal fade" id="basicModalCredenciais" tabindex="-1">
+<div class="modal fade" id="basicModalCredenciais" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -280,6 +281,11 @@ $hostnameEquipamento = $row['hostname'];
                                         ce.equipamentodescricao as descricao,
                                         ce.equipamentousuario as eqpuser,
                                         ce.equipamentosenha as eqpsenha,
+                                        CASE
+                                            WHEN ce.privacidade = 1 THEN 'Público' 
+                                            WHEN ce.privacidade = 2 THEN 'Privado'
+                                            WHEN ce.privacidade = 3 THEN 'Somente eu'
+                                        END as privacidade,
                                         e.ipaddress as ip
                                         FROM
                                         credenciais_equipamento as ce
@@ -306,9 +312,10 @@ $hostnameEquipamento = $row['hostname'];
                                                 <div class="accordion-body">
                                                     <div class="row justify-content-between">
                                                         <div class="col-9">
-                                                            <strong>IP:</strong><?= $campos['ip']; ?><br>
-                                                            <strong>Usuário:</strong> <?= $campos['eqpuser']; ?> <br>
-                                                            <strong>Senha:</strong> <?= $campos['eqpsenha']; ?> <br>
+                                                            <strong>IP:</strong> <?= $campos['ip'];?><br>
+                                                            <strong>Privacidade:</strong> <?= $campos['privacidade'];?><br>
+                                                            <strong>Usuário:</strong> <?= $campos['eqpuser'];?><br>
+                                                            <strong>Senha:</strong> <?= $campos['eqpsenha'];?><br>
                                                         </div>
                                                         <div class="col-3">
                                                             <a href="/telecom/credenciais/view.php?id=<?= $id_credencial ?>&tipo=Equipamento" title="Editar">
@@ -346,7 +353,19 @@ $hostnameEquipamento = $row['hostname'];
     </div>
 </div>
 
+<script>
+    let inputIPView = document.querySelector("#inputIpAddress");
+    inputIPView.addEventListener("keydown", function(e) {
+        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace" || e.key == "CTRL" || e.key == "v" || e.key == "Delete"|| e.key == "V" || e.key == "A"|| e.key == "a"|| e.key == "C"|| e.key == "c") {
+
+        } else {
+            e.preventDefault();
+        }
+    });
+</script>
+
 <?php
+require "modalAnexos.php";
 require "modalSenhaEquipamento.php";
 require "../../scripts/equipamentosPop.php";
 require "../../includes/footer.php";

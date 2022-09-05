@@ -117,7 +117,7 @@ $pessoaID = mysqli_fetch_assoc($result_cap_pessoa);
                                 </div>
                                 <div class="col-3">
                                     <div class="card">
-                                        <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        <button style="margin-top: 15px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                                             Abrir novo chamado
                                         </button>
                                     </div>
@@ -181,7 +181,7 @@ $pessoaID = mysqli_fetch_assoc($result_cap_pessoa);
                                                         <div class="col-4"></div>
 
                                                         <div class="col-4" style="text-align: center;">
-                                                            <input id="btnSalvar" name="btnSalvar" type="button" value="Salvar" class="btn btn-primary"></input>
+                                                            <input id="btnSalvar" name="btnSalvar" type="button" value="Salvar" class="btn btn-danger"></input>
                                                             <a href="/servicedesk/consultar_chamados/index.php"> <input type="button" value="Voltar" class="btn btn-secondary"></input></a>
                                                         </div>
 
@@ -246,7 +246,7 @@ $pessoaID = mysqli_fetch_assoc($result_cap_pessoa);
                             </div>
 
                             <div class="col-6">
-                                <button style="margin-top: 30px; " type="submit" class="btn btn-primary">Filtrar</button>
+                                <button style="margin-top: 30px; " type="submit" class="btn btn-danger">Filtrar</button>
                             </div>
 
                         </form>
@@ -312,7 +312,7 @@ $pessoaID = mysqli_fetch_assoc($result_cap_pessoa);
                                                 </div>
                                                 <div class="col-2">
                                                     <a href="/servicedesk/consultar_chamados/view.php?id=<?= $id_chamado ?>" title="Visualizar">
-                                                        <button type="button" class="btn btn-info">
+                                                        <button type="button" class="btn btn-danger">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                                                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
                                                                 <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />

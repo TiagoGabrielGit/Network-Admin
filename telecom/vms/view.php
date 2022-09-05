@@ -173,12 +173,12 @@ $row = mysqli_fetch_assoc($resultado);
                             </div>
 
                             <div class="col-4" style="text-align: center;">
-                                <button name="salvar" type="submit" class="btn btn-primary">Salvar</button>
+                                <button name="salvar" type="submit" class="btn btn-danger">Salvar</button>
                                 <a href="/telecom/vms/index.php"><input type="button" value="Voltar" class="btn btn-secondary"></a>
                             </div>
 
                             <div class="col-4" style="text-align: right;">
-                                <a href="processa/delete.php?id=<?= $id ?>"><input type="button" class="btn btn-danger" value="Excluir permanente"></input></a>
+                                <a onclick="return confirm('Tem certeza que deseja deletar este registro?')" href="processa/delete.php?id=<?= $id ?>"><input type="button" class="btn btn-warning" value="Excluir permanente"></input></a>
                             </div>
                         </form><!-- Vertical Form -->
 
@@ -241,6 +241,11 @@ $row = mysqli_fetch_assoc($resultado);
                                         "SELECT
                                         cv.id as id_credencial,
                                         cv.vmdescricao as descricao,
+                                        CASE
+                                            WHEN cv.privacidade = 1 THEN 'Público' 
+                                            WHEN cv.privacidade = 2 THEN 'Privado'
+                                            WHEN cv.privacidade = 3 THEN 'Somente eu'
+                                        END as privacidade,
                                         cv.vmusuario as vmuser,
                                         cv.vmsenha as vmsenha,
                                         vm.ipaddress as ip
@@ -273,9 +278,10 @@ $row = mysqli_fetch_assoc($resultado);
                                                 <div class="accordion-body">
                                                     <div class="row justify-content-between">
                                                         <div class="col-9">
-                                                            <strong>IP:</strong> <?= $campos['ip']; ?><br>
-                                                            <strong>Usuário:</strong> <?= $campos['vmuser']; ?> <br>
-                                                            <strong>Senha:</strong> <?= $campos['vmsenha']; ?><br>
+                                                            <strong>IP:</strong> <?= $campos['ip'];?><br>
+                                                            <strong>Privacidade:</strong> <?= $campos['privacidade'];?><br>
+                                                            <strong>Usuário:</strong> <?= $campos['vmuser'];?> <br>
+                                                            <strong>Senha:</strong> <?= $campos['vmsenha'];?><br>
                                                         </div>
                                                         <div class="col-3">
                                                             <a href="/telecom/credenciais/view.php?id=<?= $id_credencial ?>&tipo=VM" title="Editar">

@@ -15,22 +15,18 @@ require "sql.php";
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
-
                 <div class="card">
-
                     <div class="card-body">
-
-
                         <div class="container">
                             <div class="row">
                                 <div class="col-8">
                                     <h5 class="card-title">Cadastro de Usuários</h5>
                                 </div>
-
-                                <div class="col-4">
+                                <div class="col-2"></div>
+                                <div class="col-2">
                                     <div class="card">
                                         <!-- Basic Modal -->
-                                        <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        <button style="margin-top: 15px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                                             Novo usuário
                                         </button>
                                     </div>
@@ -87,7 +83,7 @@ require "sql.php";
                                                         </div>
 
                                                         <div class="col-12">
-                                                            <button class="btn btn-primary w-100" type="submit">Cadastrar usuário</button>
+                                                            <button class="btn btn-danger w-100" type="submit">Cadastrar usuário</button>
                                                         </div>
 
                                                     </form>
@@ -160,7 +156,7 @@ require "sql.php";
                                     $usuario = $campos['nome'];
                                     $deleted = $campos['deleted'];
                                     echo "<tr>";
-                                ?>
+                                ?> 
                                     <td><?php echo $campos['nome']; ?></td>
                                     <td><?php echo $campos['nome_perfil']; ?></td>
                                     <td><?php echo $campos['email']; ?></td>
@@ -249,7 +245,7 @@ require "sql.php";
                         </div>
 
                         <div class="col-12">
-                            <button class="btn btn-primary w-100" type="submit">Alterar Senha</button>
+                            <button class="btn btn-danger w-100" type="submit">Alterar Senha</button>
                         </div>
 
                     </form>

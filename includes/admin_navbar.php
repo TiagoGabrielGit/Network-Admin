@@ -152,6 +152,12 @@
             <ul id="gerenciamento-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                 <li>
+                    <a href="/gerenciamento/equipes/index.php">
+                        <i class="bi bi-circle"></i><span>Equipes</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="/gerenciamento/log_acesso/index.php">
                         <i class="bi bi-circle"></i><span>LOG de acesso - Admin</span>
                     </a>

@@ -128,7 +128,7 @@ LIMIT $limiteBusca
                                 <div class="col-2">
                                     <div class="card">
                                         <!-- Basic Modal -->
-                                        <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        <button style="margin-top: 15px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                                             Cadastrar novo
                                         </button>
                                     </div>
@@ -233,7 +233,7 @@ LIMIT $limiteBusca
                                                         <hr class="sidebar-divider">
 
                                                         <div class="text-center">
-                                                            <button type="submit" class="btn btn-primary">Salvar</button>
+                                                            <button type="submit" class="btn btn-danger">Salvar</button>
                                                             <a href="/telecom/equipamentos/index.php"> <input type="button" value="Voltar" class="btn btn-secondary"></input></a>
                                                         </div>
                                                     </form><!-- Vertical Form -->
@@ -419,7 +419,7 @@ LIMIT $limiteBusca
                             </div>
 
                             <div class="col-6">
-                                <button style="margin-top: 30px; " type="submit" class="btn btn-primary">Buscar</button>
+                                <button style="margin-top: 30px; " type="submit" class="btn btn-danger">Filtrar</button>
                             </div>
 
                         </form>
@@ -471,6 +471,27 @@ LIMIT $limiteBusca
     </section>
 
 </main><!-- End #main -->
+
+<script>
+    let inputIP = document.querySelector("#ipaddress");
+    inputIP.addEventListener("keydown", (e) => {
+        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace" || e.key == "CTRL" || e.key == "v" || e.key == "Delete"|| e.key == "V" || e.key == "A"|| e.key == "a"|| e.key == "C"|| e.key == "c") {
+        } else {
+            e.preventDefault();
+        }
+    });
+</script>
+
+<script>
+    let inputIPPesquisa = document.querySelector("#ipaddressPesquisa");
+    inputIPPesquisa.addEventListener("keydown", function(e) {
+        if (e.key >= "0" && e.key <= "9" || e.key == "." || e.key == "Backspace" || e.key == "CTRL" || e.key == "v" || e.key == "Delete"|| e.key == "V" || e.key == "A"|| e.key == "a"|| e.key == "C"|| e.key == "c") {
+
+        } else {
+            e.preventDefault();
+        }
+    });
+</script> 
 
 <?php
 require "../../scripts/equipamentosPop.php";

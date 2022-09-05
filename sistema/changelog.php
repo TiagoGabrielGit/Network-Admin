@@ -18,8 +18,44 @@ require "../includes/menu.php";
             <!-- Default Accordion -->
             <div class="accordion" id="accordionExample">
 
+              <!-- Versão 2.4 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="heading2-4">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-4" aria-expanded="false" aria-controls="collapse2-4">
+                    Versão 2.4 - 04/09/2022
+                  </button>
+                </h2>
+                <div id="collapse2-4" class="accordion-collapse collapse" aria-labelledby="heading2-4" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>Novas funcionalidades</strong><br>
+                    1. Anexo de imagens em equipamentos (Necessário criar diretório);<br>
+                    2. Cadastro de equipes;<br>
+                    3. Confiruguração de permissão nas credenciais de equipamentos;<br>
 
-              <!-- Versão 2.2 -->
+                    <br><strong>Melhorias</strong><br>
+
+                    <br><strong>Correções de BUG</strong><br>
+
+                    <br><strong>Alterações banco de dados</strong><br>
+                    1. Criado tabela upload;<br>
+                    2. Criado tabela equipes;<br>
+                    3. Criado tabela equipes_integrantes;<br>
+                    4. Criado tabela credenciais_equipamento_privacidade_equipe;<br>
+                    5. Criado tabela credenciais_equipamento_privacidade_usuario;<br>
+
+                    <br><strong>Previsto para próximas atualizações</strong><br>
+                    1. Iniciar página de relatórios;<br>
+                    2. Mostrar LOG de alteração e criação de registros por usuário;<br>
+                    3. Correções nos formatos de data e hora;<br>
+                    4. Possibilidade de cadastrar uma VM a uma hospedagem; <br>
+                    5. Analisar espaçamento que esta ficando após a senha;<br>
+                    6. Politica de restrição na visualização de credenciais; <br>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Versão 2.3 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="heading2-3">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-3" aria-expanded="false" aria-controls="collapse2-3">

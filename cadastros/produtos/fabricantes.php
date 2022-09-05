@@ -29,11 +29,11 @@ require "../../conexoes/conexao.php";
                                 <div class="col-8">
                                     <h5 class="card-title">Cadastro fabricantes</h5>
                                 </div>
-
-                                <div class="col-4">
+                                <div class="col-2"></div>
+                                <div class="col-2">
                                     <div class="card">
                                         <!-- Basic Modal -->
-                                        <button style="margin-top: 15px" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        <button style="margin-top: 15px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal">
                                             Novo fabricante
                                         </button>
                                     </div>
@@ -56,7 +56,7 @@ require "../../conexoes/conexao.php";
 
 
                                                         <div class="text-center">
-                                                            <button type="submit" class="btn btn-primary">Salvar</button>
+                                                            <button type="submit" class="btn btn-danger">Salvar</button>
                                                             <button type="reset" class="btn btn-secondary">Limpar</button>
                                                         </div>
                                                     </form><!-- Vertical Form -->

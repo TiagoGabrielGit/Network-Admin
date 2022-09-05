@@ -11,7 +11,7 @@ email.emaildescricao as cred_desc,
 email.emailusuario as cred_usuario,
 CASE
     WHEN email.privacidade = 1 THEN 'Público'
-    WHEN email.privacidade = 2 THEN 'Equipe'
+    WHEN email.privacidade = 2 THEN 'Privado'
     WHEN email.privacidade = 3 THEN 'Somente eu'
 END as cred_priv
 FROM
