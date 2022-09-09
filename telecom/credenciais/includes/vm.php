@@ -27,7 +27,7 @@
                                 <label for="editTipo" class="form-label">Tipo</label>
                                 <input disabled name="editTipo" type="text" class="form-control" id="editTipo" value="<?= $row['cred_tipo'];  ?>">
                             </div>
-
+ 
                             <div class="col-2"></div>
 
                             <div class="col-3">
@@ -46,6 +46,8 @@
                                     <input class="form-check-input" type="radio" name="editPrivacidade" id="editPrivacidade" value="3" <?= $checkSomEu ?>>
                                     <label class="form-check-label" for="editPrivacidade" value="3">Somente eu</label>
                                 </div>
+
+                                <?= $aplicaButton ?>
                             </div>
 
                             <div class="col-4">
@@ -97,3 +99,8 @@
     </section>
 
 </main><!-- End #main -->
+
+<?php
+require "modal.php";
+require "scripts_permissoes.php";
+?>

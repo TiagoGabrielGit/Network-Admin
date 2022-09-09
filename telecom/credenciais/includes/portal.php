@@ -45,6 +45,9 @@
                                     <input class="form-check-input" type="radio" name="editPrivacidade" id="editPrivacidade" value="3" <?= $checkSomEu ?>>
                                     <label class="form-check-label" for="editPrivacidade" value="3">Somente eu</label>
                                 </div>
+                                
+                                <?= $aplicaButton ?>
+
                             </div>
 
                             <hr class="sidebar-divider">
@@ -102,3 +105,8 @@
     </section>
 
 </main><!-- End #main -->
+
+<?php
+require "modal.php";
+require "scripts_permissoes.php";
+?>
